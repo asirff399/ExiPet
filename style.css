@@ -1,0 +1,330 @@
+body{
+    margin: auto;
+}
+#all-pet{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	margin-top: 40px;
+}
+#initial-pet{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	margin-top: 40px;
+	justify-content: center;
+}
+#category-pet{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+}
+
+#loader{
+	margin: 200px;
+	display: none;
+}
+.nodata{
+	display: none;
+}
+.review{
+	width: 420px;
+	padding: 20px;
+	border-radius: 20px;
+	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.av-pet{
+	width: 300px;
+	z-index: 1;
+}
+/* Pet Category Button */
+.category-btn {
+	padding: 5px 25px;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 500;
+	color: #000;
+	background-color: #fff;
+	border: none;
+	border-radius: 45px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+  }
+  
+  .category-btn:hover {
+	background-color: #23c483;
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	color: #fff;
+	border: none;
+	transform: translateY(-7px);
+  }
+  
+  .category-btn:active {
+	border: none;
+	transform: translateY(-1px);
+  }
+/* Details button */
+/* From Uiverse.io by alexmaracinaru */ 
+.cta {
+	border: none;
+	background: none;
+	cursor: pointer;
+  }
+  
+  .cta span {
+	padding-bottom: 7px;
+	padding-right: 15px;
+	text-transform: uppercase;
+  }
+  
+  .cta svg {
+	transform: translateX(-8px);
+	transition: all 0.3s ease;
+  }
+  
+  .cta:hover svg {
+	transform: translateX(0);
+  }
+  
+  .cta:active svg {
+	transform: scale(0.9);
+  }
+  
+  .hover-underline-animation {
+	position: relative;
+	color: black;
+	padding-bottom: 20px;
+  }
+  
+  .hover-underline-animation:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #000000;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+  }
+  
+  .cta:hover .hover-underline-animation:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+  }
+  
+/* Loader */
+.loader {
+	display: block;
+	height: 120px;
+	width: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin: auto;
+  }
+  
+  .loader div {
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	animation: move 4s infinite;
+  }
+  
+  .loader div:nth-child(1) {
+	background-color: rgb(158, 136, 246);
+	box-shadow: rgb(158, 136, 246) 0px 7px 29px 0px;
+	transform: translate(-30px,-30px);
+	animation-delay: -1s;
+  }
+  
+  .loader div:nth-child(2) {
+	background-color: rgb(97, 183, 253);
+	box-shadow: rgb(97, 183, 253) 0px 7px 29px 0px;
+	transform: translate(30px,-30px);
+	animation-delay: -2s;
+  }
+  
+  .loader div:nth-child(3) {
+	background-color: rgb(95, 249, 175);
+	box-shadow: rgb(95, 249, 175) 0px 7px 29px 0px;
+	transform: translate(30px,30px);
+	animation-delay: -3s;
+  }
+  
+  .loader div:nth-child(4) {
+	background-color: rgb(243, 171, 89);
+	box-shadow: rgb(243, 171, 89) 0px 7px 29px 0px;
+	transform: translate(-30px,30px);
+	animation-delay: -4s;
+  }
+  
+  @keyframes move {
+	0% {
+	  transform: translate(-30px, -30px);
+	}
+  
+	25% {
+	  transform: translate(30px, -30px);
+	}
+  
+	50% {
+	  transform: translate(30px, 30px);
+	}
+  
+	75% {
+	  transform: translate(-30px, 30px);
+	}
+  
+	100% {
+	  transform: translate(-30px, -30px);
+	}
+  }
+  
+/* .pet-card{
+	margin: auto;
+} */
+
+-----------------
+Dropdown Styles 
+-----------------
+*/
+.dropdown-container {
+	display: inline-block;
+	padding: 10px;
+
+	.dropdown {
+		position: relative;
+
+		&[open] .with-down-arrow::after {
+			content: "\e5c7";
+		}
+
+		&[open] summary {
+			background: #ffffff10;
+		}
+
+		summary {
+			list-style: none;
+			display: inline-block;
+			cursor: pointer;
+			border-radius: 6px;
+
+			&.avatar {
+				border-radius: 50px;
+
+				img {
+					width: 40px;
+					height: 40px;
+					border-radius: 50px;
+					display: inline-block;
+					margin: 0;
+				}
+			}
+
+			.with-down-arrow {
+				display: inline-flex;
+				padding: 5px;
+				align-items: center;
+				color: #fff;
+				line-height: 1;
+
+				&::after {
+					content: "\e5c5";
+					font-family: "Material Symbols Outlined";
+					font-weight: normal;
+					font-style: normal;
+					font-size: 1.5rem;
+					line-height: 1;
+					letter-spacing: normal;
+					text-transform: none;
+					display: inline-block;
+					white-space: nowrap;
+					word-wrap: normal;
+					direction: ltr;
+					-webkit-font-smoothing: antialiased;
+				}
+			}
+		}
+
+		&.left ul {
+			left: 0;
+		}
+
+		&.right ul {
+			right: 0;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+			box-shadow: 0 0 10px #00000030;
+			min-width: max-content;
+			position: absolute;
+			top: 100%;
+			border-radius: 10px;
+			background-color: #fff;
+			z-index: 2;
+
+			li {
+				list-style-type: none;
+				display: block;
+				/* If you use divider & borders, it's best to use top borders */
+				/*border-top: 1px solid #ccc;*/
+
+				&:first-of-type {
+					border: none;
+					background-color: light-gray;
+				}
+
+				p {
+					padding: 10px 15px;
+					margin: 0;
+				}
+
+				a {
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					padding: 10px 15px;
+					text-decoration: none;
+					line-height: 1;
+					color: text-color;
+
+					&:hover {
+						color: primary;
+					}
+				}
+
+				&:first-of-type {
+					border-radius: 10px 10px 0 0;
+				}
+
+				&:last-of-type {
+					border-radius: 0 0 10px 10px;
+				}
+
+				&.divider {
+					border: none;
+					border-bottom: 1px solid text-color;
+
+					/* 
+					 * removes border from Li after the divider element
+					 * best used in combination with top borders on other LIs 
+					 */
+					& ~ li {
+						border: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+

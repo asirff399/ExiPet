@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!-- Add Post -->
+   <!--onsubmit="addPost(event)" -->
+  <div class="p-5 m-11 ">
+     <form id="add-post" onsubmit="addPost(event)" enctype="multipart/form-data" method="post"  class="space-y-6 p-11 border max-w-sm mx-auto font-[sans-serif] shadow-2xl bg-gray-200" > 
+        <div class="flex items-center m-2">
+            <label for="name" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Name:</label>
+            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" placeholder="Enter your name" id="name" name="name" required />
+        </div>
+        
+        <div>
+            <label for="pet-type" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Select Pet Type:</label>
+                <select  id="pet-type" name="pet-type" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <!-- <option value="CA">Canada</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option> -->
+                </select>
+        </div>
+
+        <div class="m-2">
+            <label for="description" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Description:</label>
+            <textarea class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  type="text" placeholder="Enter your description" id="description" name="description" required ></textarea>
+        </div>
+
+        <div class="flex items-center m-2">
+            <label for="image" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Image:</label>
+            <input class="block w-full p-3 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" placeholder="Choose your file" id="image" name="image" required />
+        </div>
+
+        <div class=" m-2">
+            <label for="gender" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Gender:</label>
+                <select  id="gender" name="gender" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+        </div>
+
+        <div class="m-2">
+            <label for="adoption_status" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Adoption Status:</label>
+                <select  id="adoption_status" name="adoption_status" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="Available">Available</option>
+                    <option value="Adopted">Adopted</option>
+                </select>
+        </div>
+
+        <div class="flex items-center m-2">
+            <label for="age" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Age:</label>
+            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="number" placeholder="Enter your name" id="age" name="age"  step="0.1" required />
+        </div>
+
+        <div class="flex items-center m-2">
+            <label for="price" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Price:</label>
+            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="number" placeholder="Enter the price" id="price" name="price" required />
+        </div>
+
+        <button type="submit"
+        class="text-xl font-mono text-center m-4 hover:border-b-4 hover:border-black p-1 font-extrabold">Submit</button>
+    </form>
+  </div>
+    
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+  <!-- Scripts -->
+  <script src="./navbar.js"></script>
+  <script src="./footer.js"></script>
+  <script src="./app.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./profile.js"></script>
+  <script src="./petCategory.js"></script>
+  <script src="./logout.js"></script>
+  <script src="./post.js"></script>
+</body>
+</html>
+

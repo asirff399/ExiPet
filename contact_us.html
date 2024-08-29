@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!-- Contact Us -->
+  <div class="bg-green-50 font-[sans-serif] lg:h-screen ">
+    <div
+        class="grid lg:grid-cols-3 items-center max-lg:justify-center gap-6 h-full sm:p-12 p-8 max-sm:p-4 w-5/6 mx-auto">
+        <div class="max-w-lg max-lg:mx-auto max-lg:text-center max-lg:mb-6 ">
+            <h2 class="text-4xl m-11 font-extrabold font-mono text-gray-800">CONTACT US</h2>
+            
+            <form id="contact-us" onsubmit="contactUs(event)" enctype="multipart/form-data" class="rounded-tl-3xl rounded-bl-3xl">
+                <div class="max-w-md mx-auto space-y-3 relative">
+                    <input type='text' placeholder='Name' id="name" name="name" required class="w-full bg-gray-100 rounded-md py-3 px-4 text-sm outline-blue-600 focus-within:bg-transparent" />
+                    <input type='email' placeholder='Email' id="email" name="email" required class="w-full bg-gray-100 rounded-md py-3 px-4 text-sm outline-blue-600 focus-within:bg-transparent" />
+                    <textarea placeholder='Message' rows="6" id="message" name="message" required class="w-full bg-gray-100 rounded-md px-4 text-sm pt-3 outline-blue-600 focus-within:bg-transparent"></textarea>
+                
+                    <button type='submit'  
+                        class="text-white w-full relative bg-black hover:bg-gray-200 hover:text-black border-4 shadow-lg border-gray-200 rounded-md text-sm px-6 py-3 !mt-6">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="z-10 relative lg:col-span-2">
+            <img src="./images/sol.jpeg" class="w-5/6 object-contain block mx-auto rounded-3xl shadow-2xl" />
+        </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+  <!-- Scripts -->
+  <script src="./navbar.js"></script>
+  <script src="./footer.js"></script>
+  <script src="./app.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./profile.js"></script>
+  <script src="./petCategory.js"></script>
+  <script src="./logout.js"></script>
+  <script src="./contact_us.js"></script>
+</body>
+</html>

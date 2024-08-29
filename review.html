@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!-- Review -->
+  <div class="bg-green-50 font-[sans-serif] lg:h-screen ">
+    <div
+        class="grid lg:grid-cols-3 items-center max-lg:justify-center gap-6 h-full sm:p-12 p-8 max-sm:p-4 w-5/6 mx-auto">
+        <div class="max-w-lg max-lg:mx-auto max-lg:text-center max-lg:mb-6 ">
+            <h2 class="w-4/6 mx-auto text-4xl m-11 font-extrabold font-mono text-gray-800">Add Your Review</h2>
+            
+            <form id="review-form" onsubmit="handleReview(event)" enctype="multipart/form-data" class="rounded-tl-3xl rounded-bl-3xl">
+                <div class="w-4/6 mx-auto ">
+                     
+                 <textarea placeholder='Message' rows="6" id="message" name="message" required class="w-full bg-gray-100 rounded-md px-4 text-sm pt-3 outline-blue-600 focus-within:bg-transparent mb-5"></textarea>
+                    
+                    <label class="mt-11 p-2">Select:</label>
+                    <select  id="rating" name="rating"  required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+        
+                    <button type='submit'  
+                        class="text-white w-full relative bg-black hover:bg-gray-200 hover:text-black border-4 shadow-lg border-gray-200 rounded-md text-sm px-6 py-3 !mt-6">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="z-10 relative lg:col-span-2">
+            <img src="./images/review.jpg" class="w-5/6 object-contain block mx-auto rounded-3xl shadow-2xl" />
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+  <!-- Scripts -->
+  <script src="./navbar.js"></script>
+  <script src="./footer.js"></script>
+  <script src="./app.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./profile.js"></script>
+  <script src="./petCategory.js"></script>
+  <script src="./logout.js"></script>
+</body>
+</html>

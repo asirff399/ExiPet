@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <title>ExiPet - Pet Adoption</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Banner Text -->
+  <div class="flex flex-col lg:flex-row w-full lg:w-4/6 flex-wrap justify-center lg:justify-between mx-auto my-10 lg:my-24 px-4 lg:px-0">
+    <div class="banner-text text-center font-mono w-full lg:w-3/5 mb-6 lg:mb-0">
+        <h1 class="m-5 text-3xl lg:text-5xl font-semibold">Bring Home Happiness!</h1>
+        <h5 class="m-5 text-green-500 text-sm lg:text-base">Adopting abandoned and rescued dogs from animal rescue shelters creates a culture of sympathy for street animals. It also fosters acceptance and appreciation towards our indigenous Indian breed dogs.</h5>
+        <h5 class="m-5 text-teal-600 text-sm lg:text-base">Do you want to change a life by giving them some space in your life? Here's a list of our cherished companions at the shelter who are looking for a home. Just choose one and say hello to happiness!</h5>
+    </div>
+    <div class="flex justify-center">
+        <img class="w-64 lg:w-96 rounded-full" src="./images/banner.jpg" alt="Adopt a pet">
+    </div>
+  </div>
+
+      
+  <!-- Pets -->
+  <div class="all-pets mt-10 bg-gray-200" style="margin-bottom: 200px;">
+    <div class="text-center p-11">
+      <p class="uppercase italic text-blueGray-900 font-bold">Find your Friend</p>
+      <h1 class="text-5xl font-2xl font-extrabold font-mono">Adopt a pet</h1>
+    </div>
+    <p class="text-center text-green-500">Everyone loves their pets and we love to spoil them, <br> learn more about them, and see others pets.</p>
+    <div id="initial-pet" class="flex flex-wrap gap-6 "></div>
+    <div id="nodata" class="nodata m-11"><img class=" mx-auto " src="./images//unnamed.jpeg" alt=""></div>
+    <div id="loader">
+      <div  class="loader ">
+        <div></div> 
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    
+    <p class="text-3xl font-bold font-mono text-center p-10 italic" > <a href="./allPet.html">
+      <button class="cta">
+        <span class="hover-underline-animation text-3xl font-bold font-mono text-center p-10 italic"> See More --></span>
+        <svg
+          id="arrow-horizontal"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="10"
+          viewBox="0 0 46 16"
+        >
+          
+        </svg>
+      </button>
+      
+      <!-- See More --></a></p>
+  
+    
+
+    <!-- Pagination -->
+    <!-- <div class="flex justify-center">
+      <nav class="bg-gray-200 rounded-full px-4 py-2">
+          <ul class="flex text-gray-600 gap-4 font-medium py-2">
+              <li>
+                  <a href="#" class="rounded-full px-4 py-2 bg-white text-gray-600">1</a>
+              </li>
+              <li>
+                  <a href="#"
+                      class="rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out">2</a>
+              </li>
+              <li>
+                  <a href="#"
+                      class="rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out">3</a>
+              </li>
+              <li>
+                  <a href="#"
+                      class="rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out">4</a>
+              </li>
+              <li>
+                  <a href="#"
+                      class="rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out">5</a>
+              </li>
+          </ul>
+      </nav>
+  </div> -->
+    
+  </div>
+
+  <!-- More content -->
+  <div class="flex flex-col mb-16 md:flex-row items-center gap-12 max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8 font-[sans-serif]">
+    <img src="./images/content.jpeg" class="w-1/2 rounded-lg" alt="Image description" />
+    <div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">
+        Adopt Your Perfect Furry Friend Today!
+      </h2>
+      <p class="text-base text-gray-600">
+        Adopting a pet is a life-changing experience filled with love, joy, and companionship. Whether you're looking for a playful puppy, a cuddly kitten, or a gentle senior dog, the right pet can bring happiness and warmth to your home.
+      </p>
+      <ul class="list-disc mt-4 space-y-2 text-gray-600 ml-4">
+        <li class="text-sm">Largest non-profit pet's shelter</li>
+        <li class="text-sm">Convenient pet adoption for public</li>
+        <li class="text-sm">Innovative ways to help animals</li>
+      </ul>
+    </div>
+  </div>
+ 
+  <!--Services  -->
+    <div class="bg-gray-200 md:px-10 px-4 py-12 font-[sans-serif]">
+      <div class="container mx-auto">
+        <p class="text-sm text-center">Because We Really Care About Your Pets</p>
+        <h2 class="text-3xl text-center font-extrabold text-gray-800 mb-8">Services of ExiPet</h2>
+        <div id="services-container" class="m-6 flex flex-wrap justify-center gap-6">
+          
+        </div>
+      </div>
+      
+    </div> 
+
+  <!-- Stats -->
+  <div class="font-[sans-serif] w-5/6 text-[#333]" style="margin-block: 250px;margin-inline: auto;">
+    <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-x-6 gap-y-12 divide-x divide-gray-300">
+      <div class="text-center flex flex-col items-center">
+        <img class="object-fill rounded-full" src="./images/logo-2.jpg" alt="" style="width: 100px;height: 100px;">
+        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">400+</h3>
+        <p class="font-semibold mt-3">Pet Adoptions</p>
+      </div>
+      <div class="text-center flex flex-col items-center">
+        <img class="object-fill rounded-full" src="./images/logo-3.jpg" alt="" style="width: 150px;height: 150px;">
+        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">450+</h3>
+        <p class="font-semibold mt-3">Total pets</p>
+      </div>
+      <div class="text-center flex flex-col items-center">
+        <img class="object-fill rounded-full" src="./images/logo-4.jpg" alt="" style="width: 100px;height: 100px;">
+        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">500+</h3>
+        <p class="font-semibold mt-3">Customer Satisfaction</p>
+      </div>
+      <div class="text-center flex flex-col items-center">
+        <img class="object-fill rounded-full" src="./images/logo-5.jpg" alt="" style="width: 100px;height: 100px;">
+        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">600+</h3>
+        <p class="font-semibold mt-3">Other services</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Members -->
+    <div class="font-[sans-serif] max-w-5xl max-lg:max-w-4xl  max-sm:max-w-sm mx-auto mt-4" style="margin-block: 150px;">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-gray-800 text-3xl font-extrabold">Meet our team</h2>
+            <p class="text-gray-800 text-sm mt-4 leading-relaxed">Meet our team of professionals to serve you.</p>
+        </div>
+
+        <div id="team_members" class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-6 gap-y-16 text-center mt-24">
+            
+        </div>
+    </div>
+  
+  <!-- Extra contents -->
+  <div class="max-w-3xl mb-16 max-md:max-w-xl mx-auto p-4 font-[sans-serif]">
+    <h2 class="text-gray-800 text-3xl font-extrabold text-center">More About Us</h2>
+    <div class="mt-16 space-y-10">
+      <div class="grid md:grid-cols-2 gap-14">
+        <div>
+          <h3 class="text-gray-800 text-xl font-semibold mb-3">Largest non-profit pet's shelter</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Join the largest non-profit pet shelter, committed to rescuing, nurturing, and rehoming thousands of animals. Help us provide love and hope for every pet.</p>
+        </div>
+
+        <div class="h-[230px]">
+          <img src="./images/lg-per-shel.jpg" class="w-full h-full object-cover rounded-xl" />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-14">
+        <div>
+          <h3 class="text-gray-800 text-xl font-semibold mb-3">Convenient pet adoption for public</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Experience convenient pet adoption for the public, where finding your perfect companion is seamless. Browse available pets, complete the process online, and give a deserving animal a loving home effortlessly.</p>
+        </div>
+
+        <div class="h-[230px]">
+          <img src="./images/con-pet-pub.jpg" class="w-full h-full object-cover rounded-xl" />
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-14">
+        <div>
+          <h3 class="text-gray-800 text-xl font-semibold mb-3">Innovative ways to help animals</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Discover innovative ways to help animals, from supporting rescue missions to adopting pets online. Your efforts can make a significant difference in providing shelter, care, and love to animals in need.</p>
+        </div>
+
+        <div class="h-[230px]">
+          <img src="./images/innovative.jpg" class="w-full h-full object-cover rounded-xl" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+
+  <!-- Scripts -->
+
+    <!-- Add Swiper.js CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- <script>
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 2,   // Adjust the number of slides visible at once
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+      
+        dropdownButton.addEventListener('click', function () {
+          dropdownMenu.classList.toggle('hidden');
+        });
+      
+        // Close the dropdown if clicked outside
+        document.addEventListener('click', function (e) {
+          if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.add('hidden');
+          }
+        });
+      });
+      </script> -->
+      
+
+   <script src="./navbar.js"></script>
+   <script src="./footer.js"></script>
+   <script src="./app.js"></script>
+   <script src="./auth.js"></script>
+   <script src="./profile.js"></script>
+   <script src="./petCategory.js"></script>
+   <script src="./logout.js"></script>
+   <script src="./service.js"></script>
+   <script src="./post.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body >
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <!-- Pet Details -->
+
+  <div class="w-4/6 m-auto"  id="pet-details-container">
+      <div class="top flex m-11 ">
+        <div class="left ">
+            <img id="pd-image" src="" class="w-4/6 rounded-lg ms-11" alt="">
+        </div>
+        <div class="right shadow-lg rounded-lg bg-gray-200 text-black w-4/6 ">
+            <h1 class=" text-4xl font-mono text-center text-black p-3 font-extrabold border-b-2 border-black " style="background-color: rgb(250,235,215);">Details</h1>
+            <div class="m-8 font-mono">
+            <h1 class="text-center uppercase text-3xl font-bold" id="pd-name"></h1>
+            <p class="border-b-2 border-black uppercase text-lg w-2/6 font-bold  p-2 my-5 mx-auto text-center" id="pd-adoption-status"></p>
+
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 font-bold">
+                            <strong>Species:</strong>
+                            </th>
+                            <th id="pd-pet-type" scope="col" class="px-6 py-3">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <strong>Sex:</strong>
+                            </th>
+                            <td id="pd-gender" class="px-6 py-4">
+                            
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <strong>Age:</strong>
+                            </th>
+                            <td id="pd-age" class="px-6 py-4">
+                            
+                            </td>
+                        </tr>
+                        <tr class="bg-white dark:bg-gray-800">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <strong>Adoption Fee:</strong>
+                            </th>
+                            <td id="pd-price" class="px-6 py-4">
+                                <Strong>$</Strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="buttons">
+            <div id="details-btn" class="flex justify-center gap-6">
+                <a href="./editPost.html?pet_id=${data.id}" id="edit-pet" class=" text-xl font-mono text-center m-3 border-b-4 border-black hover:border-gray-200 p-1 font-extrabold">Edit</a>
+                <a href="./addpost.html" class=" text-xl font-mono text-center m-3 border-b-4 border-black hover:border-gray-200 p-1 font-extrabold ">Add New</a>
+                <button type="submit" onclick="deletePet()" id="delete-pet" class=" text-xl font-mono text-center text-red-700 m-3 border-b-4 border-black hover:border-red-700 p-1 font-extrabold ">Delete</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div id="adopt-btn" style="margin: auto; width: 25%;">
+           
+        </div>
+        <div class="bottom m-5">
+        <div>
+            <h1 class="text-4xl m-5 text-green-700 font-bold font-mono ">Description</h1>
+            <p class="p-5 font-semibold text-teal-500" id="pd-description"></p>
+            <p class="ms-5 italic font-mono font-bold">Created By <a class="text-red-500 underline " href="" id="pd-author"></a> on <small id="pd-created-on"></small></p>
+        </div>
+        <div class="">
+            <h1 class="text-4xl text-center text-green-700 font-bold font-mono border-b-2 border-gray-200 p-4 " style="margin-top: 100px;">Reviews</h1>
+            <!-- Show All Review -->
+            <div class="w-5/6 mx-auto mb-11 p-11">
+                <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] px-6 py-8 w-full rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">                                   
+                        <div id="pet-all-review" class="flex flex-wrap items-center gap-4"> </div>                      
+                    
+                </div>
+            </div>
+            <!-- End Review -->
+                    
+            
+        </div>
+        <a href="./index.html" class="bg-black text-xl font-mono text-center my-11 mx-5 text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-lg">Back Home</a>
+    </div>
+  </div>
+  
+  
+  <!-- Footer -->
+  <div id="footer" class="w-full"></div>
+  <!-- Scripts -->
+  <script src="./navbar.js"></script>
+  <script src="./footer.js"></script>
+  <script src="./app.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./profile.js"></script>
+  <script src="./petCategory.js"></script>
+  <script src="./logout.js"></script>
+  <script src="./pet_details.js"></script>
+  <script src="./post.js"></script>
+</body>
+</html>

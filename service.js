@@ -1,0 +1,121 @@
+const loadAllService = () =>{
+    document.getElementById("loader").style.display = "block";
+    fetch("https://exipet-drf-api.onrender.com/service/")
+    .then((res)=>res.json())
+    .then((data)=>{
+        // console.log(data)
+        
+        if(data.length > 0){
+            
+            document.getElementById("loader").style.display = "none";
+            displayService(data)
+        }
+        else{
+            document.getElementById("nodata").style.display = "block";
+            document.getElementById("loader").style.display = "none";
+        }
+    })
+}
+const displayService = (data)=>{
+    data.forEach((service)=>{
+        const parent = document.getElementById("services-container")
+        const div = document.createElement("div")
+        div.classList.add("service")
+        div.innerHTML=`
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg" style="width: 290px;">
+                <img src=${service.image} alt="Blog Post 1" class="w-full h-52 object-cover" />
+                <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">${service.name}</h3>
+                <p class="text-gray-600 text-sm">${service.description.slice(0,30)}...</p>
+                <a href="service_detail.html?service_id=${service.id}" class="mt-4 inline-block text-blue-600 text-sm hover:underline">Read More</a>
+                </div>
+            </div>
+
+        `
+        parent.appendChild(div)
+    })
+}
+
+const ServiceDetails = ()=>{
+    const param = new URLSearchParams(window.location.search).get("service_id")
+    // console.log(param)
+    
+    fetch(`https://exipet-drf-api.onrender.com/service/${param}`)
+    .then((res)=> res.json())
+    .then((data)=> {
+        // console.log(data)
+            const parent = document.getElementById("service-details-container")
+            const div = document.createElement("div")
+            div.classList.add("service-datils")
+            div.innerHTML=`
+                <div class="bg-gray-50 w-full rounded-lg font-[sans-serif] overflow-hidden max-w-5xl mx-auto">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 items-center">
+                        <img src=${data.image} class="w-full rounded-lg m-4 h-full object-cover shrink-0" />
+                        <div class="lg:col-span-2 p-10">
+                        <h1 class="text-3xl font-bold text-gray-800">${data.name}</h1>
+                        <p class="mt-4 text-sm text-gray-500 leading-relaxed">${data.description}</p>
+
+                        <button type="button"
+                            class="px-6 py-3 mt-8 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-black "><a href="./index.html">Back Home</a></button>
+                        </div>
+                    </div>
+                </div>
+
+            `
+            parent.appendChild(div)
+    })
+    
+}
+const loadDashboard = () =>{
+    const user_id = localStorage.getItem("user_id")
+    fetch(`https://exipet-drf-api.onrender.com/pet/adoption/?search=${user_id}`)
+    .then((res)=>res.json())
+    .then((data)=>{
+        document.getElementById("loader").style.display = "block";
+        if(data.length > 0){
+            
+            document.getElementById("loader").style.display = "none";
+            displayDashboard(data)
+        }
+        else{
+            document.getElementById("nodata").style.display = "block";
+            document.getElementById("loader").style.display = "none";
+        }
+    })
+}
+const displayDashboard = (data) =>{
+    data.forEach((item)=>{           
+        const parent = document.getElementById("tb")
+        const tr = document.createElement("tr")
+        tr.innerHTML=`
+                
+                    <td  class="p-4 text-sm text-black">
+                        ${item.id}
+                    </td>
+                    <td  class="p-4 text-sm text-black">
+                        ${item.pet_name}
+                    </td>
+                    <td  class="p-4 text-sm text-black">
+                        ${item.pet}
+                    </td>
+                    <td  class="p-4 text-sm text-black">
+                        ${item.adopted_on}
+                    </td>
+                    <td  class="p-4 text-sm text-black">
+                        ${item.pet_price}
+                    </td>
+                    <td  class="p-4 text-sm text-black">
+                        ${item.balance_after_adoption}
+                    </td>
+        
+        
+        `
+        parent.appendChild(tr)
+        
+        
+    })
+}
+
+loadAllService()
+loadDashboard()
+// ServiceDetails()
