@@ -87,7 +87,7 @@ const displayInitialPet = (pets) =>{
         div.classList.add("pet-card")
         const formattedDate = formatDate(pet.created_on);
         div.innerHTML=`
-                <div class="mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="mx-auto mt-11 mb-10 w-96 h-full transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                     <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                     <div class="p-4 text-center">
                         <h1 class="mb-2 text-2xl font-medium dark:text-white text-gray-900"><strong>${pet.name}</strong> </h1>
