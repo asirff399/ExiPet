@@ -10,7 +10,7 @@
   <!-- Navbar -->
   <div id="navbar"></div>
   <!-- Slide Bar -->
-  <div class="fixed right-20 mt-5 font-[sans-serif] w-max mx-auto z-40">
+  <!-- <div class="fixed right-20 mt-5 font-[sans-serif] w-max mx-auto z-40">
       <button type="button" id="dropdownToggle"
         class="px-4 py-2 flex items-center rounded-full text-[#333] text-sm border border-gray-300 outline-none hover:bg-gray-100">
         <img id="profile-img" src="" class="w-7 h-7 mr-3 rounded-full shrink-0"></img>
@@ -54,7 +54,7 @@
           Logout
         </li>
       </ul>
-  </div>
+  </div> -->
 
     <!-- Deposit modal -->
     <div id="deposit-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -161,10 +161,11 @@
           <!-- Sidebar -->
           <div class="bg-slate-50 text-gray-700 w-64 py-7 px-5 shadow-lg">
               <nav class="mt-10">
-                  <a href="#" data-modal-target="deposit" data-modal-toggle="deposit" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Deposit</a>
+                  <a href="#" data-modal-target="deposit-modal" data-modal-toggle="deposit-modal" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Deposit</a>
+                  <a href="#" data-modal-target="withdraw-modal" data-modal-toggle="withdraw-modal" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Withdraw</a>
                   <a href="#" data-modal-target="pass-change-modal" data-modal-toggle="pass-change-modal" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Change Password</a>
-                  <a href="./volunteer.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Volunteer</a>
-                  <a href="./donationHistory.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Donation History</a>
+                  <a href="./addpost.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Add Pet</a>
+                  <a href="./dashboard.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Adoption History</a>
                   <a type="button" href="#" onclick="handleLogout()"  class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Logout</a>
               </nav>
           </div>
@@ -259,7 +260,7 @@
                         </div>
                       </div>
                       <div>
-                        <button type="submit" class="bg-black hover:text-red-600 font-bold px-11 py-3  rounded-full text-gray-300">UPDATE</button>
+                        <button type="submit" class="bg-black hover:text-red-600 font-bold px-11 py-3 rounded-full text-gray-300">UPDATE</button>
                         <button class="bg-black hover:text-red-600 font-bold px-11 py-3 mx-5 rounded-full text-gray-300"><a href="./index.html">CANCEL</a></button>
                       </div>
                     </div>
@@ -289,7 +290,6 @@
    </div>
 
   <!-- Adoption History -->
-
   <div class="font-mono overflow-x-auto w-5/6 mx-auto my-11 shadow-2xl rounded-lg">
     <table class="min-w-full bg-teal-200">
       <thead class="bg-gray-800 whitespace-nowrap">
@@ -332,7 +332,6 @@
     </div>
   <!-- loader -->
   </div>
-
 
    <!-- Footer -->
    <div id="footer" class="w-full"></div>

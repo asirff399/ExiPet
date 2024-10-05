@@ -1,42 +1,31 @@
 const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
-  // console.log(user_id);
 
   fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/users/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
       localStorage.setItem("username", data.username);
       // console.log(data)
-      document.getElementById(
-        "profile-username"
-      ).innerText = `${data.first_name} ${data.last_name}`;
-      const parent = document.getElementById("profile-details");
-      const div = document.createElement("profile-all");
-      div.classList.add("profile-all");
-      div.innerHTML = `
-                <div class="user-img mb-12 pb-12">
-                    <img id="profile-card-img" class="object-fill  w-full " src="" alt="" />
-                </div>
-                <div class="mt-11 font-mono  ">
-                    <h2 class="text-4xl mb-5  text-center my-5">${data.first_name} ${data.last_name}</h2>
-                    <div>
-                      <h6 class="leading-none m-2 text-lg text-gray-900 "><strong>Username:</strong> ${data.username}</h6>
-                      <h4 class="m-2 " ><strong>Email:</strong> ${data.email}</h4>
-                      <h4 class="m-2 " ><strong>Balance:  $ </strong><span class="font-bold" id="balance"></span></h4>
-                    </div>
-                </div>      
-        
-        `;
-      parent.appendChild(div);
+      document.getElementById("p-first_name").value = data.first_name 
+      document.getElementById("p-last_name").value = data.last_name 
+      document.getElementById("p-username").value = data.username
+      document.getElementById("p-email").value = data.email
+      
     });
   const customer_id = localStorage.getItem("customer_id");
   fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/${customer_id}`)
     .then((res) => res.json())
     .then((data) => {
       // console.log(data)
-      document.getElementById("balance").innerText = `${data.balance}`;
-      document.getElementById("profile-img").src = `${data.image}`;
-      document.getElementById("profile-card-img").src = `${data.image}`;
+      document.getElementById("p-phone").value = data.phone
+        document.getElementById("p-address").value = data.address
+
+        document.getElementById("img").src = `${data.image}`;
+        document.getElementById("curr-p-img").value = data.image;
+        
+        document.getElementById("p-balance").innerText = `$${data.balance}`;
+
+        localStorage.setItem('user_type',data.user_type)
     });
 };
 const loadCustomerId = () => {
@@ -69,7 +58,6 @@ const changePass = (event) => {
     .then((res) => res.json())
     .then((data) => (window.location.href = "./profile.html"));
 };
-
 const deposit = (event) => {
   event.preventDefault();
   const form = document.getElementById("deposit-form");
@@ -129,7 +117,6 @@ const withdraw = (event) => {
     })
     
 };
-
 const availablePet = () =>{
   const userId = localStorage.getItem("user_id")
   fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/?adoption_status=Available&author=${userId}`)
