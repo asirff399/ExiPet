@@ -157,9 +157,117 @@
    <!-- Profile -->
    <div class="flex flex-wrap justify-evenly m-11 gap-6">
         <!-- Profile Part -->
-        <div  class=" p-5 border rounded text-gray-500 max-w-lg bg-gray-300 shadow-2xl" style="margin-block:100px ; width: 400px;">
-          <div id="profile-details"></div> 
-          <div class=" m-11"> <a href="./dashboard.html" class="bg-black text-xl font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">ADOPTION HISTORY</a></div>         
+        <div class="min-h-screen flex ">
+          <!-- Sidebar -->
+          <div class="bg-slate-50 text-gray-700 w-64 py-7 px-5 shadow-lg">
+              <nav class="mt-10">
+                  <a href="#" data-modal-target="deposit" data-modal-toggle="deposit" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Deposit</a>
+                  <a href="#" data-modal-target="pass-change-modal" data-modal-toggle="pass-change-modal" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Change Password</a>
+                  <a href="./volunteer.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Volunteer</a>
+                  <a href="./donationHistory.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Donation History</a>
+                  <a type="button" href="#" onclick="handleLogout()"  class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Logout</a>
+              </nav>
+          </div>
+
+          <!-- Profile Details -->
+          <div class="flex-1 bg-white p-8">
+          
+            <!-- Toast -->
+              <div class="w-full mx-auto">
+                <div id="error-container" class="fixed top-24 left-1/2 transform -translate-x-1/2 bg-gray-200 shadow-2xl text-gray-800 mx-auto p-4 rounded-md hidden"
+                    role="alert">
+                    <span id="error" class="text-center font-bold font-mono tracking-wide"></span>
+                </div>
+              </div>
+
+              <div class="flex justify-between">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 uppercase">Profile Details</h2>
+                <div class="flex gap-2 mb-4 me-28 p-3 rounded-2xl bg-orange-100">
+                  <p id="p-balance" class="text-black font-bold font-mono text-2xl"></p>
+                </div>
+              </div>
+
+              <form id="up-profile" onsubmit="updateProfile(event)" enctype="multipart/form-data" class="flex gap-16 bg-gray-100 p-6 rounded-lg shadow-lg">
+                <!-- Profile Picture on the left -->
+                <div class="flex-shrink-0 m-8 ">
+                  <img id="img" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="rounded-lg shadow-2xl" style="width: 450px;">
+                  <input id="curr-p-img" src="" class="hidden" alt="">
+                  <div class="my-5">
+                    <label for="p-img" class="block mb-2 text-lg font-semibold text-gray-700">Image</label>
+                    <div class="relative flex items-center">
+                      <i class="fas fa-images absolute left-3 text-gray-400"></i>
+                        <input type="file" id="p-img" name="p-img" 
+                            class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                    </div>
+                  </div>
+                </div>
+                <!-- Profile Details on the Right -->
+                <div class="flex-grow ">
+                    <h3 class="font-bold my-5 ">Info</h3>
+                    <div class="flex flex-wrap gap-6">
+                      <div class="mb-4 w-2/5">
+                        <label for="p-first_name" class="block mb-2 text-lg font-semibold text-gray-700">First Name</label>
+                        <div class="relative flex items-center">
+                            <i class="fas fa-user absolute left-3 text-gray-400"></i>
+                            <input type="text" id="p-first_name" name="p-first_name" placeholder="Enter your first name" 
+                                class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                        </div>
+                      </div>
+
+                      <div class="mb-4 w-2/5">
+                        <label for="p-last_name" class="block mb-2 text-lg font-semibold text-gray-700">Last Name</label>
+                        <div class="relative flex items-center">
+                          <i class="fas fa-user absolute left-3 text-gray-400"></i>
+                            <input type="text" id="p-last_name" name="p-last_name" placeholder="Enter your last name" 
+                                class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                        </div>
+                      </div>
+
+                      <div class="mb-4 w-2/5">
+                        <label for="p-username" class="block mb-2 text-lg font-semibold text-gray-700">Username</label>
+                        <div class="relative flex items-center">
+                          <i class="fas fa-circle-user absolute left-3 text-gray-400"></i>
+                            <input type="text" id="p-username" name="p-username" placeholder="Enter your username" 
+                                class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                        </div>
+                      </div>
+
+                      <div class="mb-4 w-2/5">
+                        <label for="p-email" class="block mb-2 text-lg font-semibold text-gray-700">Email</label>
+                        <div class="relative flex items-center">
+                          <i class="fas fa-envelope absolute left-3 text-gray-400"></i>
+                            <input type="email" id="p-email" name="p-email" placeholder="Enter your email" 
+                                class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                        </div>
+                      </div>
+
+                      <div class="mb-4 w-2/5">
+                        <label for="p-phone" class="block mb-2 text-lg font-semibold text-gray-700">Phone</label>
+                        <div class="relative flex items-center">
+                          <i class="fas fa-phone absolute left-3 text-gray-400"></i>
+                            <input type="number" id="p-phone" name="p-phone" placeholder="Enter your phone" 
+                                class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                        </div>
+                      </div>
+
+                      <div class="mb-4 w-2/5">
+                        <label for="p-address" class="block mb-2 text-lg font-semibold text-gray-700">Address</label>
+                        <div class="relative flex items-center">
+                          <i class="fas fa-map-location-dot absolute left-3 text-gray-400"></i>
+                            <input type="text" id="p-address" name="p-address" placeholder="Enter your address" 
+                                class="custom-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg shadow-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300 ease-in-out text-gray-900 placeholder-gray-400">
+                        </div>
+                      </div>
+                      <div>
+                        <button type="submit" class="bg-black hover:text-red-600 font-bold px-11 py-3  rounded-full text-gray-300">UPDATE</button>
+                        <button class="bg-black hover:text-red-600 font-bold px-11 py-3 mx-5 rounded-full text-gray-300"><a href="./index.html">CANCEL</a></button>
+                      </div>
+                    </div>
+
+                </div>
+              </form>
+
+          </div>
         </div>
         <!-- Right Part -->
         <div class="w-full m-5">

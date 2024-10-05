@@ -1,5 +1,17 @@
-const handelRegistration = async (event) => {
+const handelRegistration = (event) => {
     event.preventDefault();
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
 
     const username = getValue("username");
     const first_name = getValue("first_name");
@@ -7,73 +19,49 @@ const handelRegistration = async (event) => {
     const email = getValue("email");
     const password = getValue("password");
     const confirm_password = getValue("confirm_password");
+   
+    const info = {
+        username,
+        first_name,
+        last_name,
+        email,
+        password,
+        confirm_password,
+    };
+    console.log(info)
 
-    
-    const imageFile = document.getElementById("image").files[0];
-
-    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
-    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
-
-    const imageData = new FormData();
-    imageData.append('image', imageFile);
-
-    try {
-        const imgbbResponse = await fetch(imgbbUrl, {
-            method: 'POST',
-            body: imageData,
-        });
-
-        if (!imgbbResponse.ok) {
-            throw new Error("Failed to upload image. Please try again.");
-        }
-
-        const imgbbData = await imgbbResponse.json();
-        const imageUrl = imgbbData.data.url;
-        // console.log("test",imageUrl);
-
-        const info = {
-            username,
-            first_name,
-            last_name,
-            email,
-            image: imageUrl,  
-            password,
-            confirm_password,
-        };
-
-        if (password === confirm_password) {
-            document.getElementById("error").innerText = "";
+    if (password === confirm_password) {
+        document.getElementById("error").innerText = "";
+        
+        if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {          
             
-            if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-                // console.log(info);
-                
-                
-                const response = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/register/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                });
-
-                const data = await response.json();
-                if (response.ok) {
-                    alert("Registration successful");
-                    document.getElementById("error").innerText = "Check Your Confirmation Mail!";
-                } else {
-                    alert("Failed to register: " + data.message);
+            fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/register/",{
+                method:"POST",
+                headers:{"Content-Type":"application/json",},
+                body:JSON.stringify(info)
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Failed to register!");
                 }
-                
-            } else {
-                document.getElementById("error").innerText = "Password must contain eight characters, at least one letter, one number, and one special character."; 
-            }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                alert("Check your confirmation email!");
+                showError("Registration successfull!");
+            })
+            .catch((error) => {
+                console.error(error);
+                showError("Registration failed. Please try again.");
+            });               
         } else {
-            document.getElementById("error").innerText = "Password and confirm password don't match";
+          showError("Password must contain eight characters, at least one letter, one number, and one special character.");
         }
-    } catch (error) {
-        // console.error("Error:", error);
-        alert("An error occurred during registration: " + error.message);
+    } else {
+      showError("Password and confirm password don't match.");
     }
+    
 };
 const getValue=(id)=>{
     const value = document.getElementById(id).value
@@ -81,9 +69,17 @@ const getValue=(id)=>{
 }
 const handleLogin = (event) =>{
     event.preventDefault()
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+
     const username = getValue("login-username")
     const password = getValue("login-password")
-    // console.log(username,password)
+    console.log(username,password)
     if(username,password){
         fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/login/",{
             method:"POST",
@@ -92,19 +88,66 @@ const handleLogin = (event) =>{
         })
         .then((res)=>res.json())
         .then((data)=>{
-            // console.log(data)
-            document.getElementById("error").innerText = data.error;
-            alert("Logged in Seccessfully !")
-             
+            console.log(data)
+            if (data.error) {
+                errorElement.innerText = data.error;
+                errorContainer.classList.remove("hidden");  
+                hideToast();
+            } 
+              if (data.token && data.user_id) {
+                  errorElement.innerText = "Logged in Successfully!"
+                  errorContainer.classList.remove("hidden"); 
+                  hideToast();
 
-            if(data.token && data.user_id){
-                localStorage.setItem("token",data.token)
-                localStorage.setItem("user_id",data.user_id)
-                window.location.href = "index.html"
-            }
+                  localStorage.setItem("token", data.token);
+                  localStorage.setItem("user_id", data.user_id);
+                  window.location.href = "./index.html";
+              }
         })
+        .catch((err) => {
+          errorElement.innerText = "An error occurred. Please try again later.";
+          errorContainer.classList.remove("hidden"); 
+          console.error("Error during login:", err);
+          hideToast();
+      });
         
+    }else{
+      errorElement.innerText = "Please provide both username and password.";
+      errorContainer.classList.remove("hidden");
+      errorContainer.classList.add("text-red-900");
+      hideToast();
     }
+}
+const handleLogout = () =>{
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+    const token = localStorage.getItem("token")
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/logout/",{
+        method:"POST",
+        headers:{
+            Authorization:`Token ${token}`,
+            "content-type":"application/json",
+        },
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+        console.log(data)
+        localStorage.removeItem("token")
+        localStorage.removeItem("user_id")
+        showError('Logged out successfully')
+        window.location.href = "./index.html"
+    })
+
 }
 const handleReview = async (event) =>{
     event.preventDefault()
