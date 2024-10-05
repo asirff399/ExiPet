@@ -60,7 +60,8 @@ const addPost = async (event) =>{
 
 const getPostDetail = () => {
     const pet_id = localStorage.getItem("pet_id")
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${pet_id}`)
+    if(pet_id){
+      fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${pet_id}`)
       .then((res) => res.json())
       .then((post) => {
         
@@ -73,6 +74,8 @@ const getPostDetail = () => {
         document.getElementById("ed-age").value = post.age;
         document.getElementById("ed-price").value = post.price;
       });
+    }
+    
 };
 
 const editPost = async (event)=>{

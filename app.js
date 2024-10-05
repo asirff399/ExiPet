@@ -80,33 +80,34 @@ const displayInitialPet = (pets) =>{
             console.error('Element with ID "initial-pet" not found');
             return;
         }
-    pets.forEach((pet)=>{
-        
-        const div = document.createElement("div")
-        div.classList.add("pet-card")
-        const formattedDate = formatDate(pet.created_on);
-        div.innerHTML=`
-                <div class="mx-auto mt-11 mb-10 w-96 h-full transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
-                    <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
-                    <div class="p-4 text-center">
-                        <h1 class="mb-2 text-2xl font-medium dark:text-white text-gray-900"><strong>${pet.name}</strong> </h1>
-                        <p class="mb-2 text-base dark:text-gray-300 text-gray-700">${pet.description.slice(0,50)}...</p>
-                        <div class="flex justify-evenly items-center">
-                            <p class="mr-2 text-lg font-semibold text-gray-900 dark:text-white">$${pet.price}</p>
-                            <h2 class="font-bold ">${pet.adoption_status }</h2>
+    if(pets){
+        pets.forEach((pet)=>{
+            const div = document.createElement("div")
+            div.classList.add("pet-card")
+            const formattedDate = formatDate(pet.created_on);
+            div.innerHTML=`
+                    <div class="mx-auto mt-11 mb-10 w-96 h-full transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                        <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
+                        <div class="p-4 text-center">
+                            <h1 class="mb-2 text-2xl font-medium dark:text-white text-gray-900"><strong>${pet.name}</strong> </h1>
+                            <p class="mb-2 text-base dark:text-gray-300 text-gray-700">${pet.description.slice(0,50)}...</p>
+                            <div class="flex justify-evenly items-center">
+                                <p class="mr-2 text-lg font-semibold text-gray-900 dark:text-white">$${pet.price}</p>
+                                <h2 class="font-bold ">${pet.adoption_status }</h2>
+                            </div>
+                            <div class="flex mt-7 cta">
+                                <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono text-center" href="./pet_details.html?pet_id=${pet.id}">Details --> </a> </button>
+                            </div>
+                            <div>
+                                <p class="text-sm mt-7">Created By <a class="text-red-500 underline" href="">${pet.author}</a> on ${formattedDate}</p>
+                            </div>
                         </div>
-                        <div class="flex mt-7 cta">
-                            <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono text-center" href="./pet_details.html?pet_id=${pet.id}">Details --> </a> </button>
-                        </div>
-                        <div>
-                            <p class="text-sm mt-7">Created By <a class="text-red-500 underline" href="">${pet.author}</a> on ${formattedDate}</p>
-                        </div>
-                    </div>
-                </div> 
-        
-        `
-        parent.appendChild(div)
-    })
+                    </div> 
+            
+            `
+            parent.appendChild(div)
+        })
+    }
 }
 const loadPetCategoryWise = (search) =>{
     // console.log(search)
@@ -173,17 +174,19 @@ const loadAllPetType = () =>{
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
-        data.forEach((type)=>{
-            const parent = document.getElementById("pet-types")
-            const div = document.createElement("div")
-            div.classList.add("pet-ty")
-            div.innerHTML=`               
-                <button type="button" onclick="loadPetCategoryWise('${type.name}')"
-                    class="category-btn font-mono font-bold">${type.name}
-                </button>            
-            `
-          parent.appendChild(div)
-        })
+        if(data){
+            data.forEach((type)=>{
+                const parent = document.getElementById("pet-types")
+                const div = document.createElement("div")
+                div.classList.add("pet-ty")
+                div.innerHTML=`               
+                    <button type="button" onclick="loadPetCategoryWise('${type.name}')"
+                        class="category-btn font-mono font-bold">${type.name}
+                    </button>            
+                `
+              parent.appendChild(div)
+            })
+        }   
     })
 }
 const loadPetTypePost = () =>{
