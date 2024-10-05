@@ -48,7 +48,7 @@ const handelRegistration = async (event) => {
                 // console.log(info);
                 
                 
-                const response = await fetch("https://exipet-drf-api.onrender.com/customer/register/", {
+                const response = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/register/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -75,7 +75,6 @@ const handelRegistration = async (event) => {
         alert("An error occurred during registration: " + error.message);
     }
 };
-
 const getValue=(id)=>{
     const value = document.getElementById(id).value
     return value
@@ -86,7 +85,7 @@ const handleLogin = (event) =>{
     const password = getValue("login-password")
     // console.log(username,password)
     if(username,password){
-        fetch("https://exipet-drf-api.onrender.com/customer/login/",{
+        fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/login/",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({username,password}),
@@ -107,7 +106,6 @@ const handleLogin = (event) =>{
         
     }
 }
-
 const handleReview = async (event) =>{
     event.preventDefault()
     const pet_id = new URLSearchParams(window.location.search).get("pet_id")
@@ -133,7 +131,7 @@ const handleReview = async (event) =>{
     // console.log(rData)
 
     try {
-        const response = await fetch("https://exipet-drf-api.onrender.com/customer/create_review/", {
+        const response = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/create_review/", {
             method: "POST",
             headers:{
                 "content-type":"application/json",

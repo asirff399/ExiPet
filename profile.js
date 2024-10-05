@@ -2,7 +2,7 @@ const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
   // console.log(user_id);
 
-  fetch(`https://exipet-drf-api.onrender.com/users/${user_id}`)
+  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/users/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
       localStorage.setItem("username", data.username);
@@ -30,7 +30,7 @@ const loadUserDetails = () => {
       parent.appendChild(div);
     });
   const customer_id = localStorage.getItem("customer_id");
-  fetch(`https://exipet-drf-api.onrender.com/customer/list/${customer_id}`)
+  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/${customer_id}`)
     .then((res) => res.json())
     .then((data) => {
       // console.log(data)
@@ -41,7 +41,7 @@ const loadUserDetails = () => {
 };
 const loadCustomerId = () => {
   const user_id = localStorage.getItem("user_id");
-  fetch(`https://exipet-drf-api.onrender.com/customer/list/?search=${user_id}`)
+  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/?search=${user_id}`)
     .then((res) => res.json())
     .then((data) => localStorage.setItem("customer_id", data[0].id));
 };
@@ -58,7 +58,7 @@ const changePass = (event) => {
   };
   // console.log(data);
 
-  fetch("https://exipet-drf-api.onrender.com/customer/pass_change/", {
+  fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/pass_change/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const deposit = (event) => {
 
   // console.log(data);
   const token = localStorage.getItem("token");
-  fetch("https://exipet-drf-api.onrender.com/transaction/deposit/", {
+  fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/transaction/deposit/", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // document.getElementById("deposit-form").addEventListener("submit", deposit);
 
-
 const withdraw = (event) => {
   event.preventDefault();
   const form = document.getElementById("withdraw-form");
@@ -114,7 +113,7 @@ const withdraw = (event) => {
   console.log(data);
   const token = localStorage.getItem("token");
  
-  fetch("https://exipet-drf-api.onrender.com/transaction/withdraw/", {
+  fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/transaction/withdraw/", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -131,10 +130,9 @@ const withdraw = (event) => {
     
 };
 
-
 const availablePet = () =>{
   const userId = localStorage.getItem("user_id")
-  fetch(`https://exipet-drf-api.onrender.com/pet/list/?adoption_status=Available&author=${userId}`)
+  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/?adoption_status=Available&author=${userId}`)
   .then((res) => res.json())
   .then((data)=>{
     // console.log(data)
@@ -157,7 +155,7 @@ const availablePet = () =>{
 }
 const adoptedPet = () =>{
   const user_id = localStorage.getItem("user_id")
-    fetch(`https://exipet-drf-api.onrender.com/pet/adoption/?search=${user_id}`)
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -182,7 +180,6 @@ const adoptedPet = () =>{
     })
 
 }
-
 
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("withdraw-form").addEventListener("submit", withdraw);

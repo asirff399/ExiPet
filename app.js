@@ -8,7 +8,7 @@ function formatDate(dateStr) {
 }
 const loadAllPet = () =>{
     document.getElementById("loader").style.display = "block";
-    fetch("https://exipet-drf-api.onrender.com/all_pet/")
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/all_pet/")
     .then((res)=>res.json())
     .then((data)=>{
         
@@ -25,7 +25,7 @@ const loadAllPet = () =>{
 }
 const loadInitialPet = () =>{
     document.getElementById("loader").style.display = "block";
-    fetch("https://exipet-drf-api.onrender.com/all_pet/")
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/all_pet/")
     .then((res)=>res.json())
     .then((data)=>{
         if(data.length > 0){
@@ -39,7 +39,6 @@ const loadInitialPet = () =>{
         }
     })
 }
-
 const displayAllPet = (pets) =>{
     // console.log(pets)
     document.getElementById("all-pet").innerHTML = " "
@@ -87,7 +86,7 @@ const displayInitialPet = (pets) =>{
         div.classList.add("pet-card")
         const formattedDate = formatDate(pet.created_on);
         div.innerHTML=`
-                <div class="mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="mx-auto mt-11 mb-10 w-96 h-full transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                     <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                     <div class="p-4 text-center">
                         <h1 class="mb-2 text-2xl font-medium dark:text-white text-gray-900"><strong>${pet.name}</strong> </h1>
@@ -112,7 +111,7 @@ const displayInitialPet = (pets) =>{
 const loadPetCategoryWise = (search) =>{
     // console.log(search)
     document.getElementById("loader").style.display = "block";
-    fetch(`https://exipet-drf-api.onrender.com/pet/list/?search=${search? search : "" }`)
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/?search=${search? search : "" }`)
     .then((res)=>res.json())
     .then((data)=>{
         // displayPetCategoryWise(data?.results)
@@ -170,7 +169,7 @@ const displayPetCategoryWise = (pets) =>{
     })
 }
 const loadAllPetType = () =>{
-    fetch("https://exipet-drf-api.onrender.com/pet/types/")
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/types/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -189,7 +188,7 @@ const loadAllPetType = () =>{
 }
 const loadPetTypePost = () =>{
     const token = localStorage.getItem("token")
-    fetch("https://exipet-drf-api.onrender.com/pet/types/",{
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/types/",{
         method:"GET",
         headers:{
             "Content-Type":"application/json",
@@ -212,7 +211,7 @@ const loadPetTypePost = () =>{
 }
 const loadPetTypeEdit = () =>{
     const token = localStorage.getItem("token")
-    fetch("https://exipet-drf-api.onrender.com/pet/types/",{
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/types/",{
         method:"GET",
         headers:{
             "Content-Type":"application/json",
@@ -233,9 +232,8 @@ const loadPetTypeEdit = () =>{
         })
     })
 }
-
 const loadAllMember = () =>{
-    fetch("https://exipet-drf-api.onrender.com/member/")
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/member/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -272,8 +270,6 @@ const loadAllMember = () =>{
         })
     })
 }
-
-// getParam()
 document.addEventListener("DOMContentLoaded", function() {
     loadInitialPet()
     loadAllPetType();
@@ -286,8 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPetTypeEdit()
 });
 
-// loadPetTypePost()
-// loadAllPetType()
+
 
 
  

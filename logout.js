@@ -1,6 +1,6 @@
 const handleLogout = () =>{
     const token = localStorage.getItem("token")
-    fetch("https://exipet-drf-api.onrender.com/customer/logout/",{
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/logout/",{
         method:"POST",
         headers:{
             Authorization:`Token ${token}`,

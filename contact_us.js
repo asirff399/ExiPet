@@ -12,7 +12,7 @@ const contactUs = (event) => {
     // console.log(postData); 
     const token = localStorage.getItem("token")
     // console.log(token)
-    fetch("https://exipet-drf-api.onrender.com/contact_us/", {
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/contact_us/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

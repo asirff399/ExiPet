@@ -25,9 +25,7 @@ fetch("navbar.html")
 
 })
 
-
 // DropDown
-
 function closeOpenDropdowns(e) {
 	let openDropdownEls = document.querySelectorAll("details.dropdown[open]");
 

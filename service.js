@@ -1,6 +1,6 @@
 const loadAllService = () =>{
     document.getElementById("loader").style.display = "block";
-    fetch("https://exipet-drf-api.onrender.com/service/")
+    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/service/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -35,12 +35,11 @@ const displayService = (data)=>{
         parent.appendChild(div)
     })
 }
-
 const ServiceDetails = ()=>{
     const param = new URLSearchParams(window.location.search).get("service_id")
     // console.log(param)
     
-    fetch(`https://exipet-drf-api.onrender.com/service/${param}`)
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/service/${param}`)
     .then((res)=> res.json())
     .then((data)=> {
         // console.log(data)
@@ -68,7 +67,7 @@ const ServiceDetails = ()=>{
 }
 const loadDashboard = () =>{
     const user_id = localStorage.getItem("user_id")
-    fetch(`https://exipet-drf-api.onrender.com/pet/adoption/?search=${user_id}`)
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
         document.getElementById("loader").style.display = "block";

@@ -14,7 +14,7 @@ const getParams = ()=>{
     const param = new URLSearchParams(window.location.search).get("pet_id")
     localStorage.setItem("pet_id",param)
     
-    fetch(`https://exipet-drf-api.onrender.com/pet/list/${param}`)
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/${param}`)
     .then((res)=>res.json())
     .then((data)=> {
         // console.log(data)
@@ -46,7 +46,7 @@ const getParams = ()=>{
 }
 const loadReview = () =>{
     const param = new URLSearchParams(window.location.search).get("pet_id")
-    fetch(`https://exipet-drf-api.onrender.com/customer/review/?search=${param}`)
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/review/?search=${param}`)
     .then((res)=>res.json())
     .then((data)=> {
         data.forEach((review) =>{
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const detailsBTN = document.getElementById("details-btn")
    
-    fetch(`https://exipet-drf-api.onrender.com/pet/post/${petId}/`, {
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${petId}/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 async function adoptPet(event) {
     event.preventDefault();
 
@@ -115,7 +114,7 @@ async function adoptPet(event) {
         return;
     }
 
-    const apiUrl = `https://exipet-drf-api.onrender.com/pet/adopt/${petId}`;
+    const apiUrl = `https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adopt/${petId}`;
 
     const requestOptions = {
         method: 'PUT',
@@ -149,9 +148,7 @@ async function adoptPet(event) {
         console.error("Network error:", error);
     }
 }
-
 document.getElementById('adopt-btn').addEventListener('click', adoptPet);
-
 
 getParams()
 loadReview()
