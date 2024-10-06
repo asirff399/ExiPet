@@ -149,83 +149,170 @@ const handleLogout = () =>{
     })
 
 }
+
+// const updateProfile = async (event) =>{
+//     event.preventDefault()
+
+//     const errorContainer = document.getElementById("error-container");
+//     const errorElement = document.getElementById("error");
+//     const hideToast = () => {
+//       setTimeout(() => {
+//           errorContainer.classList.add("hidden");
+//       }, 3000);  
+//     };
+//     const showError = (message) => {
+//       errorElement.innerText = message;
+//       errorContainer.classList.remove("hidden");  
+//       hideToast(); 
+//     };
+
+//     const token = localStorage.getItem("token")
+
+//     const imageFile = document.getElementById('p-img').files[0]
+
+//     const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
+//     const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
+//     const imageData = new FormData()
+//     imageData.append('image',imageFile)
+//     let imageUrl = ''
+//     try{
+//         if(imageFile){
+//           const imgbbResponse = await fetch(imgbbUrl,{
+//             method:'POST',
+//             body: imageData,
+//           })
+//           const imgbbData = await imgbbResponse.json()
+//           imageUrl = imgbbData.data.url;
+
+//         }else{
+//           imageUrl = document.getElementById('curr-p-img').value;
+//         }
+//         const userData = {
+//           user: {
+//               username: document.getElementById('p-username').value,
+//               first_name: document.getElementById('p-first_name').value,
+//               last_name: document.getElementById('p-last_name').value,
+//               email: document.getElementById('p-email').value
+//           },
+//           custom_user: {
+//               image: imageUrl, 
+//               phone: document.getElementById('p-phone').value,
+//               address: document.getElementById('p-address').value,
+//           }
+//         }
+//         console.log(JSON.stringify(userData))
+//         const updateResponse = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/profile/update/",{
+//           method:"Put",
+//           headers:{
+//             "content-type":"application/json",
+//             "Authorization":`Token ${token}`,
+//           },
+//           body:JSON.stringify(userData),
+//         })
+//         const updateData = await updateResponse.json()
+//         if (updateResponse.ok) {
+//           console.log('Profile Updated:', updateData);
+//           showError('Profile updated successfully!')
+//         } else {
+//             throw new Error(updateData.detail || 'Failed to update profile'); 
+//         }
+//         console.log('Profile Updated:',updateData)
+//     }catch(error){
+//       console.error('Error updating profile:',error)
+//       showError('Error updating profile: ' + error.message);
+//     }
+// }
 const updateProfile = async (event) => {
-    event.preventDefault();  
+  event.preventDefault();
 
-    const errorContainer = document.getElementById("error-container");
-    const errorElement = document.getElementById("error");
-    const hideToast = () => {
-        setTimeout(() => {
-            errorContainer.classList.add("hidden");
-        }, 3000);
-    };
-    const showError = (message) => {
-        errorElement.innerText = message;
-        errorContainer.classList.remove("hidden");
-        hideToast();
-    };
+  const errorContainer = document.getElementById("error-container");
+  const errorElement = document.getElementById("error");
+  const hideToast = () => {
+    setTimeout(() => {
+      errorContainer.classList.add("hidden");
+    }, 3000);
+  };
 
-    const token = localStorage.getItem("token");
-    if (!token) {
-        showError('User not authenticated, please log in.');
-        return;
+  const showError = (message) => {
+    errorElement.innerText = message;
+    errorContainer.classList.remove("hidden");
+    hideToast();
+  };
+
+  const showSuccess = (message) => {
+    errorElement.innerText = message;
+    errorElement.style.color = 'green';  
+    errorContainer.classList.remove("hidden");
+    hideToast();
+  };
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    showError('User is not logged in. Please log in and try again.');
+    return;
+  }
+
+  const imageFile = document.getElementById('p-img').files[0];
+  const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
+  const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
+  const imageData = new FormData();
+  imageData.append('image', imageFile);
+
+  let imageUrl = '';
+
+  try {
+    if (imageFile) {
+      const imgbbResponse = await fetch(imgbbUrl, {
+        method: 'POST',
+        body: imageData,
+      });
+      const imgbbData = await imgbbResponse.json();
+      imageUrl = imgbbData.data.url;
+    } else {
+      imageUrl = document.getElementById('curr-p-img').value;
     }
 
-    const imageFile = document.getElementById('p-img').files[0];
-    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
-    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+    const userData = {
+      user: {
+        username: document.getElementById('p-username').value,
+        first_name: document.getElementById('p-first_name').value,
+        last_name: document.getElementById('p-last_name').value,
+        email: document.getElementById('p-email').value
+      },
+      custom_user: {
+        image: imageUrl,
+        phone: document.getElementById('p-phone').value,
+        address: document.getElementById('p-address').value,
+      }
+    };
 
-    const imageData = new FormData();
-    imageData.append('image', imageFile);
+    console.log(JSON.stringify(userData));
 
-    let imageUrl = '';
-    try {
-        if (imageFile) {
-            const imgbbResponse = await fetch(imgbbUrl, {
-                method: 'POST',
-                body: imageData,
-            });
-            const imgbbData = await imgbbResponse.json();
-            imageUrl = imgbbData.data.url;
-        } else {
-            imageUrl = document.getElementById('curr-p-img').value;
-        }
+    const updateResponse = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/profile/update/", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Token ${token}`,
+      },
+      body: JSON.stringify(userData),
+    });
 
-        const userData = {
-            user: {
-                username: document.getElementById('p-username').value,
-                first_name: document.getElementById('p-first_name').value,
-                last_name: document.getElementById('p-last_name').value,
-                email: document.getElementById('p-email').value
-            },
-            custom_user: {
-                image: imageUrl,
-                phone: document.getElementById('p-phone').value,
-                address: document.getElementById('p-address').value,
-            }
-        };
+    const updateData = await updateResponse.json();
 
-        const updateResponse = await fetch("https://exi-pet-3sb271ofo-asirff399s-projects.vercel.app/customer/profile/update/", {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json",
-                "Authorization": `Token ${token}`,
-            },
-            body: JSON.stringify(userData),
-        });
-
-        const updateData = await updateResponse.json();
-
-        if (updateResponse.ok) {
-            console.log('Profile Updated:', updateData);
-            showError('Profile updated successfully!');
-        } else {
-            throw new Error(updateData.detail || 'Failed to update profile');
-        }
-    } catch (error) {
-        console.error('Error updating profile:', error);
-        showError(`Error updating profile: ${error.message}`);
+    if (updateResponse.ok) {
+      console.log('Profile Updated:', updateData);
+      showSuccess('Profile updated successfully!');
+    } else {
+      throw new Error(updateData.detail || 'Failed to update profile');
     }
+
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    showError('Error updating profile: ' + error.message);
+  }
 };
 
 const handleReview = async (event) =>{
