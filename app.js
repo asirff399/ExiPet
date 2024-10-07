@@ -246,27 +246,29 @@ const loadAllMember = () =>{
             const div = document.createElement("div")
             div.classList.add("member")
             div.innerHTML=`
-                    <div class="bg-gray-200 relative rounded">
-                    <img src=${member.image} class="w-32 h-32 rounded-full inline-block -mt-12" />
+                <div class="bg-slate-200 rounded-lg p-6 shadow-md hover:scale-105 transition-all duration-500" style="width:290px;">
+                    <div class="lg:min-h-[250px]">
+                        <img src=${member.image} class="rounded-full border-4 border-white shadow-xl w-[230px] h-[230px] inline-block" />
+                    </div>
 
-                    <div class="py-4">
-                        <h4 class="text-gray-800 text-base font-extrabold">${member.name}</h4>
-                        <p class="text-gray-800 text-xs mt-1 uppercase">${member.type}</p>
+                    <div class="mt-6">
+                        <h4 class="text-gray-800 text-lg font-bold">${member.name}</h4>
+                        <p class="text-sm text-gray-600 mt-1">${member.type}</p>
 
-                    <div class="space-x-4 mt-4">                           
+                        <div class="space-x-4 mt-6">
                             <button type="button"
                                 class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
                                 <i class="fa-brands fa-facebook"></i>
                             </button>
                             <button type="button"
-                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
+                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
                                 <i class="fa-brands fa-twitter"></i>
                             </button>
                             <button type="button"
-                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
+                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
                                 <i class="fa-brands fa-linkedin"></i>
-                            </button>                           
-                        </div>     
+                            </button>
+                        </div>
                     </div>
                 </div>
             `

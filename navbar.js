@@ -11,18 +11,16 @@ fetch("navbar.html")
 		if(token){
 			navElement.innerHTML=`
 				<a href="./profile.html" class="text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">Profile</a>
-			`
-			
+			`		
 		}
 		else{
 			navElement.innerHTML=`
-				<div class="flex font-semibold ">
+				<div class="flex font-semibold">
 						<a href="./login.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">LOGIN</a>
 						<a href="./registration.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">REGISTER</a>
 				</div>
 			`
 		}
-
 })
 
 // DropDown

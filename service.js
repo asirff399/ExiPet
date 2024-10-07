@@ -67,12 +67,14 @@ const ServiceDetails = ()=>{
 }
 const loadDashboard = () =>{
     const user_id = localStorage.getItem("user_id")
+    document.getElementById("dashboard").style.display = "none";
     fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
         document.getElementById("loader").style.display = "block";
-        if(data.length > 0){
+        if(data && data.length > 0){
             
+            document.getElementById("dashboard").style.display = "block";
             document.getElementById("loader").style.display = "none";
             displayDashboard(data)
         }
