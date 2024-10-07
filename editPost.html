@@ -9,65 +9,71 @@
 <body>
   <!-- Navbar -->
   <div id="navbar"></div>
-  <!-- Add Post -->
-   <!--onsubmit="addPost(event)" -->
-  <div class="p-5 m-11 ">
-     <form id="edit-post" onsubmit="editPost(event)" enctype="multipart/form-data" method="post"  class="space-y-6 p-11 border max-w-sm mx-auto font-[sans-serif] shadow-2xl bg-gray-200"> 
-        <div class="flex items-center m-2">
-            <label for="ed-name" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Name:</label>
-            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" placeholder="Enter your name" id="ed-name" name="ed-name" required />
-        </div>
-        
-        <div>
-            <label for="ed-pet-type" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Select Pet Type:</label>
-                <select  id="ed-pet-type" name="ed-pet-type" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <!-- <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option> -->
-                </select>
-        </div>
+  <!-- Edit Post -->
+  <div class="w-4/6 mx-auto p-6 bg-slate-100 shadow-lg rounded-lg flex flex-col lg:flex-row items-center my-11">
+    <!-- Image Section -->
+    <div class="lg:w-1/2 w-full p-4">
+        <img src="https://i.ibb.co.com/R3Q581g/edit.jpg" alt="Pet Image" class="rounded-lg shadow-lg w-full h-auto object-cover">
+    </div>
 
-        <div class="m-2">
-            <label for="ed-description" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Description:</label>
-            <textarea class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  type="text" placeholder="Enter your description" id="ed-description" name="ed-description" required ></textarea>
-        </div>
-
-        <div class="flex items-center m-2">
-            <label for="ed-image" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Image:</label>
-            <input class="block w-full p-3 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" placeholder="Choose your file" id="ed-image" name="ed-image" required />
-        </div>
-
-        <div class=" m-2">
-            <label for="ed-gender" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Gender:</label>
-                <select  id="ed-gender" name="ed-gender" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-        </div>
-
-        <div class="m-2">
-            <label for="ed-adoption_status" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Adoption Status:</label>
-                <select  id="ed-adoption_status" name="ed-adoption_status" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Available">Available</option>
-                    <option value="Adopted">Adopted</option>
-                </select>
-        </div>
-
-        <div class="flex items-center m-2">
-            <label for="ed-age" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Age:</label>
-            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="number" placeholder="Enter your name" id="ed-age" name="ed-age"  step="0.1" required />
-        </div>
-
-        <div class="flex items-center m-2">
-            <label for="ed-price" class="block m-2 text-lg font-mono font-medium text-gray-900 dark:text-white">Price:</label>
-            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="number" placeholder="Enter the price" id="ed-price" name="ed-price" required />
-        </div>
-
-        <button type="submit"
-        class="text-xl font-mono text-center m-4 hover:border-b-4 hover:border-black p-1 font-extrabold">Submit</button>
-    </form>
+    <!-- Form Section -->
+    <div class="lg:w-1/2 w-full p-6">
+        <form id="edit-post" onsubmit="editPost(event)" enctype="multipart/form-data" method="post"  class="space-y-6"> 
+           <div class="flex flex-col">
+               <label for="ed-name" class="text-lg font-medium text-gray-900">Name:</label>
+               <input class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" type="text" placeholder="Enter your name" id="ed-name" name="ed-name" required />
+           </div>
+           
+           <div class="flex flex-col">
+               <label for="ed-pet-type" class="text-lg font-medium text-gray-900">Select Pet Type:</label>
+                   <select  id="ed-pet-type" name="ed-pet-type" required class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                       <!-- <option value="CA">Canada</option>
+                       <option value="FR">France</option>
+                       <option value="DE">Germany</option> -->
+                   </select>
+           </div>
+   
+           <div class="flex flex-col">
+               <label for="ed-description" class="text-lg font-medium text-gray-900">Description:</label>
+               <textarea class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"  type="text" placeholder="Enter your description" id="ed-description" name="ed-description" required ></textarea>
+           </div>
+   
+           <div class="flex flex-col">
+               <label for="ed-image" class="text-lg font-medium text-gray-900">Image:</label>
+               <input class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" type="file" placeholder="Choose your file" id="ed-image" name="ed-image" required />
+           </div>
+   
+           <div class="flex flex-col">
+               <label for="ed-gender" class="text-lg font-medium text-gray-900">Gender:</label>
+                   <select  id="ed-gender" name="ed-gender" required class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                       <option value="Male">Male</option>
+                       <option value="Female">Female</option>
+                   </select>
+           </div>
+   
+           <div class="flex flex-col">
+               <label for="ed-adoption_status" class="text-lg font-medium text-gray-900">Adoption Status:</label>
+                   <select  id="ed-adoption_status" name="ed-adoption_status" required class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                       <option value="Available">Available</option>
+                       <option value="Adopted">Adopted</option>
+                   </select>
+           </div>
+   
+           <div class="flex flex-col">
+               <label for="ed-age" class="text-lg font-medium text-gray-900">Age:</label>
+               <input class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" type="number" placeholder="Enter your name" id="ed-age" name="ed-age"  step="0.1" required />
+           </div>
+   
+           <div class="flex flex-col">
+               <label for="ed-price" class="text-lg font-medium text-gray-900">Price:</label>
+               <input class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500" type="number" placeholder="Enter the price" id="ed-price" name="ed-price" required />
+           </div>
+   
+           <button type="submit"
+           class="w-full text-xl font-bold text-white bg-black hover:bg-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 p-2 rounded-lg">Submit</button>
+       </form>
+     </div>
   </div>
-    
   <!-- Footer -->
   <div id="footer" class="w-full"></div>
   <!-- Scripts -->

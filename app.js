@@ -50,7 +50,7 @@ const displayAllPet = (pets) =>{
         const formattedDate = formatDate(pet.created_on);
         div.innerHTML=`
                 
-                <div class="border border-gray-400 mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="border border-gray-400 mx-auto w-96 transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                         <div>
                             <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                             </div>
@@ -226,13 +226,13 @@ const loadPetTypeEdit = () =>{
         // console.log(data)
         data.forEach((item)=>{
             // console.log(item) 
-            const parent = document.getElementById("ed-pet-type")
-            const option = document.createElement("option")
+            const ed_parent = document.getElementById("ed-pet-type")
+            const ed_option = document.createElement("option")
 
-            option.value = item.name
-            option.innerHTML = item.name
+            ed_option.value = item.name
+            ed_option.innerHTML = item.name
 
-            parent.appendChild(option)
+            ed_parent.appendChild(ed_option)
         })
     })
 }

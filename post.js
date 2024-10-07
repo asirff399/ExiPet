@@ -104,7 +104,8 @@ const editPost = async (event)=>{
         const imageUrl = imgbbData.data.url;
 
         const editPostData = {
-            pet_type: parseInt(formData.get("ed-pet-type")),
+            // pet_type: parseInt(formData.get("ed-pet-type")),
+            pet_type: formData.get("ed-pet-type"),
             name:formData.get("ed-name") ,
             description:formData.get("ed-description"),
             image: imageUrl,
