@@ -9,11 +9,14 @@
 <body>
   <!-- Navbar -->
   <div id="navbar"></div>
-
+  <!-- Toast -->
+  <div id="error-container" style="left:40%;" class="fixed top-24 bg-gray-200 shadow-2xl text-gray-800 flex-grow items-center mx-auto p-4 rounded-md hidden"
+  role="alert">
+      <span id="error" class="text font-bold font-mono tracking-wide"></span>
+  </div>
   <!-- Service details -->
    <div id="service-details-container" class="m-10">
     
-
    </div>
   
   <!-- Footer -->
@@ -23,7 +26,6 @@
   <script src="./app.js"></script>
   <script src="./auth.js"></script>
   <script src="./profile.js"></script>
-  <script src="./petCategory.js"></script>
   <script src="./service.js"></script>
   <script>ServiceDetails()</script>
 

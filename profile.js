@@ -37,6 +37,19 @@ const loadCustomerId = () => {
 const changePass = (event) => {
   event.preventDefault();
 
+  const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
   const oldPassword = document.getElementById("old_password").value;
   const newPassword = document.getElementById("new_password").value;
   const token = localStorage.getItem("token");
@@ -55,11 +68,39 @@ const changePass = (event) => {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
-    .then((data) => (window.location.href = "./profile.html"));
+  .then((res) => res.json())
+    .then((data) => {
+      if (data.success) {
+        // alert("Password changed successfully!");
+        showError("Password changed successfully!")
+        window.location.href = "./profile.html";
+      } else {
+        // alert("Password change failed: " + (data.error || "Unknown error"));
+        showError("Password change failed: " + (data.error || "Unknown error"))
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      // alert("An error occurred while changing the password.");
+      showError("An error occurred while changing the password.")
+    });
 };
 const deposit = (event) => {
   event.preventDefault();
+
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
   const form = document.getElementById("deposit-form");
   const formData = new FormData(form);
   const data = {
@@ -78,10 +119,19 @@ const deposit = (event) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      alert("Message sent successfully!");
-      window.location.href = "./profile.html";
+      if (data.success) {
+        showError("Deposit successful!");
+        setTimeout(() => {
+          window.location.href = "./profile.html";
+        }, 3000);  
+      } else {
+        showError("Deposit failed: " + (data.error || "Unknown error"));
+      }
     })
+    .catch((err) => {
+      console.error(err);
+      showError("An error occurred while processing the deposit.");
+    });
     
 };
 document.addEventListener("DOMContentLoaded", function() {
@@ -92,6 +142,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const withdraw = (event) => {
   event.preventDefault();
+
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
   const form = document.getElementById("withdraw-form");
   const formData = new FormData(form);
   const data = {
@@ -111,10 +175,19 @@ const withdraw = (event) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      alert("Message sent successfully!");
-      window.location.href = "./profile.html";
+      if (data.success) {
+        showError("Withdraw successful!");
+        setTimeout(() => {
+          window.location.href = "./profile.html";
+        }, 3000);  
+      } else {
+        showError("Withdraw failed: " + (data.error || "Unknown error"));
+      }
     })
+    .catch((err) => {
+      console.error(err);
+      showError("An error occurred while processing the withdraw.");
+    });
     
 };
 const availablePet = () =>{

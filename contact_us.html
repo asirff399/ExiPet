@@ -9,8 +9,14 @@
 <body>
   <!-- Navbar -->
   <div id="navbar"></div>
+  <!-- Toast -->
+  <div id="error-container" style="left:40%;" class="fixed top-24 bg-gray-200 shadow-2xl text-gray-800 flex-grow items-center mx-auto p-4 rounded-md hidden"
+  role="alert">
+      <span id="error" class="text font-bold font-mono tracking-wide"></span>
+  </div>
   <!-- Contact Us -->
   <div class="bg-green-50 font-[sans-serif] lg:h-screen ">
+   
     <div
         class="grid lg:grid-cols-3 items-center max-lg:justify-center gap-6 h-full sm:p-12 p-8 max-sm:p-4 w-5/6 mx-auto">
         <div class="max-w-lg max-lg:mx-auto max-lg:text-center max-lg:mb-6 ">
@@ -43,6 +49,5 @@
   <script src="./app.js"></script>
   <script src="./auth.js"></script>
   <script src="./profile.js"></script>
-  <script src="./petCategory.js"></script>
 </body>
 </html>

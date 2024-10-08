@@ -119,6 +119,19 @@ const displayDashboard = (data) =>{
 const contactUs = (event) => {
     event.preventDefault(); 
 
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const form = document.getElementById("contact-us");
     const formData = new FormData(form);
     const postData = {
@@ -142,12 +155,14 @@ const contactUs = (event) => {
     .then((res) => res.json())
     .then((data) => {
         // console.log(data);
-        alert("Message sent successfully!");
+        // alert("Message sent successfully!");
+        showError("Message sent successfully!")
         window.location.href = "./index.html";
     })
     .catch((error) => {
         console.error("Error:", error); 
-        alert("There was a problem sending your message.");
+        // alert("There was a problem sending your message.");
+        showError("There was a problem sending your message.")
     });
 };
 

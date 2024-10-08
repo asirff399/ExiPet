@@ -28,7 +28,7 @@ const getParams = ()=>{
         document.getElementById("pd-pet-type").innerText = data.pet_type
         document.getElementById("pd-gender").innerText = data.gender
         document.getElementById("pd-age").innerText = data.age
-        document.getElementById("pd-price").innerText = data.price
+        document.getElementById("pd-price").innerText = `$${data.price}`
         document.getElementById("pd-description").innerText = data.description
         document.getElementById("pd-author").innerText = data.author
         document.getElementById("pd-created-on").innerText = data.created_on
@@ -37,7 +37,7 @@ const getParams = ()=>{
             const adoptBTN = document.getElementById("adopt-btn");
 
             if (adoptionStatus === "Adopted") {
-                adoptBTN.innerHTML =`<a href="#" class="bg-black text-xl font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">Already Adopted</a>`;
+                adoptBTN.innerHTML = " ";
             } else {
                 adoptBTN.innerHTML = `<a href="#" class="bg-black text-xl font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">Adopt Now</a>`;
             }
@@ -49,19 +49,25 @@ const loadReview = () =>{
     fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/review/?search=${param}`)
     .then((res)=>res.json())
     .then((data)=> {
-        data.forEach((review) =>{
-            // console.log(review)
-            const parent = document.getElementById("pet-all-review")
-            const div = document.createElement("div")
-            div.classList.add("review")
-            div.innerHTML =`
-                <p class="text-xs text-2xl font-bold font-mono my-2">${review.rating}</p>
-                <p class="text-sm text-gray-800 text-lg font-mono font-semibold"><strong>${review.reviewer}:</strong> ${review.body}</p>
-                <p class="text-xs text-gray-500 mt-0.5">${review.created_on}</p>
-            `
-            parent.appendChild(div)
-        })
-    })
+        if(data && data.length > 0){  
+            data.forEach((review) =>{
+                const formattedDate = formatDate2(review.created_on);
+                // console.log(review)
+                const parent = document.getElementById("pet-all-review")
+                const div = document.createElement("div")
+                div.classList.add("review")
+                div.innerHTML =`
+                    <p class="text-xs text-2xl font-bold font-mono my-2 text-pink-400 ">${review.rating}</p>
+                    <p class="text-sm text-gray-800 text-lg font-mono font-semibold"><strong>${review.reviewer}:</strong> ${review.body}</p>
+                    <p class="text-xs text-gray-500 mt-0.5">${formattedDate}</p>
+                `
+                parent.appendChild(div)
+            })
+        }
+        else{
+            document.getElementById("pet-all-review").innerHTML = `<p class="text-center font-bold text-red-500 m-auto text-xl">No Review Yet</p>`;
+        }
+    })  
 }
 // Conditional button
 document.addEventListener("DOMContentLoaded", () => {
@@ -101,6 +107,19 @@ document.addEventListener("DOMContentLoaded", () => {
 async function adoptPet(event) {
     event.preventDefault();
 
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const petId = localStorage.getItem('pet_id');
     const token = localStorage.getItem('token');
 
@@ -129,26 +148,60 @@ async function adoptPet(event) {
 
         if (response.ok) {
             const data = await response.json();
-            alert("Adoption successful")
+            // alert("Adoption successful")
+            showError("Adoption successful")
             console.log("Adoption successful:", data);
             window.location.href = "dashboard.html"
         } else if (response.status === 404) {
-            alert("Pet not found or already adopted.")
+            // alert("Pet not found or already adopted.")
+            showError("Pet not found or already adopted.")
             console.error("Error: Pet not found or already adopted.");
         } else if (response.status === 400) {
             const errorData = await response.json();
-            alert("Insufficient balance or other error")
+            // alert("Insufficient balance or other error")
+            showError("Insufficient balance or other error")
             console.error("Insufficient balance or other error:", errorData);
         } else {
             const errorData = await response.json();
-            alert("Unexpected error during adoption")
+            // alert("Unexpected error during adoption")
+            showError("Unexpected error during adoption")
             console.error("Unexpected error during adoption:", errorData);
         }
     } catch (error) {
         console.error("Network error:", error);
+        showError("Network error:" + error)
     }
 }
 document.getElementById('adopt-btn').addEventListener('click', adoptPet);
+// Pet Category
+document.addEventListener('DOMContentLoaded', function () {
+    let tabs = document.querySelectorAll('.tab');
+    let contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function (e) {
+            let targetId = tab.id.replace('Tab', 'Content');
+
+            // Hide all content divs
+            contents.forEach(function (content) {
+                content.classList.add('hidden');
+            });
+
+            // Remove active class from all tabs
+            tabs.forEach(function (tab) {
+                tab.classList.remove('text-blue-600', 'font-bold', 'bg-gray-50', 'border-blue-600');
+                tab.classList.add('text-gray-600', 'font-semibold');
+            });
+
+            // Show the target content
+            document.getElementById(targetId).classList.remove('hidden');
+
+            // Add active class to the clicked tab
+            tab.classList.add('text-blue-600', 'font-bold', 'bg-gray-50', 'border-blue-600');
+            tab.classList.remove('text-gray-600', 'font-semibold');
+        });
+    });
+});
 
 getParams()
 loadReview()

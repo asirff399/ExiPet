@@ -1,6 +1,19 @@
 const addPost = async (event) =>{
     event.preventDefault()
 
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const form = document.getElementById("add-post")
     const formData = new FormData(form)
     const token = localStorage.getItem("token")
@@ -47,14 +60,17 @@ const addPost = async (event) =>{
         })
         const data = await response.json();
         if (response.ok) {
-            alert("Post added successfully");
+            // alert("Post added successfully");
+            showError("Post added successfully")
             window.location.href = "./allPet.html"
         } else {
-            alert("Failed to add post: " + data.message);
+            // alert("Failed to add post: " + data.message);
+            showError("Failed to add post: " + data.message)
         }
     } catch (error) {
             console.error("Error:", error);
-            alert("An error occurred while adding the post");
+            // alert("An error occurred while adding the post");
+            showError("An error occurred while adding the post")
         }
 };
 
@@ -80,6 +96,19 @@ const getPostDetail = () => {
 
 const editPost = async (event)=>{
     event.preventDefault()
+
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
 
     const pet_id = localStorage.getItem("pet_id")
     const form = document.getElementById("edit-post")
@@ -126,15 +155,18 @@ const editPost = async (event)=>{
         })
         const data = await response.json();
         if (response.ok) {
-            alert("Post updated successfully");
+            // alert("Post updated successfully");
+            showError("Post updated successfully")
             window.location.href = "./allPet.html"
         } else {
-            alert("Failed to add post: " + data.message);
+            // alert("Failed to add post: " + data.message);
+            showError("Failed to add post: " + data.message)
         }
         
     }catch (error) {
         console.error("Error:", error);
-        alert("An error occurred while adding the post");
+        // alert("An error occurred while adding the post");
+        showError("An error occurred while adding the post")
     };
      
 };
@@ -142,8 +174,19 @@ const editPost = async (event)=>{
 const deletePet = () =>{
     const token = localStorage.getItem("token")
     const pet_id = localStorage.getItem("pet_id")
-    // console.log(token)
-    // console.log(pet_id)
+    
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
 
     fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${pet_id}/`,{
         method:"DELETE",
@@ -152,8 +195,21 @@ const deletePet = () =>{
             "Authorization": `Token ${token}`,
         },
     })
-    .then((res)=>(window.location.href = "./allPet.html"))
-    .catch((err)=> console.log(err));
+    .then((res) => {
+        if (res.ok) {
+            // alert("Pet deleted successfully!");
+            showError("Pet deleted successfully!")
+            window.location.href = "./allPet.html";
+        } else {
+            // alert("Failed to delete the pet.");
+            showError("Failed to delete the pet.")
+        }
+    })
+    .catch((err) => {
+        console.log(err);
+        // alert("An error occurred while deleting the pet.");
+        showError("An error occurred while deleting the pet.")
+    });
 }
 
 // document.getElementById("delete-pet").addEventListener("click", deletePet);

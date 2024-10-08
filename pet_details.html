@@ -9,22 +9,27 @@
 <body >
   <!-- Navbar -->
   <div id="navbar"></div>
-  <!-- Pet Details -->
+  <!-- Toast -->
+  <div id="error-container" style="left:40%;" class="fixed top-24 bg-gray-200 shadow-2xl text-gray-800 flex-grow items-center mx-auto p-4 rounded-md hidden"
+  role="alert">
+      <span id="error" class="text font-bold font-mono tracking-wide"></span>
+  </div>
 
+  <!-- Pet Details -->
   <div class="w-4/6 m-auto"  id="pet-details-container">
-      <div class="top flex m-11 ">
-        <div class="left ">
-            <img id="pd-image" src="" class="w-4/6 rounded-lg ms-11" alt="">
+      <div class="top flex m-11 gap-11">
+        <div class="left " style="width: 800px;height: 250px;">
+            <img id="pd-image" src="" class="w-full rounded-lg ms-11" alt="">
         </div>
-        <div class="right shadow-lg rounded-lg bg-gray-200 text-black w-4/6 ">
+        <div class="right shadow-lg rounded-lg bg-gray-200 text-black w-4/6 ms-11">
             <h1 class=" text-4xl font-mono text-center text-black p-3 font-extrabold border-b-2 border-black " style="background-color: rgb(250,235,215);">Details</h1>
             <div class="m-8 font-mono">
             <h1 class="text-center uppercase text-3xl font-bold" id="pd-name"></h1>
-            <p class="border-b-2 border-black uppercase text-lg w-2/6 font-bold  p-2 my-5 mx-auto text-center" id="pd-adoption-status"></p>
+            <p class="w-1/4 text-center mx-auto my-3 bg-gray-900 text-red-700 font-mono text-xl rounded-full px-4 py-2 shadow-lg" id="pd-adoption-status"></p>
 
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div class="relative overflow-x-auto rounded-lg shadow-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100 ">
                         <tr>
                             <th scope="col" class="px-6 py-3 font-bold">
                             <strong>Species:</strong>
@@ -54,8 +59,8 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <strong>Adoption Fee:</strong>
                             </th>
-                            <td id="pd-price" class="px-6 py-4">
-                                <Strong>$</Strong>
+                            <td id="pd-price" class="px-6 py-4 text-xl font-bold text-red-700">
+                                
                             </td>
                         </tr>
                     </tbody>
@@ -80,13 +85,13 @@
             <p class="p-5 font-semibold text-teal-500" id="pd-description"></p>
             <p class="ms-5 italic font-mono font-bold">Created By <a class="text-red-500 underline " href="" id="pd-author"></a> on <small id="pd-created-on"></small></p>
         </div>
-        <div class="">
+        <div>
             <h1 class="text-4xl text-center text-green-700 font-bold font-mono border-b-2 border-gray-200 p-4 " style="margin-top: 100px;">Reviews</h1>
             <!-- Show All Review -->
-            <div class="w-5/6 mx-auto mb-11 p-11">
+            <div id="review" class="w-5/6 mx-auto mb-11 p-11">
                 <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] px-6 py-8 w-full rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">                                   
-                        <div id="pet-all-review" class="flex flex-wrap items-center gap-4"> </div>                      
-                    
+                        <div id="pet-all-review" class="flex flex-wrap items-center gap-4">
+                        </div>                          
                 </div>
             </div>
             <!-- End Review -->
@@ -97,7 +102,6 @@
     </div>
   </div>
   
-  
   <!-- Footer -->
   <div id="footer" class="w-full"></div>
   <!-- Scripts -->
@@ -105,7 +109,6 @@
   <script src="./app.js"></script>
   <script src="./auth.js"></script>
   <script src="./profile.js"></script>
-  <script src="./petCategory.js"></script>
   <script src="./pet_details.js"></script>
   <script src="./post.js"></script>
 </body>

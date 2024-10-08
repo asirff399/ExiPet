@@ -50,6 +50,7 @@ const handelRegistration = (event) => {
                 console.log(data);
                 alert("Check your confirmation email!");
                 showError("Registration successfull!");
+                window.location.href = "./login.html";
             })
             .catch((error) => {
                 console.error(error);
@@ -244,9 +245,22 @@ const updateProfile = async (event) => {
       showError('Error updating profile: ' + error.message);
   }
 };
-
 const handleReview = async (event) =>{
     event.preventDefault()
+
+    const errorContainer = document.getElementById("error-container");
+    const errorElement = document.getElementById("error");
+    const hideToast = () => {
+      setTimeout(() => {
+          errorContainer.classList.add("hidden");
+      }, 3000);  
+    };
+    const showError = (message) => {
+      errorElement.innerText = message;
+      errorContainer.classList.remove("hidden");  
+      hideToast(); 
+    };
+
     const pet_id = new URLSearchParams(window.location.search).get("pet_id")
     const userId = localStorage.getItem("user_id")
     const token = localStorage.getItem("token")
@@ -282,14 +296,17 @@ const handleReview = async (event) =>{
         if (!response.ok) {
             const errorData = await response.json();
             console.error("Error submitting review:", errorData);
-            alert("Failed to submit review: " + JSON.stringify(errorData)); 
+            // alert("Failed to submit review: " + JSON.stringify(errorData)); 
+            showError("Failed to submit review: " + JSON.stringify(errorData))
         } else {
             const data = await response.json();
             console.log("Review submitted successfully:", data);
-            alert("Review submitted successfully!");
+            // alert("Review submitted successfully!");
+            showError("Review submitted successfully!")
         }
     } catch (error) {
         console.error("Network error:", error);
-        alert("Network error occurred");
+        // alert("Network error occurred");
+        showError("Network error:" + error)
     }
 } 
