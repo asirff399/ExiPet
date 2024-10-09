@@ -205,10 +205,10 @@ const availablePet = () =>{
         const div = document.createElement("div")
         div.classList.add("av-pet")
         div.innerHTML=`
-              <div class="w-full mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+              <div class="w-full mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-lg bg-white shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                       <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                       <div class="p-2 text-center">
-                          <h1 class=" dark:text-white text-gray-900"><strong>${pet.name}</strong> </h1>
+                          <h1 class=" text-gray-900"><strong>${pet.name}</strong> </h1>
                           <button type="button" class="bg-black text-sm font-mono text-center text-green-300 hover:text-white px-4 py-1 m-1 font-extrabold rounded-full"><a href="./pet_details.html?pet_id=${pet.id}">Details</a> </button>
                       </div>
                   </div> 
@@ -234,10 +234,10 @@ const adoptedPet = () =>{
               const div = document.createElement("div")
               div.classList.add("av-pet")
               div.innerHTML=`
-                    <div class="w-full mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                    <div class="w-full mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-lg bg-white  shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                             <img class="h-48 w-full object-cover object-center" src=${item.pet_image} alt="Product Image" />
                             <div class="p-2 text-center">
-                                <h1 class=" dark:text-white text-gray-900"><strong>${item.pet_name}</strong> </h1>
+                                <h1 class=" text-gray-900"><strong>${item.pet_name}</strong> </h1>
                                 <button type="button" class="bg-black text-sm font-mono text-center text-green-300 hover:text-white px-4 py-1 m-1 font-extrabold rounded-full"><a href="./review.html?pet_id=${item.pet}">Review</a> </button>
                             </div>
                         </div> 
