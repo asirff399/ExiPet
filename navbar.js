@@ -48,7 +48,27 @@ fetch("footer.html")
 
 
 
-
+document.addEventListener('DOMContentLoaded', () => {
+	const drawerToggle = document.getElementById('drawer-toggle');
+	const drawer = document.getElementById('drawer');
+	const closeDrawer = document.getElementById('close-drawer');
+  
+	drawerToggle.addEventListener('click', () => {
+	  drawer.classList.toggle('hidden');
+	});
+  
+	closeDrawer.addEventListener('click', () => {
+	  drawer.classList.add('hidden');
+	});
+  
+	const dropdownToggle = document.querySelector('[data-dropdown-toggle]');
+	const dropdown = document.getElementById('dropdownNavbar');
+  
+	dropdownToggle.addEventListener('click', () => {
+	  dropdown.classList.toggle('hidden');
+	});
+  });
+  
 
 
 
