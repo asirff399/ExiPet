@@ -7,10 +7,12 @@ fetch("navbar.html")
 
 		const token = localStorage.getItem("token")
 		// console.log(token)
+		// <a href="./profile.html" class="text-xl font-mono text-center m-3 p-1 font-extrabold "><i class="fa-solid fa-bars"></i></a>
 
 		if(token){
 			navElement.innerHTML=`
 				<a href="./profile.html" class="text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">Profile</a>
+
 			`		
 		}
 		else{

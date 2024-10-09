@@ -21,6 +21,7 @@ const loadUserDetails = () => {
         document.getElementById("p-address").value = data.address
 
         document.getElementById("img").src = `${data.image}`;
+        document.getElementById("p-btn-img").src = `${data.image}`;
         document.getElementById("curr-p-img").value = data.image;
         
         document.getElementById("p-balance").innerText = `$${data.balance}`;
