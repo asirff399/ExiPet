@@ -39,7 +39,7 @@ const getParams = ()=>{
             if (adoptionStatus === "Adopted") {
                 adoptBTN.innerHTML = " ";
             } else {
-                adoptBTN.innerHTML = `<a href="#" class="bg-black text-xl font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">Adopt Now</a>`;
+                adoptBTN.innerHTML = `<a href="#" class="bg-black text-xl text-nowrap font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">Adopt Now</a>`;
             }
     })
     

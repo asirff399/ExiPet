@@ -4,23 +4,10 @@ fetch("navbar.html")
     document.getElementById("navbar").innerHTML= data;
 	// Assign navElement
 	const navElement = document.getElementById("nav-element")
-
+	
 		const token = localStorage.getItem("token")
-		// console.log(token)
-		// <button type="button" data-dial-toggle="speed-dial-menu-top-right" aria-controls="speed-dial-menu-top-right" aria-expanded="false" class="flex items-center justify-center rounded-full w-14 h-14  ">
-		// 			<div class="relative">
-		// 			<img id="p-btn-img" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="w-[60px] h-[60px] p-1 rounded-full border-2 border-gray-300">
-		// 			</div>
-		// 			<span class="sr-only">Open actions menu</span>
-        //     	</button>
-		// <a type="button" href="#" onclick="handleLogout()"  class="text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold"><i class="fas fa-right-from-bracket me-1"></i>Logout</a>
-		if(token){
-			navElement.innerHTML=`
-			<a href="./profile.html" class="text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">Profile</a>
-					
-			`		
-		}
-		else{
+
+		if(!token){
 			navElement.innerHTML=`
 				<div class="flex font-semibold">
 						<a href="./login.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">LOGIN</a>
@@ -28,15 +15,7 @@ fetch("navbar.html")
 				</div>
 			`
 		}
-
-		// if(!token){
-		// 	navElement.innerHTML=`
-		// 		<div class="flex font-semibold">
-		// 				<a href="./login.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">LOGIN</a>
-		// 				<a href="./registration.html" class=" text-xl font-mono text-center m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">REGISTER</a>
-		// 		</div>
-		// 	`
-		// }
+		
 })
 
 // DropDown
@@ -52,6 +31,13 @@ function closeOpenDropdowns(e) {
 		}
 	}
 }
+
+//Modal
+fetch("modal.html")
+.then(res => res.text())
+.then((data) => {
+    document.getElementById("modal").innerHTML= data;
+})
 
 //footer
 fetch("footer.html")
@@ -83,6 +69,8 @@ document.addEventListener('DOMContentLoaded',() => {
 	});
   });
   
+ 
+
 
 
 

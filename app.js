@@ -276,7 +276,8 @@ const loadAllMember = () =>{
         })
     })
 }
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener("DOMContentLoaded", function() {  
     loadInitialPet()
     loadAllPetType();
     loadAllPet()
@@ -288,7 +289,22 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPetTypeEdit()
 });
 
-
-
-
+const loadUserProNav = () => {
+    const user_id = localStorage.getItem("user_id");
+  
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/users/${user_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("p-btn-name").innerText = `${data.first_name } ${data.last_name}`
+        document.getElementById("p-btn-email").innerText = data.email
+      });
+    const customer_id = localStorage.getItem("customer_id");
+    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/${customer_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+          document.getElementById("p-btn-img").src = `${data.image}`;
+          document.getElementById("p-btn-img2").src = `${data.image}`;
+      });
+  };
+loadUserProNav()
  

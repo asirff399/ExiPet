@@ -59,7 +59,7 @@ const changePass = (event) => {
     old_password: oldPassword,
     new_password: newPassword,
   };
-  // console.log(data);
+  console.log(data);
 
   fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/pass_change/", {
     method: "POST",
@@ -138,8 +138,6 @@ const deposit = (event) => {
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("deposit-form").addEventListener("submit", deposit);
 });
-
-// document.getElementById("deposit-form").addEventListener("submit", deposit);
 
 const withdraw = (event) => {
   event.preventDefault();
@@ -252,13 +250,10 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("withdraw-form").addEventListener("submit", withdraw);
 });
 
-// document.getElementById("withdraw-form").addEventListener("submit", withdraw);
-
 loadUserDetails();
 loadCustomerId();
 availablePet()
 adoptedPet()
-// document.querySelector('[data-drawer-show="drawer-navigation"]').click();
 document.addEventListener("DOMContentLoaded", function () {
   const drawerButton = document.querySelector(
     '[data-drawer-show="drawer-navigation"]'
@@ -292,4 +287,3 @@ document.addEventListener("DOMContentLoaded", function() {
   dropdownToggle.addEventListener('click', handleClick);
 });
 // dropdownToggle.addEventListener('click', handleClick);
-
