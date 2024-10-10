@@ -35,31 +35,81 @@ const loadCustomerId = () => {
     .then((res) => res.json())
     .then((data) => localStorage.setItem("customer_id", data[0].id));
 };
+// const changePass = (event) => {
+//   event.preventDefault();
+
+//   const errorContainer = document.getElementById("error-container");
+//     const errorElement = document.getElementById("error");
+//     const hideToast = () => {
+//       setTimeout(() => {
+//           errorContainer.classList.add("hidden");
+//       }, 3000);  
+//     };
+//     const showError = (message) => {
+//       errorElement.innerText = message;
+//       errorContainer.classList.remove("hidden");  
+//       hideToast(); 
+//     };
+
+//   const oldPassword = document.getElementById("old-password").value;
+//   const newPassword = document.getElementById("new-password").value;
+//   const token = localStorage.getItem("token");
+//   // console.log(token);
+//   const data = {
+//     old_password: oldPassword,
+//     new_password: newPassword,
+//   };
+//   // console.log(data);
+
+//   fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/pass_change/", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Token ${token}`,
+//     },
+//     body: JSON.stringify(data),
+//   })
+//   .then((res) => res.json())
+//   .then((data) => {
+//       if (data.success) {
+//         // alert("Password changed successfully!");
+//         showError("Password changed successfully!")
+//         window.location.href = "./profile.html";
+//       } else {
+//         // alert("Password change failed: " + (data.error || "Unknown error"));
+//         showError("Password change failed: " + (data.error || "Unknown error"))
+//       }
+//   })
+//   .catch((err) => {
+//       console.error(err);
+//       // alert("An error occurred while changing the password.");
+//       showError("An error occurred while changing the password.")
+//   });
+// };
 const changePass = (event) => {
   event.preventDefault();
 
   const errorContainer = document.getElementById("error-container");
-    const errorElement = document.getElementById("error");
-    const hideToast = () => {
-      setTimeout(() => {
-          errorContainer.classList.add("hidden");
-      }, 3000);  
-    };
-    const showError = (message) => {
-      errorElement.innerText = message;
-      errorContainer.classList.remove("hidden");  
-      hideToast(); 
-    };
+  const errorElement = document.getElementById("error");
+  const hideToast = () => {
+    setTimeout(() => {
+      errorContainer.classList.add("hidden");
+    }, 3000);
+  };
+  const showError = (message) => {
+    errorElement.innerText = message;
+    errorContainer.classList.remove("hidden");
+    hideToast();
+  };
 
-  const oldPassword = document.getElementById("old_password").value;
-  const newPassword = document.getElementById("new_password").value;
+  const oldPassword = document.getElementById("old-password").value;
+  const newPassword = document.getElementById("new-password").value;
   const token = localStorage.getItem("token");
-  // console.log(token);
+
   const data = {
     old_password: oldPassword,
     new_password: newPassword,
   };
-  console.log(data);
 
   fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/pass_change/", {
     method: "POST",
@@ -69,23 +119,25 @@ const changePass = (event) => {
     },
     body: JSON.stringify(data),
   })
-  .then((res) => res.json())
+    .then((res) => res.json())
     .then((data) => {
-      if (data.success) {
-        // alert("Password changed successfully!");
-        showError("Password changed successfully!")
-        window.location.href = "./profile.html";
+      if (data.detail === "Password updated successfully.") {  
+        showError("Password changed successfully!");
+        setTimeout(() => {
+          window.location.href = "./profile.html";  
+        }, 1000);
+      } else if (data.old_password || data.new_password) {
+        showError(`Error: ${data.old_password || data.new_password}`);
       } else {
-        // alert("Password change failed: " + (data.error || "Unknown error"));
-        showError("Password change failed: " + (data.error || "Unknown error"))
+        showError("Password change failed: " + (data.detail || "Unknown error"));
       }
     })
     .catch((err) => {
       console.error(err);
-      // alert("An error occurred while changing the password.");
-      showError("An error occurred while changing the password.")
+      showError("An error occurred while changing the password.");
     });
 };
+
 const deposit = (event) => {
   event.preventDefault();
 
