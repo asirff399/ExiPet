@@ -181,9 +181,9 @@ const loadAllPetType = () =>{
                 const div = document.createElement("div")
                 div.classList.add("pet-ty")
                 div.innerHTML=`               
-                    <button type="button" onclick="loadPetCategoryWise('${type.name}')"
+                    <p type="button" onclick="loadPetCategoryWise('${type.name}')"
                         class="category-btn font-mono font-bold">${type.name}
-                    </button>            
+                    </p>            
                 `
               parent.appendChild(div)
             })
