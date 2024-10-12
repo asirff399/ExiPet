@@ -14,7 +14,7 @@ const getParams = ()=>{
     const param = new URLSearchParams(window.location.search).get("pet_id")
     localStorage.setItem("pet_id",param)
     
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/${param}`)
+    fetch(`https://exi-pet-drf.vercel.app/pet/list/${param}`)
     .then((res)=>res.json())
     .then((data)=> {
         // console.log(data)
@@ -46,7 +46,7 @@ const getParams = ()=>{
 }
 const loadReview = () =>{
     const param = new URLSearchParams(window.location.search).get("pet_id")
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/review/?search=${param}`)
+    fetch(`https://exi-pet-drf.vercel.app/customer/review/?search=${param}`)
     .then((res)=>res.json())
     .then((data)=> {
         if(data && data.length > 0){  
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const detailsBTN = document.getElementById("details-btn")
    
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${petId}/`, {
+    fetch(`https://exi-pet-drf.vercel.app/pet/post/${petId}/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -133,7 +133,7 @@ async function adoptPet(event) {
         return;
     }
 
-    const apiUrl = `https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adopt/${petId}`;
+    const apiUrl = `https://exi-pet-drf.vercel.app/pet/adopt/${petId}`;
 
     const requestOptions = {
         method: 'PUT',

@@ -8,7 +8,7 @@ function formatDate(dateStr) {
 }
 const loadAllPet = () =>{
     document.getElementById("loader").style.display = "block";
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/all_pet/")
+    fetch("https://exi-pet-drf.vercel.app/all_pet/")
     .then((res)=>res.json())
     .then((data)=>{
         
@@ -25,7 +25,7 @@ const loadAllPet = () =>{
 }
 const loadInitialPet = () =>{
     document.getElementById("loader").style.display = "block";
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/all_pet/")
+    fetch("https://exi-pet-drf.vercel.app/all_pet/")
     .then((res)=>res.json())
     .then((data)=>{
         if(data && data.length > 0){
@@ -50,7 +50,7 @@ const displayAllPet = (pets) =>{
         const formattedDate = formatDate(pet.created_on);
         div.innerHTML=`
                 
-                <div class="border border-gray-400 mx-auto w-96 transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="border border-gray-400 mx-auto md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                         <div>
                             <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                             </div>
@@ -85,7 +85,7 @@ const displayInitialPet = (pets) =>{
             div.classList.add("pet-card")
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`
-                    <div class="border border-gray-400 mx-auto mt-11 mb-10 w-96 transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                    <div class="border border-gray-400 mx-auto mt-11 mb-10 md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                         <div>
                             <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                             </div>
@@ -113,7 +113,7 @@ const loadPetCategoryWise = (search) =>{
     // console.log(search)
     document.getElementById("loader").style.display = "block";
     document.getElementById("nodata").style.display = "none";
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/?search=${search? search : "" }`)
+    fetch(`https://exi-pet-drf.vercel.app/pet/list/?search=${search? search : "" }`)
     .then((res)=>res.json())
     .then((data)=>{
         // displayPetCategoryWise(data?.results)
@@ -171,7 +171,7 @@ const displayPetCategoryWise = (pets) =>{
     })
 }
 const loadAllPetType = () =>{
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/types/")
+    fetch("https://exi-pet-drf.vercel.app/pet/types/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -192,7 +192,7 @@ const loadAllPetType = () =>{
 }
 const loadPetTypePost = () =>{
     const token = localStorage.getItem("token")
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/types/",{
+    fetch("https://exi-pet-drf.vercel.app/pet/types/",{
         method:"GET",
         headers:{
             "Content-Type":"application/json",
@@ -215,7 +215,7 @@ const loadPetTypePost = () =>{
 }
 const loadPetTypeEdit = () =>{
     const token = localStorage.getItem("token")
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/types/",{
+    fetch("https://exi-pet-drf.vercel.app/pet/types/",{
         method:"GET",
         headers:{
             "Content-Type":"application/json",
@@ -237,7 +237,7 @@ const loadPetTypeEdit = () =>{
     })
 }
 const loadAllMember = () =>{
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/member/")
+    fetch("https://exi-pet-drf.vercel.app/member/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -292,14 +292,14 @@ document.addEventListener("DOMContentLoaded", () => {
 const loadUserProNav = () => {
     const user_id = localStorage.getItem("user_id");
   
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/users/${user_id}`)
+    fetch(`https://exi-pet-drf.vercel.app/users/${user_id}`)
       .then((res) => res.json())
       .then((data) => {
         document.getElementById("p-btn-name").innerText = `${data.first_name } ${data.last_name}`
         document.getElementById("p-btn-email").innerText = data.email
       });
     const customer_id = localStorage.getItem("customer_id");
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/${customer_id}`)
+    fetch(`https://exi-pet-drf.vercel.app/customer/list/${customer_id}`)
       .then((res) => res.json())
       .then((data) => {
           document.getElementById("p-btn-img").src = `${data.image}`;

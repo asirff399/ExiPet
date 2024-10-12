@@ -82,7 +82,7 @@ const handleLogin = (event) =>{
     const password = getValue("login-password")
     console.log(username,password)
     if(username,password){
-        fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/login/",{
+        fetch("https://exi-pet-drf.vercel.app/customer/login/",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({username,password}),
@@ -133,7 +133,7 @@ const handleLogout = () =>{
       hideToast(); 
     };
     const token = localStorage.getItem("token")
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/logout/",{
+    fetch("https://exi-pet-drf.vercel.app/customer/logout/",{
         method:"POST",
         headers:{
             Authorization:`Token ${token}`,
@@ -284,7 +284,7 @@ const handleReview = async (event) =>{
     // console.log(rData)
 
     try {
-        const response = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/create_review/", {
+        const response = await fetch("https://exi-pet-drf.vercel.app/customer/create_review/", {
             method: "POST",
             headers:{
                 "content-type":"application/json",

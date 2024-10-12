@@ -1,11 +1,13 @@
 body{
     margin: auto;
+	width: 100vw;
 }
 #all-pet{
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	gap: 40px;
-	margin-top: 40px;
+	margin-top: 50px;
 	margin-bottom: 100px;
 }
 #initial-pet{

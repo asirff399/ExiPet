@@ -1,6 +1,6 @@
 const loadAllService = () =>{
     document.getElementById("loader").style.display = "block";
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/service/")
+    fetch("https://exi-pet-drf.vercel.app/service/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
@@ -39,7 +39,7 @@ const ServiceDetails = ()=>{
     const param = new URLSearchParams(window.location.search).get("service_id")
     // console.log(param)
     
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/service/${param}`)
+    fetch(`https://exi-pet-drf.vercel.app/service/${param}`)
     .then((res)=> res.json())
     .then((data)=> {
         // console.log(data)
@@ -68,7 +68,7 @@ const ServiceDetails = ()=>{
 const loadDashboard = () =>{
     const user_id = localStorage.getItem("user_id")
     document.getElementById("dashboard").style.display = "none";
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adoption/?search=${user_id}`)
+    fetch(`https://exi-pet-drf.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data)
@@ -144,7 +144,7 @@ const contactUs = (event) => {
     // console.log(postData); 
     const token = localStorage.getItem("token")
     // console.log(token)
-    fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/contact_us/", {
+    fetch("https://exi-pet-drf.vercel.app/contact_us/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

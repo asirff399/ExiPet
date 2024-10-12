@@ -1,7 +1,7 @@
 const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
 
-  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/users/${user_id}`)
+  fetch(`https://exi-pet-drf.vercel.app/users/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
       localStorage.setItem("username", data.username);
@@ -13,7 +13,7 @@ const loadUserDetails = () => {
       
     });
   const customer_id = localStorage.getItem("customer_id");
-  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/${customer_id}`)
+  fetch(`https://exi-pet-drf.vercel.app/customer/list/${customer_id}`)
     .then((res) => res.json())
     .then((data) => {
       // console.log(data)
@@ -31,7 +31,7 @@ const loadUserDetails = () => {
 };
 const loadCustomerId = () => {
   const user_id = localStorage.getItem("user_id");
-  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/list/?search=${user_id}`)
+  fetch(`https://exi-pet-drf.vercel.app/customer/list/?search=${user_id}`)
     .then((res) => res.json())
     .then((data) => localStorage.setItem("customer_id", data[0].id));
 };
@@ -111,7 +111,7 @@ const changePass = (event) => {
     new_password: newPassword,
   };
 
-  fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/pass_change/", {
+  fetch("https://exi-pet-drf.vercel.app/customer/pass_change/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -162,7 +162,7 @@ const deposit = (event) => {
 
   // console.log(data);
   const token = localStorage.getItem("token");
-  fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/transaction/deposit/", {
+  fetch("https://exi-pet-drf.vercel.app/transaction/deposit/", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -216,7 +216,7 @@ const withdraw = (event) => {
   console.log(data);
   const token = localStorage.getItem("token");
  
-  fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/transaction/withdraw/", {
+  fetch("https://exi-pet-drf.vercel.app/transaction/withdraw/", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -244,7 +244,7 @@ const withdraw = (event) => {
 const availablePet = () =>{
   const userId = localStorage.getItem("user_id")
   document.getElementById("available").style.display = "none";
-  fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/list/?adoption_status=Available&author=${userId}`)
+  fetch(`https://exi-pet-drf.vercel.app/pet/list/?adoption_status=Available&author=${userId}`)
   .then((res) => res.json())
   .then((data)=>{
     // console.log(data)
@@ -272,7 +272,7 @@ const availablePet = () =>{
 const adoptedPet = () =>{
   const user_id = localStorage.getItem("user_id")
   document.getElementById("adopted").style.display = "none";
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/adoption/?search=${user_id}`)
+    fetch(`https://exi-pet-drf.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)

@@ -50,7 +50,7 @@ const addPost = async (event) =>{
         }
         // console.log(postData)
 
-        const response = await fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/",{
+        const response = await fetch("https://exi-pet-drf.vercel.app/pet/post/",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -77,7 +77,7 @@ const addPost = async (event) =>{
 const getPostDetail = () => {
     const pet_id = localStorage.getItem("pet_id")
     if(pet_id){
-      fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${pet_id}`)
+      fetch(`https://exi-pet-drf.vercel.app/pet/post/${pet_id}`)
       .then((res) => res.json())
       .then((post) => {
         
@@ -145,7 +145,7 @@ const editPost = async (event)=>{
         }
         console.log(editPostData)
         
-        const response = await fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${pet_id}/`,{
+        const response = await fetch(`https://exi-pet-drf.vercel.app/pet/post/${pet_id}/`,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
@@ -188,7 +188,7 @@ const deletePet = () =>{
       hideToast(); 
     };
 
-    fetch(`https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/pet/post/${pet_id}/`,{
+    fetch(`https://exi-pet-drf.vercel.app/pet/post/${pet_id}/`,{
         method:"DELETE",
         headers:{
             "Content-Type": "application/json",
