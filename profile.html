@@ -14,12 +14,12 @@
   <div id="modal"></div>
   
    <!-- Profile -->
-   <div class="w-5/6 flex flex-wrap justify-evenly my-11 mx-auto gap-6">
+   <div class="w-full md:w-[90%] lg:w-5/6 flex flex-wrap justify-evenly my-11 mx-auto gap-6">
         <!-- Profile Part -->
-        <div class="min-h-screen flex ">
+        <div class="lg:w-5/6 min-h-screen flex ">
 
           <!-- Profile Details -->
-          <div class="flex-1 bg-white p-8">
+          <div class="w-[360px] lg:w-5/6 md:w-[90%] flex-1 bg-white md:p-8 lg:p-8">
           
             <!-- Toast -->
               <div class="w-full mx-auto">
@@ -29,19 +29,19 @@
                 </div>
               </div>
 
-              <div class="flex justify-between">
+              <div class="flex justify-between m-3">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 uppercase">Profile Details</h2>
-                <div class="flex gap-2 mb-4 me-28 p-3 rounded-2xl bg-orange-100">
+                <div class="flex gap-2 mb-4 p-3 rounded-2xl bg-orange-100">
                   <p id="p-balance" class="text-black font-bold font-mono text-2xl"></p>
                 </div>
               </div>
 
               <form id="up-profile" onsubmit="updateProfile(event)" enctype="multipart/form-data" class="flex flex-wrap justify-evenly gap-16 bg-gray-100 p-6 rounded-lg shadow-lg">
                 <!-- Profile Picture on the left -->
-                <div class="max-w-[35%] flex-shrink-0 m-8 ">
-                  <img id="img" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="rounded-lg shadow-2xl" style="width: 450px;">
+                <div class="lg:max-w-[400px] md:w-96 w-full flex-shrink-0 md:m-8 lg:m-8">
+                  <img id="img" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="rounded-lg shadow-2xl max-w-[90%]" >
                   <input id="curr-p-img" src="" class="hidden" alt="">
-                  <div class="my-5">
+                  <div class="my-5 max-w-[90%]">
                     <label for="p-img" class="block mb-2 text-lg font-semibold text-gray-700">Image</label>
                     <div class="relative flex items-center">
                       <i class="fas fa-images absolute left-3 text-gray-400"></i>
@@ -51,7 +51,7 @@
                   </div>
                 </div>
                 <!-- Profile Details on the Right -->
-                <div class="max-w-[60%] flex-grow ">
+                <div class="w-full lg:max-w-[60%] flex-grow ">
                   <h2 class="text-2xl font-bold text-center font-mono text-gray-800 mb-10 mt-5 uppercase">Profile </h2>
                     <div class="flex flex-wrap justify-evenly gap-6" >
                       <div class="mb-4 w-[350px]">
@@ -115,31 +115,31 @@
                     </div>
                 </div>
               </form>
-
+              <!-- Bottom Part -->
+              <div class="w-full mt-32">
+                <div id="available" class="w-full p-5 bg-gradient-to-r from-green-100 to-blue-200" >
+                  <h1 class="mx-auto bg-gray-900 text-red-700 font-mono text-2xl rounded-full px-4 py-3 shadow-lg my-2 text-center w-[350px]"><span class="uppercase font-mono pb-3 ">Available For Adopt </span> </h1>
+                  <div id="available-pets" class="my-11 mx-5 flex flex-wrap justify-evenly bg-transparent shadow-lg p-5 border border-gray-200 rounded-lg">
+                      
+                  </div>
+                </div>
+                <div id="adopted" class="w-full bg-slate-100 p-5"> 
+                  <h1 class="mx-auto bg-gray-900 text-red-700 font-mono text-2xl rounded-full px-4 py-3 shadow-lg my-2 text-center w-[250px]" ><span class="uppercase font-mono pb-3 ">Adopted Pets</span></h1>
+                  <div id="auth-post" class="bg-gradient-to-r from-blue-100 to-lime-50 mt-11 p-5 rounded-lg">
+                    <div id="my-adoption" class="my-11 mx-5 flex flex-wrap justify-evenly shadow-lg p-5 border rounded-lg">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
           
         </div>
-        <!-- Bottom Part -->
-        <div class="w-full m-5">
-          <div id="available" class="w-full p-5 bg-gradient-to-r from-green-100 to-blue-200" >
-            <h1 class="mx-auto bg-gray-900 text-red-700 font-mono text-2xl rounded-full px-4 py-3 shadow-lg my-2 text-center w-[350px]"><span class="uppercase font-mono pb-3 ">Available For Adopt </span> </h1>
-            <div id="available-pets" class="my-11 mx-5 flex flex-wrap justify-evenly bg-transparent shadow-lg p-5 border border-gray-200 rounded-lg">
-                
-            </div>
-          </div>
-          <div id="adopted" class="w-full bg-slate-100 p-5"> 
-            <h1 class="mx-auto bg-gray-900 text-red-700 font-mono text-2xl rounded-full px-4 py-3 shadow-lg my-2 text-center w-[250px]" ><span class="uppercase font-mono pb-3 ">Adopted Pets</span></h1>
-            <div id="auth-post" class="bg-gradient-to-r from-blue-100 to-lime-50 mt-11 p-5 rounded-lg">
-              <div id="my-adoption" class="my-11 mx-5 flex flex-wrap justify-evenly shadow-lg p-5 border rounded-lg">
-                
-              </div>
-            </div>
-          </div>
-        </div>
+        
    </div>
 
   <!-- Adoption History -->
-  <div id="dashboard" class="font-mono overflow-x-auto w-5/6 mx-auto my-11 shadow-lg rounded-lg">
+  <div id="dashboard" class="font-mono overflow-x-auto w-[90%] md:w-5/6 lg:w-5/6 mx-auto my-11 shadow-lg rounded-lg">
     <table class="min-w-full bg-teal-200">
       <thead class="bg-gray-800 whitespace-nowrap">
         <tr>

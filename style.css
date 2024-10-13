@@ -1,6 +1,5 @@
 body{
-    margin: auto;
-	width: 100vw;
+    margin: 0px;
 }
 #all-pet{
 	display: flex;
@@ -60,7 +59,7 @@ body{
 	outline: none;
   }
   
-  .category-btn:hover {
+.category-btn:hover {
 	background-color: #23c483;
 	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
 	color: #fff;
@@ -68,7 +67,7 @@ body{
 	transform: translateY(-7px);
   }
   
-  .category-btn:active {
+.category-btn:active {
 	border: none;
 	transform: translateY(-1px);
   }
@@ -80,32 +79,32 @@ body{
 	cursor: pointer;
   }
   
-  .cta span {
+.cta span {
 	padding-bottom: 7px;
 	padding-right: 15px;
 
   }
   
-  .cta svg {
+.cta svg {
 	transform: translateX(-8px);
 	transition: all 0.3s ease;
   }
   
-  .cta:hover svg {
+.cta:hover svg {
 	transform: translateX(0);
   }
   
-  .cta:active svg {
+.cta:active svg {
 	transform: scale(0.9);
   }
   
-  .hover-underline-animation {
+.hover-underline-animation {
 	position: relative;
 	color: black;
 	padding-bottom: 20px;
   }
   
-  .hover-underline-animation:after {
+.hover-underline-animation:after {
 	content: "";
 	position: absolute;
 	width: 100%;
@@ -118,7 +117,7 @@ body{
 	transition: transform 0.25s ease-out;
   }
   
-  .cta:hover .hover-underline-animation:after {
+.cta:hover .hover-underline-animation:after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
   }
@@ -135,42 +134,42 @@ body{
 	margin: auto;
   }
   
-  .loader div {
+.loader div {
 	height: 30px;
 	width: 30px;
 	position: absolute;
 	animation: move 4s infinite;
   }
   
-  .loader div:nth-child(1) {
+.loader div:nth-child(1) {
 	background-color: rgb(158, 136, 246);
 	box-shadow: rgb(158, 136, 246) 0px 7px 29px 0px;
 	transform: translate(-30px,-30px);
 	animation-delay: -1s;
   }
   
-  .loader div:nth-child(2) {
+.loader div:nth-child(2) {
 	background-color: rgb(97, 183, 253);
 	box-shadow: rgb(97, 183, 253) 0px 7px 29px 0px;
 	transform: translate(30px,-30px);
 	animation-delay: -2s;
   }
   
-  .loader div:nth-child(3) {
+.loader div:nth-child(3) {
 	background-color: rgb(95, 249, 175);
 	box-shadow: rgb(95, 249, 175) 0px 7px 29px 0px;
 	transform: translate(30px,30px);
 	animation-delay: -3s;
   }
   
-  .loader div:nth-child(4) {
+.loader div:nth-child(4) {
 	background-color: rgb(243, 171, 89);
 	box-shadow: rgb(243, 171, 89) 0px 7px 29px 0px;
 	transform: translate(-30px,30px);
 	animation-delay: -4s;
   }
   
-  @keyframes move {
+@keyframes move {
 	0% {
 	  transform: translate(-30px, -30px);
 	}
