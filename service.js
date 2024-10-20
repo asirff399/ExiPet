@@ -21,6 +21,7 @@ const displayService = (data)=>{
         const parent = document.getElementById("services-container")
         const div = document.createElement("div")
         div.classList.add("service")
+        div.setAttribute("data-aos", "zoom-in-up")
         div.innerHTML=`
             <div class="bg-white rounded-lg overflow-hidden shadow-lg" style="width: 290px;">
                 <img src=${service.image} alt="Blog Post 1" class="w-full h-52 object-cover" />

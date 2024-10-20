@@ -43,34 +43,35 @@ const displayAllPet = (pets) =>{
     // console.log(pets)
     document.getElementById("all-pet").innerHTML = " "
     const parent = document.getElementById("all-pet")
-
-    pets.forEach((pet)=>{
-        const div = document.createElement("div")
-        div.classList.add("pet-card")
-        const formattedDate = formatDate(pet.created_on);
-        div.innerHTML=`
-                
-                <div class="border border-gray-400 mx-auto md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
-                        <div>
-                            <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
-                            </div>
-                        <div class="p-4 text-center">
-                            <div class="w-4/6 mx-auto bg-gray-900 text-red-700 font-mono text-xl rounded-full px-4 py-2 shadow-lg">$${pet.price} </div>
-                            <h1 class="mb-3 mt-2 text-2xl font-medium text-gray-900"><strong>${pet.name}</strong> </h1>
-                            <p class="mb-2 text-base  text-gray-700">${pet.description.slice(0,40)}...</p>
-                            <div class="flex justify-evenly items-center mt-5 cta">
-                                <h2 class="font-bold border border-slate-300 bg-lime-50 py-1 px-3 rounded-full shadow-2xl">${pet.adoption_status}</h2>
-                                <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono " href="./pet_details.html?pet_id=${pet.id}">Details --> </a> </button>
-                            </div>
+    if(pets){
+        pets.forEach((pet)=>{
+            const div = document.createElement("div")
+            div.classList.add("pet-card")
+            const formattedDate = formatDate(pet.created_on);
+            div.innerHTML=`                
+                    <div class="border border-gray-400 mx-auto md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
                             <div>
-                                <p class="text-sm mt-3">Created By <a class="text-red-500 underline" href="">${pet.author}</a> on ${formattedDate}</p>
+                                <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
+                                </div>
+                            <div class="p-4 text-center">
+                                <div class="w-4/6 mx-auto bg-gray-900 text-red-700 font-mono text-xl rounded-full px-4 py-2 shadow-lg">$${pet.price} </div>
+                                <h1 class="mb-3 mt-2 text-2xl font-medium text-gray-900"><strong>${pet.name}</strong> </h1>
+                                <p class="mb-2 text-base  text-gray-700">${pet.description.slice(0,40)}...</p>
+                                <div class="flex justify-evenly items-center mt-5 cta">
+                                    <h2 class="font-bold border border-slate-300 bg-lime-50 py-1 px-3 rounded-full shadow-2xl">${pet.adoption_status}</h2>
+                                    <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono " href="./pet_details.html?pet_id=${pet.id}">Details --> </a> </button>
+                                </div>
+                                <div>
+                                    <p class="text-sm mt-3">Created By <a class="text-red-500 underline" href="">${pet.author}</a> on ${formattedDate}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-        
-        `
-        parent.appendChild(div)
-    })
+            
+            `
+            parent.appendChild(div)
+        })
+    }
+    
 }
 const displayInitialPet = (pets) =>{
     // console.log(pets)
@@ -83,6 +84,7 @@ const displayInitialPet = (pets) =>{
         pets.forEach((pet)=>{
             const div = document.createElement("div")
             div.classList.add("pet-card")
+            div.setAttribute("data-aos", "flip-left");
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`
                     <div class="border border-gray-400 mx-auto mt-11 mb-10 md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
@@ -245,6 +247,7 @@ const loadAllMember = () =>{
             const parent = document.getElementById("team_members")
             const div = document.createElement("div")
             div.classList.add("member")
+            div.setAttribute("data-aos", "flip-left");
             div.innerHTML=`
                 <div class="bg-slate-200 rounded-lg p-6 shadow-md hover:scale-105 transition-all duration-500" style="width:290px;">
                     <div class="lg:min-h-[250px]">
