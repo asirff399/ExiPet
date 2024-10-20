@@ -84,7 +84,7 @@ const displayInitialPet = (pets) =>{
         pets.forEach((pet)=>{
             const div = document.createElement("div")
             div.classList.add("pet-card")
-            div.setAttribute("data-aos", "flip-left");
+            // div.setAttribute("data-aos", "flip-left");
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`
                     <div class="border border-gray-400 mx-auto mt-11 mb-10 md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">

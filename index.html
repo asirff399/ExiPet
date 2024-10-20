@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="//unpkg.com/alpinejs" defer></script>
   <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <title>ExiPet - Pet Adoption</title>
 </head>
@@ -28,8 +28,8 @@
 
   <!-- Banner Text -->
   <div class="flex flex-wrap md:flex-nowrap lg:flex-nowrap items-center gap-6 w-4/6 sm:w-5/6 justify-center" style="margin-inline: auto;margin-block: 80px;">
-    <div style="width: 550px;">
-      <img data-aos="fade-up" class="w-5/6 rounded" src="./images/banner2.jpg" alt="">
+    <div data-aos="fade-up" style="width: 550px;">
+      <img class="w-5/6 rounded" src="./images/banner2.jpg" alt="">
     </div>
     <div data-aos="fade-down" class="banner-text" style="width: 630px;">
       <h1 class="m-5 text-5xl font-mono font-semibold">Bring Home Happiness!</h1>
@@ -229,9 +229,12 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({
+        offset: 300,
+        duration: 1000,
+      });
     </script>
 
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
