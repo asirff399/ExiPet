@@ -1,6 +1,6 @@
 const addPost = async (event) =>{
     event.preventDefault()
-
+   
     const errorContainer = document.getElementById("error-container");
     const errorElement = document.getElementById("error");
     const hideToast = () => {
@@ -38,7 +38,7 @@ const addPost = async (event) =>{
         const imageUrl = imgbbData.data.url;
 
         const postData = {
-            pet_type: formData.get("pet-type"),
+            pet_type: formData.get("p-pet-type"),
             name:formData.get("name") ,
             description:formData.get("description"),
             // image: formData.get("image"),
@@ -48,7 +48,7 @@ const addPost = async (event) =>{
             age: formData.get("age"),
             price: formData.get("price") ,
         }
-        // console.log(postData)
+        console.log(postData)
 
         const response = await fetch("https://exi-pet-drf.vercel.app/pet/post/",{
             method:"POST",
@@ -65,7 +65,7 @@ const addPost = async (event) =>{
             window.location.href = "./allPet.html"
         } else {
             // alert("Failed to add post: " + data.message);
-            showError("Failed to add post: " + data.message)
+            showError("Failed to add post: " + (data.message || "An unknown error occurred."));
         }
     } catch (error) {
             console.error("Error:", error);

@@ -47,6 +47,7 @@ const displayAllPet = (pets) =>{
         pets.forEach((pet)=>{
             const div = document.createElement("div")
             div.classList.add("pet-card")
+            div.setAttribute("data-aos", "zoom-in-up");
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`                
                     <div class="border border-gray-400 mx-auto md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
@@ -84,7 +85,7 @@ const displayInitialPet = (pets) =>{
         pets.forEach((pet)=>{
             const div = document.createElement("div")
             div.classList.add("pet-card")
-            // div.setAttribute("data-aos", "flip-left");
+            div.setAttribute("data-aos", "flip-left");
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`
                     <div class="border border-gray-400 mx-auto mt-11 mb-10 md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
@@ -193,49 +194,41 @@ const loadAllPetType = () =>{
     })
 }
 const loadPetTypePost = () =>{
-    const token = localStorage.getItem("token")
-    fetch("https://exi-pet-drf.vercel.app/pet/types/",{
-        method:"GET",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization": `Token ${token}`,},
-    })
+    fetch("https://exi-pet-drf.vercel.app/pet/types/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
-        data.forEach((item)=>{
-            // console.log(item) 
-            const parent = document.getElementById("pet-type")
-            const option = document.createElement("option")
-
-            option.value = item.name
-            option.innerHTML = item.name
-
-            parent.appendChild(option)
-        })
+        if(data){
+            data.forEach((item)=>{
+                // console.log(item) 
+                const parent = document.getElementById("p-pet-type")
+                const option = document.createElement("option")
+    
+                option.value = item.name
+                option.innerHTML = item.name
+    
+                parent.appendChild(option)
+            })
+        }
     })
 }
 const loadPetTypeEdit = () =>{
-    const token = localStorage.getItem("token")
-    fetch("https://exi-pet-drf.vercel.app/pet/types/",{
-        method:"GET",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization": `Token ${token}`,}
-    })
+    fetch("https://exi-pet-drf.vercel.app/pet/types/")
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
-        data.forEach((item)=>{
-            // console.log(item) 
-            const ed_parent = document.getElementById("ed-pet-type")
-            const ed_option = document.createElement("option")
-
-            ed_option.value = item.name
-            ed_option.innerHTML = item.name
-
-            ed_parent.appendChild(ed_option)
-        })
+        if(data){
+            data.forEach((item)=>{
+                // console.log(item) 
+                const ed_parent = document.getElementById("ed-pet-type")
+                const ed_option = document.createElement("option")
+    
+                ed_option.value = item.name
+                ed_option.innerHTML = item.name
+    
+                ed_parent.appendChild(ed_option)
+            })
+        }
     })
 }
 const loadAllMember = () =>{
@@ -243,40 +236,42 @@ const loadAllMember = () =>{
     .then((res)=>res.json())
     .then((data)=>{
         // console.log(data)
-        data.forEach((member)=>{
-            const parent = document.getElementById("team_members")
-            const div = document.createElement("div")
-            div.classList.add("member")
-            div.setAttribute("data-aos", "flip-left");
-            div.innerHTML=`
-                <div class="bg-slate-200 rounded-lg p-6 shadow-md hover:scale-105 transition-all duration-500" style="width:290px;">
-                    <div class="lg:min-h-[250px]">
-                        <img src=${member.image} class="rounded-full border-4 border-white shadow-xl w-[230px] h-[230px] inline-block" />
-                    </div>
-
-                    <div class="mt-6">
-                        <h4 class="text-gray-800 text-lg font-bold">${member.name}</h4>
-                        <p class="text-sm text-gray-600 mt-1">${member.type}</p>
-
-                        <div class="space-x-4 mt-6">
-                            <button type="button"
-                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
-                                <i class="fa-brands fa-facebook"></i>
-                            </button>
-                            <button type="button"
-                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                <i class="fa-brands fa-twitter"></i>
-                            </button>
-                            <button type="button"
-                                class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </button>
+        if(data){
+            data.forEach((member)=>{
+                const parent = document.getElementById("team_members")
+                const div = document.createElement("div")
+                div.classList.add("member")
+                div.setAttribute("data-aos", "flip-left");
+                div.innerHTML=`
+                    <div class="bg-slate-200 rounded-lg p-6 shadow-md hover:scale-105 transition-all duration-500" style="width:290px;">
+                        <div class="lg:min-h-[250px]">
+                            <img src=${member.image} class="rounded-full border-4 border-white shadow-xl w-[230px] h-[230px] inline-block" />
+                        </div>
+    
+                        <div class="mt-6">
+                            <h4 class="text-gray-800 text-lg font-bold">${member.name}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${member.type}</p>
+    
+                            <div class="space-x-4 mt-6">
+                                <button type="button"
+                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none bg-gray-100 hover:bg-gray-200">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </button>
+                                <button type="button"
+                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </button>
+                                <button type="button"
+                                    class="w-7 h-7 inline-flex items-center justify-center rounded-full border-none outline-none  bg-gray-100 hover:bg-gray-200">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `
-            parent.appendChild(div)
-        })
+                `
+                parent.appendChild(div)
+            })    
+        }       
     })
 }
 
