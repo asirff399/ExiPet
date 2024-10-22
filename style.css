@@ -13,7 +13,6 @@ body{
 	display: flex;
 	flex-wrap: wrap;
 	gap: 40px;
-	margin-top: 40px;
 	justify-content: center;
 }
 #category-pet{
