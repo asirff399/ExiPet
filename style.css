@@ -110,6 +110,7 @@ body{
 	transform: scaleX(0);
 	height: 2px;
 	bottom: 0;
+	font-style: bold;
 	left: 0;
 	background-color: #000000;
 	transform-origin: bottom right;

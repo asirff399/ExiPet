@@ -16,7 +16,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <div id="navbar"></div>
+  <div id="navbar" class="sticky top-0 w-full bg-slate-200 z-50"></div>
   <!-- Modal -->
   <div id="modal"></div>
   
@@ -44,9 +44,9 @@
   </div>
 
   <!-- Pets -->
-  <div class="all-pets bg-slate-100" style="margin-bottom: 70px;">
+  <div class="all-pets bg-slate-50" style="margin-bottom: 70px;">
     <div class="text-center p-11">
-      <p class="uppercase italic text-blueGray-900 font-bold">Find your Friend</p>
+      <p class="uppercase italic text-blueGray-900 font-bold mt-5">Find your Friend</p>
       <h1 class="text-5xl font-2xl font-extrabold font-mono">Adopt a pet</h1>
     </div>
     <div id="initial-pet" class="flex flex-wrap gap-6 "></div>
@@ -60,27 +60,15 @@
       </div>
     </div>
     
-    <p class=" text-3xl font-bold font-mono text-center p-10 " > <a class="cta " href="./allPet.html">
-        <span class="w-full mx-auto hover-underline-animation text-2xl font-bold mx-auto font-mono text-center p-10 "> Explore More <i class="fas fa-angles-right"></i></span>
-        <svg
-          id="arrow-horizontal"
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="10"
-          viewBox="0 0 46 16"
-        >
-          
-        </svg>
-      <!-- See More --></a></p>
-  
+    <p class="text-3xl font-bold font-mono text-center p-10 mb-5"><a href="./allPet.html"><span class="w-full mx-auto text-2xl mx-auto font-mono text-center p-3 hover:border hover:shadow-2xl hover:rounded-lg ">Explore More <i class="fas fa-angles-right"></i></span></a></p>
   </div>
 
   <!-- More content -->
-  <div class="flex flex-wrap justify-center lg:flex-nowrap mb-16 items-center gap-12 md:w-5/6 lg:w-4/6 mx-auto bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 rounded-xl shadow-xl p-8 font-[Poppins] ">
+  <div class="flex flex-wrap justify-center lg:flex-nowrap mb-16 items-center gap-12 md:w-5/6 lg:w-4/6 mx-auto p-8 font-[Poppins] ">
     <div style="width: 500px;">
-      <img src="./images/content.jpeg" class="max-w-[90%] rounded-lg shadow-lg transition-transform duration-300 hover:scale-105" alt="Image description" />
+      <img data-aos="zoom-out" src="./images/content.jpeg" class="max-w-[90%] rounded-lg shadow-lg transition-transform duration-300 hover:scale-105" alt="Image description" />
     </div>
-    <div data-aos="zoom-in-up" class="text-left space-y-4" style="width: 550px;">
+    <div class="text-left space-y-4" style="width: 550px;">
       <h2 class="text-3xl font-extrabold text-blue-900 mb-4 tracking-wide">
         Adopt Your Perfect Furry Friend Today!
       </h2>
@@ -108,7 +96,7 @@
   </div>
 
   <!--Services  -->
-  <div class="bg-slate-100 md:px-10 px-4 py-12 mb-16 font-[sans-serif]">
+  <div class="bg-slate-50 md:px-10 px-4 py-12 mb-16 font-[sans-serif]">
     <div class="container mx-auto">
       <p class="text-sm text-center">Because We Really Care About Your Pets</p>
       <h2 class="text-3xl text-center font-extrabold text-gray-800 mb-8">Services of ExiPet</h2>
@@ -119,35 +107,41 @@
     
   </div>
 
-  <!-- Stats -->
-  <div class="font-[sans-serif] w-4/6 text-[#333]" style="margin-block: 150px;margin-inline: auto;">
-    <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-x-6 gap-y-12 divide-x divide-gray-300">
-      <div data-aos="fade-up" class="text-center flex flex-col items-center">
-        <img class="object-fill rounded-full" src="./images/logo-2.jpg" alt="" style="width: 100px;height: 100px;">
-        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">400+</h3>
-        <p class="font-semibold mt-3">Pet Adoptions</p>
+  <!-- Extra Facelities -->
+  <section class="container mx-auto px-4 my-32">
+    <div class="flex justify-evenly flex-wrap gap-8">
+      <!-- Card 1 -->
+      <div data-aos="fade-down" class="card my-5">
+        <div class="w-[120px] bg-lime-500 mx-auto rounded-full">
+          <img class="p-7" src="https://i.ibb.co.com/3k6r1BM/008-care.png" alt="Easy Consultation">
+        </div>
+        <h2 class="text-xl text-center font-mono font-bold m-5">Easy Consultation</h2>
+        <p class="max-w-[300px] text-center m-3 font-semibold font-sans">Our consultation process is simple, fast, and efficient for your convenience.</p>
       </div>
-      <div data-aos="fade-down" class="text-center flex flex-col items-center">
-        <img class="object-fill rounded-full" src="./images/logo-3.jpg" alt="" style="width: 150px;height: 150px;">
-        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">450+</h3>
-        <p class="font-semibold mt-3">Total pets</p>
+  
+      <!-- Card 2 -->
+      <div class="card my-5">
+        <div data-aos="fade-up" class="w-[120px] bg-red-600 mx-auto rounded-full">
+          <img class="p-6" src="https://i.ibb.co.com/qgZKhYB/011-van.png" alt="Easy Consultation">
+        </div>
+        <h2 class="text-xl text-center font-mono font-bold m-5">Experienced Staff</h2>
+        <p class="max-w-[300px] text-center m-3 font-semibold font-sans">Our team consists of highly qualified professionals ready to assist you.</p>
       </div>
-      <div data-aos="fade-up" class="text-center flex flex-col items-center">
-        <img class="object-fill rounded-full" src="./images/logo-4.jpg" alt="" style="width: 100px;height: 100px;">
-        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">500+</h3>
-        <p class="font-semibold mt-3">Customer Satisfaction</p>
-      </div>
-      <div data-aos="fade-down" class="text-center flex flex-col items-center">
-        <img class="object-fill rounded-full" src="./images/logo-5.jpg" alt="" style="width: 100px;height: 100px;">
-        <h3 class="text-3xl font-extrabold text-blue-600 mt-5">600+</h3>
-        <p class="font-semibold mt-3">Other services</p>
+  
+      <!-- Card 3 -->
+      <div data-aos="fade-down" class="card my-5">
+        <div class="w-[120px] bg-blue-300 mx-auto rounded-full">
+          <img class="p-7" src="https://i.ibb.co.com/GkbcjPs/019-doctor.png" alt="Easy Consultation">
+        </div>
+        <h2 class="text-xl text-center font-mono font-bold m-5">Upper Class Facilities</h2>
+        <p class="max-w-[300px] text-center m-3 font-semibold font-sans">We provide top-tier facilities for all our clients, ensuring a luxurious experience.</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Extra contents -->
-  <div class="bg-slate-100 my-20 py-12">
-    <h2 class="text-gray-900 text-4xl font-semibold text-center mb-12">Discover More</h2>
+  <div class="bg-slate-50 my-20 py-12">
+    <h2 class="text-gray-800 text-3xl font-extrabold text-center mb-11">Discover More</h2>
     
     <div class="lg:w-4/6 md:w-[95%] mx-auto p-5 font-[Poppins] space-y-14 ">
       <!-- Section 1: Text Left, Image Right -->
@@ -155,10 +149,10 @@
         <div class="flex flex-col space-y-4">
           <div class="flex items-center space-x-3">
             <span class="text-blue-600 text-4xl"><i class="fas fa-paw"></i></span>
-            <h3 class="text-blue-900 text-2xl font-bold">Largest Non-Profit Pet Shelter</h3>
+            <h3 class="text-blue-900 text-2xl font-bold font-mono">Largest Non-Profit Pet Shelter</h3>
           </div>
-          <p class="text-gray-700 text-base leading-loose">Join the largest non-profit pet shelter, dedicated to rescuing, nurturing, and rehoming thousands of animals. We have helped over <span class="text-blue-700 font-semibold">10,000 pets</span> find new homes, and with your support, we aim to double that number in the coming years.</p>
-          <p class="text-gray-700 text-base leading-loose">From abandoned kittens to elderly dogs, we offer care and hope for every pet in need, striving to provide a loving home for each one. Be a part of this heartwarming journey.</p>
+          <p class="text-gray-700 text-lg font-sans leading-loose">Join the largest non-profit pet shelter, dedicated to rescuing, nurturing, and rehoming thousands of animals. We have helped over <span class="text-blue-700 font-semibold">10,000 pets</span> find new homes, and with your support, we aim to double that number in the coming years.</p>
+          
         </div>
         <div class="relative h-[250px] rounded-xl overflow-hidden shadow-md">
           <img src="https://i.ibb.co.com/7RBBwrL/pet-selter.jpg" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
@@ -173,10 +167,9 @@
         <div class="flex flex-col space-y-4">
           <div class="flex items-center space-x-3">
             <span class="text-blue-600 text-4xl"><i class="fas fa-laptop"></i></span>
-            <h3 class="text-blue-900 text-2xl font-bold">Convenient Pet Adoption for Everyone</h3>
+            <h3 class="text-blue-900 text-2xl font-bold font-mono">Convenient Pet Adoption for Everyone</h3>
           </div>
-          <p class="text-gray-700 text-base leading-loose">Adopting a pet has never been easier. Browse through available pets, complete the process online, and give a loving animal a new home—all from the comfort of your own space.</p>
-          <p class="text-gray-700 text-base leading-loose">We offer a seamless digital experience for potential pet owners to view profiles, access adoption guidelines, and directly communicate with our team for any queries, making adoption easier and more accessible than ever.</p>
+          <p class="text-gray-700 text-lg font-sans leading-loose">We offer a seamless digital experience for potential pet owners to view profiles, access adoption guidelines, and directly communicate with our team for any queries, making adoption easier and more accessible than ever.</p>
         </div>
       </div>
 
@@ -185,10 +178,9 @@
         <div class="flex flex-col space-y-4">
           <div class="flex items-center space-x-3">
             <span class="text-blue-600 text-4xl"><i class="fas fa-lightbulb"></i></span>
-            <h3 class="text-blue-900 text-2xl font-bold">Innovative Ways to Help Animals</h3>
+            <h3 class="text-blue-900 text-2xl font-bold font-mono">Innovative Ways to Help Animals</h3>
           </div>
-          <p class="text-gray-700 text-base leading-loose">Explore new ways to support animals, from virtual adoptions to donation drives. Your involvement can make a lasting impact in providing care and love to animals in need.</p>
-          <p class="text-gray-700 text-base leading-loose">Whether you're donating your time, money, or adopting a pet, our innovative programs allow you to make a meaningful difference in the lives of animals. We also offer sponsorship programs where you can provide long-term care for pets.</p>
+          <p class="text-gray-700 text-lg font-sans leading-loose">Whether you're donating your time, money, or adopting a pet, our innovative programs allow you to make a meaningful difference in the lives of animals. We also offer sponsorship programs where you can provide long-term care for pets.</p>
         </div>
         <div class="relative h-[250px] rounded-xl overflow-hidden shadow-md">
           <img src="https://i.ibb.co.com/R47gwk4/innovative.jpg" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
@@ -231,7 +223,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
-        offset: 300,
+   
         duration: 1000,
       });
     </script>

@@ -47,7 +47,6 @@ const displayAllPet = (pets) =>{
         pets.forEach((pet)=>{
             const div = document.createElement("div")
             div.classList.add("pet-card")
-            div.setAttribute("data-aos", "zoom-in-up");
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`                
                     <div class="border border-gray-400 mx-auto md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
@@ -60,7 +59,7 @@ const displayAllPet = (pets) =>{
                                 <p class="mb-2 text-base  text-gray-700">${pet.description.slice(0,40)}...</p>
                                 <div class="flex justify-evenly items-center mt-5 cta">
                                     <h2 class="font-bold border border-slate-300 bg-lime-50 py-1 px-3 rounded-full shadow-2xl">${pet.adoption_status}</h2>
-                                    <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono " href="./pet_details.html?pet_id=${pet.id}">Details --> </a> </button>
+                                    <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono" href="./pet_details.html?pet_id=${pet.id}">Detail<i class="fas fa-circle-chevron-right p-1"></i></a></button>
                                 </div>
                                 <div>
                                     <p class="text-sm mt-3">Created By <a class="text-red-500 underline" href="">${pet.author}</a> on ${formattedDate}</p>
@@ -98,7 +97,7 @@ const displayInitialPet = (pets) =>{
                             
                             <div class="flex justify-evenly items-center mt-5 cta">
                                 <h2 class="font-bold border border-slate-300 bg-lime-50 py-1 px-3 rounded-full shadow-2xl">${pet.adoption_status}</h2>
-                                <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono " href="./pet_details.html?pet_id=${pet.id}">Details --> </a> </button>
+                                <button type="button"><a class="p-2 text-lg hover-underline-animation font-bold font-mono " href="./pet_details.html?pet_id=${pet.id}">Detail<i class="fas fa-circle-chevron-right p-1"></i> </a> </button>
                             </div>
                             <div>
                                 <p class="text-sm mt-3">Created By <a class="text-red-500 underline" href="">${pet.author}</a> on ${formattedDate}</p>
@@ -243,7 +242,7 @@ const loadAllMember = () =>{
                 div.classList.add("member")
                 div.setAttribute("data-aos", "flip-left");
                 div.innerHTML=`
-                    <div class="bg-slate-200 rounded-lg p-6 shadow-md hover:scale-105 transition-all duration-500" style="width:290px;">
+                    <div class="bg-slate-50 rounded-lg p-6 shadow-md hover:scale-105 transition-all duration-500" style="width:290px;">
                         <div class="lg:min-h-[250px]">
                             <img src=${member.image} class="rounded-full border-4 border-white shadow-xl w-[230px] h-[230px] inline-block" />
                         </div>
