@@ -19,6 +19,8 @@
 			<li class="hover:text-indigo-400 uppercase text-nowrap"><a href="./allPet.html">Explore Pet</a></li>
 			<li class="hover:text-indigo-400 uppercase"><a href="./about_us.html">About </a></li>
 			<li class="hover:text-indigo-400 uppercase"><a href="./contact_us.html">Contact </a></li>
+			<li id="admin-db" class="bg-black text-red-600 hover:text-indigo-400 uppercase py-1 pe-2 rounded-lg"><a href="./dashboard.html" ><i class="fas fa-user-shield mx-2"></i>Admin Pannel</a></li>
+
 			</ul>
 		</div>
 	  	<!-- Dynamic Navigation Element -->
@@ -31,6 +33,7 @@
 					<p class="inline-flex max-h-[50px] max-w-[50px] items-center justify-center rounded-lg bg-slate-900 text-slate-100 ring-slate-100 transition hover:shadow-md hover:ring-2 overflow-hidden" @click="isOpen = !isOpen">
 						<img id="p-btn-img" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="w-full object-cover">
 					</p>
+
 					<!-- Dropdown Menu -->
 					<div x-show="isOpen" x-transition class="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg z-50">
 						<div class="flex gap-3 items-center">
@@ -57,7 +60,7 @@
 								<a href="#" data-modal-target="withdraw-modal" data-modal-toggle="withdraw-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-money-check-dollar mx-2"></i> Withdraw</a>
 								<a href="#" data-modal-target="pass-change-modal" data-modal-toggle="pass-change-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-key mx-2"></i> Change Password</a>
 								<a href="./addpost.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-square-plus mx-2"></i> Add Pet</a>
-								<a href="./dashboard.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-table-list mx-2"></i> Adoption History</a>
+								<a href="./history.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-table-list mx-2"></i> Adoption History</a>
 							</div>
 							<button class="flex justify-center gap-3 rounded-md bg-red-600 py-2 px-3 font-semibold hover:bg-red-500 focus:ring-2 focus:ring-red-600 focus:ring-offset-1 focus:ring-offset-slate-900" @click="isOpen = false">
 								<a type="button" href="#" onclick="handleLogout()" ><i class="fas fa-right-from-bracket mx-2"></i> Logout</a>
@@ -66,11 +69,11 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="mx-auto w-10 p-6 flex justify-end">
 			<div x-data="{ isOpen: false }" class="relative inline-block">
 				<div type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden lg:hidden">
-					<p @click="isOpen = !isOpen" class="text-3xl font-mono text-center m-3 p-2 font-extrabold hover:bg-slate-400 rounded-lg"><i class="fa-solid fa-bars"></i></p>
+					<p @click="isOpen = !isOpen" class="text-3xl font-mono text-center m-3 py-2 px-3 font-extrabold hover:bg-slate-200 rounded-lg"><i class="fa-solid fa-bars"></i></p>
 				</div>
 			
 				<!-- Dropdown Menu -->

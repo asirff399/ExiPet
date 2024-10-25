@@ -72,7 +72,6 @@ const loadDashboard = () =>{
     fetch(`https://exi-pet-drf.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data)
         document.getElementById("loader").style.display = "block";
         if(data && data.length > 0){
             

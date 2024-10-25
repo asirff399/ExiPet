@@ -6,68 +6,751 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-  <!-- Navbar -->
-  <div id="navbar" class="sticky top-0 w-full bg-slate-200 z-50"></div>
-  <!-- Modal -->
-  <div id="modal"></div>
+
+      <section >
+        <div x-data="{ selectedTab: 'dashboard' }" class="flex">
+            <!-- Sidebar -->
+            <nav class="w-[250px] bg-white border-r-2 border-dotted border-gray-600">
+              <div class="flex items-center mb-3 justify-center h-16 border-b border-gray-200">
+                <h1 class="ml-2 md:ml-4 text-xl md:text-2xl italic font-mono text-lime-600 font-bold hover:text-indigo-400"><a href="./index.html">Exi<span class="text-black font-mono">Pet</span></a></h1>
+              </div>
+              <div class="p-3">
+                <a href="#" @click.prevent="selectedTab = 'dashboard'" :class="{'bg-blue-100': selectedTab === 'dashboard'}"
+                  class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                  <span class="material-icons">dashboard</span>
+                  <span class="ml-2">Dashboard</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'users'" :class="{'bg-blue-100': selectedTab === 'users'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">person</span>
+                    <span class="ml-2">Users</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'pets'" :class="{'bg-blue-100': selectedTab === 'pets'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">pets</span>
+                    <span class="ml-2">Pets</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'categories'" :class="{'bg-blue-100': selectedTab === 'categories'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">category</span>
+                    <span class="ml-2">Categories</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'adoptions'" :class="{'bg-blue-100': selectedTab === 'adoptions'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">done_all</span>
+                    <span class="ml-2">Adoptions</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'contact'" :class="{'bg-blue-100': selectedTab === 'contact'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">contact_mail</span>
+                    <span class="ml-2">Contact Us</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'team'" :class="{'bg-blue-100': selectedTab === 'team'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">group</span>
+                    <span class="ml-2">Team Members</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'services'" :class="{'bg-blue-100': selectedTab === 'services'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">support_agent</span>
+                    <span class="ml-2">Services</span>
+                </a>
+              </div>
+            </nav>
+            <!-- Main Content -->
+            <main class="w-full">
+              <!-- Navbar -->
+              <Nav class="flex justify-between items-center">
+                <!-- Nav Left -->
+                <div class="flex items-center">
+                  <p @click="isOpen = !isOpen" class="text-3xl font-mono text-center m-3 py-2 px-3 font-extrabold hover:bg-slate-200 rounded-lg"><i class="fa-solid fa-bars"></i></p>
+                  <h1 class="text-lg font-bold">Admin Dashboard</h1>
+                </div>
+                <!-- Nav Right -->
+                <div class="flex items-center pe-16">
+                  <div>
+                    <p class="hover:text-orange-400 uppercase font-mono text-black font-bold text-xl"><a href="./index.html">Home</a></p>
+                  </div>
+                  <!-- Profile Dropdown Section -->
+                  <div class="mx-auto p-6">
+                    <div x-data="{ isOpen: false }" class="relative inline-block">
+                      
+                      <p class="inline-flex max-h-[50px] max-w-[50px] items-center justify-center rounded-lg bg-slate-900 text-slate-100 ring-slate-100 transition hover:shadow-md hover:ring-2 overflow-hidden" @click="isOpen = !isOpen">
+                        <img id="p-btn-img" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="w-full object-cover">
+                      </p>
+                      <!-- Dropdown Menu -->
+                      <div x-show="isOpen" x-transition class="absolute right-0 mt-3 flex w-60 flex-col gap-3 rounded-xl bg-slate-900 p-4 text-slate-100 shadow-lg z-50">
+                        <div class="flex gap-3 items-center">
+                        <div class="flex items-center justify-center rounded-lg h-12 w-12 overflow-hidden border-2 border-slate-600">
+                          <img id="p-btn-img2" src="" alt="" onerror="this.src='https://i.ibb.co.com/80NSbds/dummy-profile.png'" class="w-full object-cover">
+                        </div>
+                        <div>
+                          <div class="flex gap-1 text-sm font-semibold">
+                          <span id="p-btn-name"></span>
+                          <span class="text-sky-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"></path>
+                            </svg>
+                          </span>
+                          </div>
+                          <div id="p-btn-email" class="text-xs text-slate-400"></div>
+                        </div>
+                        </div>
+                        <div class="border-t border-slate-500/30"></div>
+                        
+                          <div class="flex flex-col">
+                            <a href="./profile.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-user mx-2"></i> Profile</a>
+                            <a href="#" data-modal-target="deposit-modal" data-modal-toggle="deposit-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-coins mx-2"></i> Deposit</a>
+                            <a href="#" data-modal-target="withdraw-modal" data-modal-toggle="withdraw-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-money-check-dollar mx-2"></i> Withdraw</a>
+                            <a href="#" data-modal-target="pass-change-modal" data-modal-toggle="pass-change-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-key mx-2"></i> Change Password</a>
+                            <a href="./addpost.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-square-plus mx-2"></i> Add Pet</a>
+                            <a href="./history.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-table-list mx-2"></i> Adoption History</a>
+                          </div>
+                          <button class="flex justify-center gap-3 rounded-md bg-red-600 py-2 px-3 font-semibold hover:bg-red-500 focus:ring-2 focus:ring-red-600 focus:ring-offset-1 focus:ring-offset-slate-900" @click="isOpen = false">
+                            <a type="button" href="#" onclick="handleLogout()" ><i class="fas fa-right-from-bracket mx-2"></i> Logout</a>
+                          </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Nav>
+              <!-- Dashboard Content -->
+              <div class="p-6 flex-1">
+                <div x-show="selectedTab === 'dashboard'" class="p-4 rounded-lg shadow bg-white">
+                  <div class="flex items-center gap-3 p-5">
+                    <span class="material-icons text-orange-400 text-4xl">dashboard</span>
+                    <h1 class="text-2xl font-bold uppercase">Dashboard</h1>
+                  </div>
+                    <!-- Card -->
+                    <div class="flex flex-wrap m-5 items-center justify-evenly gap-5">
+                      <div class="min-w-[372.5px] h-[200px] border border-slate-200 rounded-lg shadow-lg shadow-gray-300 p-1 ">
+                        <div class="flex items-center justify-center gap-5 mt-4">
+                          <span class="material-icons p-2 text-orange-400 bg-slate-200 rounded-full">pets</span>
+                          <p class="m-2 text-2xl font-mono font-semibold">Total Pets</p>
+                        </div>
+                        <div class="w-[250px] h-[80px] mx-auto mt-4 border-2 border-red-400 shadow-lg ">
+                          <h1 class=" p-5 m-2 text-5xl text-center font-bold font-mono rounded-md bg-black text-red-500">14</h1>
+                        </div>
+                      </div>
+                      <div class="min-w-[372.5px] h-[200px] border border-slate-200 rounded-lg shadow-lg shadow-gray-300 p-1 ">
+                        <div class="flex items-center justify-center gap-5 mt-4">
+                          <i class="fas fa-store p-2 text-blue-600 bg-slate-200 text-xl rounded-full"></i>
+                          <p class="m-2 text-2xl font-mono font-semibold">Available</p>
+                        </div>
+                        <div class="w-[250px] h-[80px] mx-auto mt-4 border-2 border-red-400 shadow-lg ">
+                          <h1 class=" p-5 m-2 text-5xl text-center font-bold font-mono rounded-md bg-black text-red-500">14</h1>
+                        </div>
+                      </div>
+                      <div class="min-w-[372.5px] h-[200px] border border-slate-200 rounded-lg shadow-lg shadow-gray-300 p-1 ">
+                        <div class="flex items-center justify-center gap-5 mt-4">
+                          <span class="material-icons p-2 text-red-500 bg-slate-200 rounded-full">done_all</span>
+                          <p class="m-2 text-2xl font-mono font-semibold">Adopted</p>
+                        </div>
+                        <div class="w-[250px] h-[80px] mx-auto mt-4 border-2 border-red-400 shadow-lg ">
+                          <h1 class=" p-5 m-2 text-5xl text-center font-bold font-mono rounded-md bg-black text-red-500">14</h1>
+                        </div>
+                      </div>
+                      <div class="min-w-[372.5px] h-[200px] border border-slate-200 rounded-lg shadow-lg shadow-gray-300 p-1 ">
+                        <div class="flex items-center justify-center gap-5 mt-4">
+                          <span class="material-icons p-2 text-lime-500 bg-slate-200 rounded-full">account_circle</span>
+                          <p class="m-2 text-2xl font-mono font-semibold">Users</p>
+                        </div>
+                        <div class="w-[250px] h-[80px] mx-auto mt-4 border-2 border-red-400 shadow-lg ">
+                          <h1 class=" p-5 m-2 text-5xl text-center font-bold font-mono rounded-md bg-black text-red-500">14</h1>
+                        </div>
+                      </div>                     
+                    </div>
+
+                    <!-- Second Row -->
+                    <div class="flex flex-wrap m-5 justify-between">
+                      <!-- Graph Chart -->
+                      <div class="w-[60%] h-[480px] p-3 border-slate-200 rounded-lg shadow-lg">
+                        <div class="h-full flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+                          <div class="relative mx-4 mt-7 flex flex-col gap-4 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none md:flex-row md:items-center">
+                            <div class="w-max rounded-lg bg-gray-900 p-5 text-white">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                                class="h-6 w-6"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"
+                                ></path>
+                              </svg>
+                            </div>
+                            <div>
+                              <h6 class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
+                                Line Chart
+                              </h6>
+                              <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
+                                Visualize your data in a simple way using the
+                                @material-tailwind/html chart plugin.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="pt-6 px-2 pb-0">
+                            <div id="bar-chart" class="mt-7"></div>
+                          </div>
+                        </div>
+                         
+                        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+                        <script>
+                        const chartConfig = {
+                          series: [
+                            {
+                              name: "Sales",
+                              data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+                            },
+                          ],
+                          chart: {
+                            type: "bar",
+                            height: 240,
+                            toolbar: {
+                              show: false,
+                            },
+                          },
+                          title: {
+                            show: "",
+                          },
+                          dataLabels: {
+                            enabled: false,
+                          },
+                          colors: ["#020617"],
+                          plotOptions: {
+                            bar: {
+                              columnWidth: "40%",
+                              borderRadius: 2,
+                            },
+                          },
+                          xaxis: {
+                            axisTicks: {
+                              show: false,
+                            },
+                            axisBorder: {
+                              show: false,
+                            },
+                            labels: {
+                              style: {
+                                colors: "#616161",
+                                fontSize: "12px",
+                                fontFamily: "inherit",
+                                fontWeight: 400,
+                              },
+                            },
+                            categories: [
+                              "Apr",
+                              "May",
+                              "Jun",
+                              "Jul",
+                              "Aug",
+                              "Sep",
+                              "Oct",
+                              "Nov",
+                              "Dec",
+                            ],
+                          },
+                          yaxis: {
+                            labels: {
+                              style: {
+                                colors: "#616161",
+                                fontSize: "12px",
+                                fontFamily: "inherit",
+                                fontWeight: 400,
+                              },
+                            },
+                          },
+                          grid: {
+                            show: true,
+                            borderColor: "#dddddd",
+                            strokeDashArray: 5,
+                            xaxis: {
+                              lines: {
+                                show: true,
+                              },
+                            },
+                            padding: {
+                              top: 5,
+                              right: 20,
+                            },
+                          },
+                          fill: {
+                            opacity: 0.8,
+                          },
+                          tooltip: {
+                            theme: "dark",
+                          },
+                        };
+                         
+                        const chart = new ApexCharts(document.querySelector("#bar-chart"), chartConfig);
+                         
+                        chart.render();
+                        </script>
+                      </div>
+                      <!-- Recent Pets -->
+                      <div class="w-[39%] h-[480px] p-3 border border-slate-200 rounded-lg shadow-lg">
+                        <table class="w-full bg-white border border-gray-200 rounded-lg">
+                          <thead>
+                              <tr class="border-b border-dotted border-black">
+                                  <th class="py-3 px-6 bg-gray-100 text-left text-xs font-semibold text-slate-800 uppercase tracking-wider">ID</th>
+                                  <th class="py-3 px-6 bg-gray-100 text-center text-xs font-semibold text-slate-800 uppercase tracking-wider">Image</th>
+                                  <th class="py-3 px-6 bg-gray-100 text-left text-xs font-semibold text-slate-800 uppercase tracking-wider">Name</th>
+                                  <th class="py-3 px-6 bg-gray-100 text-left text-xs font-semibold text-slate-800 uppercase tracking-wider">Type</th>
+                                  <th class="py-3 px-6 bg-gray-100 text-left text-xs font-semibold text-slate-800 uppercase tracking-wider">Adoption Status</th>
+                                  <th class="py-3 px-6 bg-gray-100 text-right text-xs font-semibold text-slate-800 uppercase tracking-wider">Price</th>
+                              </tr>
+                          </thead>
+                          <tbody class="bg-slate-50 divide-y divide-gray-200">
+                              <tr>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-center">
+                                      <img class="h-12 w-12 rounded-full mx-auto" src="https://placekitten.com/100/100" alt="Pet Image">
+                                  </td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Max</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Dog</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-green-600 font-semibold">Available</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-right text-gray-900">$150</td>
+                              </tr>
+                              <tr>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-center">
+                                      <img class="h-12 w-12 rounded-full mx-auto" src="https://placekitten.com/100/101" alt="Pet Image">
+                                  </td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Bella</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Cat</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-red-600 font-semibold">Adopted</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-right text-gray-900">$120</td>
+                              </tr>
+                              <tr>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-center">
+                                      <img class="h-12 w-12 rounded-full mx-auto" src="https://placekitten.com/100/101" alt="Pet Image">
+                                  </td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Bella</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Cat</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-red-600 font-semibold">Adopted</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-right text-gray-900">$120</td>
+                              </tr>
+                              <tr>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-center">
+                                      <img class="h-12 w-12 rounded-full mx-auto" src="https://placekitten.com/100/101" alt="Pet Image">
+                                  </td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Bella</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Cat</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-red-600 font-semibold">Adopted</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-right text-gray-900">$120</td>
+                              </tr>
+                              <tr>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-center">
+                                      <img class="h-12 w-12 rounded-full mx-auto" src="https://placekitten.com/100/101" alt="Pet Image">
+                                  </td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Bella</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-gray-900">Cat</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-red-600 font-semibold">Adopted</td>
+                                  <td class="py-4 px-6 whitespace-nowrap text-sm text-right text-gray-900">$120</td>
+                              </tr>
+                              <!-- Repeat rows as necessary -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <!-- Third Row -->
+                    <!-- Add Post -->
+                    <div class="min-w-96 min-h-[480px] p-3 m-5 border border-slate-200 rounded-lg shadow-lg">
+                      <h1>add post</h1>
+                    </div>
+                </div>
+
+                <!-- Users Content -->
+                <div x-show="selectedTab === 'users'" class="p-4 rounded-lg shadow bg-white">
+                  <div class="flex items-center gap-3 p-5">
+                    <span class="material-icons text-green-400 text-4xl">account_circle</span>
+                    <h1 class="text-2xl font-bold uppercase">All User</h1>
+                  </div>
+                  <!-- All user table -->
+                  <div class="font-sans overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                      <thead class="bg-gray-100 whitespace-nowrap">
+                        <tr>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            ID
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            First Name
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Last Name
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Username
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Email
+                          </th>
+                        </tr>
+                      </thead>
+              
+                      <tbody class="whitespace-nowrap">
+                        <tr class="hover:bg-gray-50">
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            ID
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            First Name
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Last Name
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Username
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Email
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+
+                <!-- Pets Content -->
+                <div x-show="selectedTab === 'pets'" class="p-4 rounded-lg shadow bg-white">
+                  <div class="flex items-center gap-3 p-5">
+                    <span class="material-icons text-pink-600 text-4xl">pets</span>
+                    <h1 class="text-2xl font-bold uppercase">All Pet</h1>
+                  </div>
+                  <!-- Table -->
+                    <div class="font-sans overflow-x-auto">
+                      <table class="min-w-full bg-white">
+                        <thead class="bg-gray-100 whitespace-nowrap">
+                          <tr>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              ID
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Name
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Type
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Gender
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Age
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Price
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Adoption Status
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Author
+                            </th>
+                          </tr>
+                        </thead>
+                
+                        <tbody class="whitespace-nowrap">
+                          <tr class="hover:bg-gray-50">
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              ID
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Name
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Type
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Gender
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Age
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Price
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Adoption Status
+                            </th>
+                            <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                              Author
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+
+                <!-- Pet Categories Content -->
+                <div x-show="selectedTab === 'categories'" class="p-4 rounded-lg shadow bg-white">
+                    <div class="flex items-center gap-3 p-5">
+                      <span class="material-icons text-pink-600 text-4xl">category</span>
+                      <h1 class="text-2xl font-bold uppercase">Pet Categories</h1>
+                    </div>
+                    <!-- Table -->
+                      <div class="font-sans overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                          <thead class="bg-gray-100 whitespace-nowrap">
+                            <tr>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Slug
+                              </th>
+                            </tr>
+                          </thead>
+                  
+                          <tbody class="whitespace-nowrap">
+                            <tr class="hover:bg-gray-50">
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Slug
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                </div>
+
+                <!-- Adoptions Content -->
+                <div x-show="selectedTab === 'adoptions'" class="p-4 rounded-lg shadow bg-white">
+                    <div class="flex items-center gap-3 p-5">
+                      <span class="material-icons text-indigo-600 text-4xl">done_all</span>
+                      <h1 class="text-2xl font-bold uppercase">Adoptions</h1>
+                    </div>
+                    <!-- Table -->
+                    <div class="font-sans overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                          <thead class="bg-gray-100 whitespace-nowrap">
+                            <tr>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Image
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Customer
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Time
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Price
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Balance Available
+                              </th>
+                            </tr>
+                          </thead>
+                  
+                          <tbody class="whitespace-nowrap">
+                            <tr class="hover:bg-gray-50">
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Image
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Customer
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Time
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Price
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Available Balance
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Contact Us Content -->
+                <div x-show="selectedTab === 'contact'" class="p-4 rounded-lg shadow bg-white">
+                    <div class="flex items-center gap-3 p-5">
+                      <span class="material-icons text-gray-300 text-4xl">contact_mail</span>
+                      <h1 class="text-2xl font-bold uppercase">Contact Us</h1>
+                    </div>
+                    <!-- Table -->
+                    <div class="font-sans overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                          <thead class="bg-gray-100 whitespace-nowrap">
+                            <tr>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Email
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Description
+                              </th>
+                            </tr>
+                          </thead>
+                  
+                          <tbody class="whitespace-nowrap">
+                            <tr class="hover:bg-gray-50">
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Email
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Description
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Team Members Content -->
+                <div x-show="selectedTab === 'team'" class="p-4 rounded-lg shadow bg-white">
+                    <div class="flex items-center gap-3 p-5">
+                      <span class="material-icons text-slate-400 text-4xl">groups</span>
+                      <h1 class="text-2xl font-bold uppercase">Team Members</h1>
+                    </div>
+                    <!-- Table -->
+                    <div class="font-sans overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                          <thead class="bg-gray-100 whitespace-nowrap">
+                            <tr>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Image
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Type
+                              </th>
+                            </tr>
+                          </thead>
+                  
+                          <tbody class="whitespace-nowrap">
+                            <tr class="hover:bg-gray-50">
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Image
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Type
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Services Content -->
+                <div x-show="selectedTab === 'services'" class="p-4 rounded-lg shadow bg-white">
+                    <div class="flex items-center gap-3 p-5">
+                      <span class="material-icons text-red-500 text-4xl">support_agent</span>
+                      <h1 class="text-2xl font-bold uppercase">Services</h1>
+                    </div>
+                    <!-- Table -->
+                    <div class="font-sans overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                          <thead class="bg-gray-100 whitespace-nowrap">
+                            <tr>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Description
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Image
+                              </th>
+                            </tr>
+                          </thead>
+                  
+                          <tbody class="whitespace-nowrap">
+                            <tr class="hover:bg-gray-50">
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                ID
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Name
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Description
+                              </th>
+                              <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                                Image
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+              
+            </main>
+        </div>      
+      </section>
+
+
+
   
-  <!-- Adoption History -->
-  <!-- Toast -->
-  <div id="error-container" style="left:40%;" class="fixed top-24 bg-gray-200 shadow-2xl text-gray-800 flex-grow items-center mx-auto p-4 rounded-md hidden"
-  role="alert">
-      <span id="error" class="text font-bold font-mono tracking-wide"></span>
-  </div>
-  
-  <div id="dashboard" class="font-mono overflow-x-auto w-5/6 mx-auto my-11 shadow-2xl rounded-lg">
-    
-    <table class="min-w-full bg-teal-200">
-      <thead class="bg-gray-800 whitespace-nowrap">
-        <tr>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            ID
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Pet 
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Pet ID
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Time
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Pet Fee
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
-            Update Balance 
-          </th>
-        </tr>
-      </thead>
-
-      <tbody class="whitespace-nowrap" id="tb">
-        
-
-      </tbody>
-    </table>
-    <!-- loader -->
-    <div id="nodata" class="nodata m-11"><img class=" mx-auto " src="./images//unnamed.jpeg" alt=""></div>
-    <div id="loader">
-      <div  class="loader ">
-        <div></div> 
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-  <!-- loader -->
-  </div>
 
 
-
-  <!-- Footer -->
-  <div id="footer" class="w-full"></div>
   <!-- Scripts -->
   <script src="./navbar.js"></script>
   <script src="./app.js"></script>

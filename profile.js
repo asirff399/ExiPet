@@ -17,7 +17,12 @@ const loadUserDetails = () => {
     .then((res) => res.json())
     .then((data) => {
       // console.log(data)
-      document.getElementById("p-phone").value = data.phone
+        // document.getElementById("p-phone").value = data.phone
+        if (data.phone && data.phone.length > 4) {  // Ensure it's not just the country code
+          document.getElementById("p-phone").value = data.phone;
+      } else {
+          document.getElementById("p-phone").value = '';  // Or set to a default value if no valid number
+      }
         document.getElementById("p-address").value = data.address
 
         document.getElementById("img").src = `${data.image}`;
@@ -27,6 +32,7 @@ const loadUserDetails = () => {
         document.getElementById("p-balance").innerText = `$${data.balance}`;
 
         localStorage.setItem('user_type',data.user_type)
+        console.log(data.user_type)
     });
 };
 const loadCustomerId = () => {

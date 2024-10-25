@@ -54,7 +54,7 @@ const displayAllPet = (pets) =>{
                                 <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                                 </div>
                             <div class="p-4 text-center">
-                                <div class="w-4/6 mx-auto bg-gray-900 text-red-700 font-mono text-xl rounded-full px-4 py-2 shadow-lg">$${pet.price} </div>
+                                <div class="w-4/6 mx-auto bg-gray-900 text-red-600 font-mono text-xl rounded-full px-4 py-2 shadow-lg"><i class="fas fa-bangladeshi-taka-sign text-base p-1 text-red-500"></i>${pet.price} </div>
                                 <h1 class="mb-3 mt-2 text-2xl font-medium text-gray-900"><strong>${pet.name}</strong> </h1>
                                 <p class="mb-2 text-base  text-gray-700">${pet.description.slice(0,40)}...</p>
                                 <div class="flex justify-evenly items-center mt-5 cta">
@@ -92,7 +92,7 @@ const displayInitialPet = (pets) =>{
                             <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                             </div>
                         <div class="p-4 text-center">
-                            <div class="w-4/6 mx-auto bg-gray-900 text-red-700 font-mono text-xl rounded-full px-4 py-2 shadow-lg">$${pet.price} </div>
+                            <div class="w-4/6 mx-auto bg-gray-900 text-red-600 font-mono text-xl rounded-full px-4 py-2 shadow-lg"><i class="fas fa-bangladeshi-taka-sign text-base p-1 text-red-500"></i>${pet.price} </div>
                             <h1 class="mb-3 mt-2 text-2xl font-medium text-gray-900"><strong>${pet.name}</strong> </h1>
                             
                             <div class="flex justify-evenly items-center mt-5 cta">
