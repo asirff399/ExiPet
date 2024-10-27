@@ -8,7 +8,6 @@ fetch("navbar.html")
 	
 		const token = localStorage.getItem("token")
 		const userType = localStorage.getItem("user_type")
-		console.log(userType)
 
 		if(!token){
 			navElement.innerHTML=`
@@ -17,10 +16,9 @@ fetch("navbar.html")
 					<a href="./registration.html" class=" md:text-xl lg:text-xl font-mono text-center md:m-3 lg:m-3 hover:border-b-4 hover:border-black p-1 font-extrabold ">REGISTER</a>
 				</div>
 			`
-			
 		}
 		
-		if (userType === "User") {
+		if (userType === "User" || !token) {
 			admin.classList.add("hidden"); // Keep hidden for users
 		} else {
 			admin.classList.remove("hidden"); // Show for admins

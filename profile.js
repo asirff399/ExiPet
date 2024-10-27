@@ -39,7 +39,10 @@ const loadCustomerId = () => {
   const user_id = localStorage.getItem("user_id");
   fetch(`https://exi-pet-drf.vercel.app/customer/list/?search=${user_id}`)
     .then((res) => res.json())
-    .then((data) => localStorage.setItem("customer_id", data[0].id));
+    .then((data) => {
+      console.log(data)
+      localStorage.setItem("customer_id", data[0].id)
+    });
 };
 // const changePass = (event) => {
 //   event.preventDefault();
