@@ -136,14 +136,6 @@ const getParam = () =>{
     // console.log(param)
     loadPetPageBy(param)
 }
-// const loadPetPageBy = (search) =>{
-//     console.log(search)
-//     fetch(`http://127.0.0.1:8000/pet/list/?page=${search? search : "" }`)
-//     .then((res)=>res.json())
-//     .then((data)=>{
-//         displayPetCategoryWise(data?.results)
-//     })
-// }
 const displayPetCategoryWise = (pets) =>{
     // console.log(pets)
     document.getElementById("category-pet").innerHTML = ""

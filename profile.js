@@ -37,7 +37,7 @@ const loadUserDetails = () => {
 };
 const loadCustomerId = () => {
   const user_id = localStorage.getItem("user_id");
-  fetch(`https://exi-pet-drf.vercel.app/customer/list/?search=${user_id}`)
+  fetch(`https://exi-pet-drf.vercel.app/customer/list/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
