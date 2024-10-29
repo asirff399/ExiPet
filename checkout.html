@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white border border-gray-300 shadow-lg rounded-lg p-8 max-w-3xl w-full">
+            <h2 class="text-3xl font-semibold font-sans text-center mb-16 text-gray-800">Payment Checkout</h2>
+
+            <!-- Pet Details -->
+            <div class="border-b pb-6 mb-6">
+                <div class="flex items-center justify-evenly space-x-4">
+                    <img id="co-image" src="" class="w-32 h-32 object-cover rounded-md">
+                    <div style="width: 300px;">
+                        <div class="w-full flex justify-between items-center">
+                            <p class="text-lg font-semibold text-gray-800 mb-3">Name:</p>
+                            <p id="co-name" class="text-lg font-semibold text-gray-800 mb-3 font-mono"></p>
+                        </div>
+                        <div class="w-full flex justify-between items-center">
+                            <p class="text-lg font-semibold text-gray-800 mb-3">Price:</p>
+                            <p id="co-price" class="text-lg font-semibold text-gray-800 mb-3 font-mono"></p>
+                        </div>
+                        <div class="w-full flex justify-between items-center">
+                            <p class="text-lg font-semibold text-gray-800 mb-3">Category:</p>
+                            <p id="co-type" class="text-lg font-semibold text-gray-800 mb-3 font-mono"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+     
+            <form id="adoption-form">
+                <div class="grid grid-cols-2 gap-6 mb-4">
+                    <!-- First Name -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="co-first-name" class="text-gray-600">First Name</label>
+                        <input type="text" id="co-first-name" name="co-first-name" placeholder="First Name" class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    </div>
+                    <!-- Last Name -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="co-last-name" class="text-gray-600">Last Name</label>
+                        <input type="text" id="co-last-name" name="co-last-name" placeholder="Last Name" class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    </div>
+                    
+                    <!-- Username -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="co-username" class="text-gray-600">Username</label>
+                        <input type="text" id="co-username" name="co-username" placeholder="Username" class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="co-email" class="text-gray-600">Email</label>
+                        <input type="email" id="co-email" name="co-email" placeholder="Email Address" class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="co-phone" class="text-gray-600">Phone Number</label>
+                        <input type="tel" id="co-phone" name="co-phone" placeholder="Phone Number" class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    </div>
+
+                    <!-- Address -->
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="co-address" class="text-gray-600">Address</label>
+                        <input type="text" id="co-address" name="co-address" placeholder="Address" class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                 <div class="flex justify-end items-center gap-6">
+                    <div class="text-right mt-6">
+                        <button type="submit" class="px-6 py-2 bg-yellow-200 text-black rounded-md hover:bg-yellow-300 font-bold font-mono">Cash On Delevary</button>
+                    </div>
+                    <div class="text-right mt-6">
+                        <button onclick="payment(event)" type="submit" class="px-6 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 font-bold font-mono">Payment</button>
+                    </div>
+                 </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./base.js"></script>
+    <script src="./app.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./post.js"></script>
+    <script src="./payment.js"></script>
+
+</body>
+</html>

@@ -39,7 +39,7 @@ const getParams = ()=>{
             if (adoptionStatus === "Adopted" || !token) {
                 adoptBTN.innerHTML = " ";
             } else {
-                adoptBTN.innerHTML = `<a href="#" class="bg-black text-xl text-nowrap font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">Adopt Now</a>`;
+                adoptBTN.innerHTML = `<a href="./checkout.html?pet_id=${param}" class="bg-black text-xl text-nowrap font-mono text-center text-green-300 hover:text-white px-7 py-3 font-extrabold rounded-full">Adopt Now</a>`;
             }
     })
     
@@ -103,82 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error fetching pet details:", error);
     });
 });
-
-async function adoptPet(event) {
-    event.preventDefault();
-
-    const errorContainer = document.getElementById("error-container");
-    const errorElement = document.getElementById("error");
-    const hideToast = () => {
-      setTimeout(() => {
-          errorContainer.classList.add("hidden");
-      }, 3000);  
-    };
-    const showError = (message) => {
-      errorElement.innerText = message;
-      errorContainer.classList.remove("hidden");  
-      hideToast(); 
-    };
-
-    const petId = localStorage.getItem('pet_id');
-    const token = localStorage.getItem('token');
-
-    if (!petId) {
-        console.error("No pet_id found in localStorage.");
-        return;
-    }
-
-    if (!token) {
-        console.error("No token found in localStorage.");
-        return;
-    }
-
-    const apiUrl = `https://exi-pet-drf.vercel.app/pet/adopt/${petId}`;
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Token ${token}`,
-        },
-    };
-
-    try {
-        const response = await fetch(apiUrl, requestOptions);
-
-        // if (response.ok) {
-        //     const data = await response.json();
-        //     showError("Adoption successful")
-        //     console.log("Adoption successful:", data);
-        //     window.location.href = "dashboard.html"
-        // } 
-        if (response.ok) {
-            const data = await response.json();
-            showError("Adoption successful");
-            setTimeout(() => {
-                window.location.href = "history.html";
-            }, 2000);  // Add delay before redirecting
-            console.log("Adoption successful:", data);
-        }else if (response.status === 404) {
-            showError("Pet not found or already adopted.")
-            console.error("Error: Pet not found or already adopted.");
-        } else if (response.status === 400) {
-            const errorData = await response.json();
-            showError("Insufficient balance or other error")
-            console.error("Insufficient balance or other error:", errorData);
-        } else {
-            const errorData = await response.json();
-            showError("Unexpected error during adoption")
-            console.error("Unexpected error during adoption:", errorData);
-        }
-    } catch (error) {
-        console.error("Network error:", error);
-        showError("Network error:" + error)
-    }
-}
-
-
-document.getElementById('adopt-btn').addEventListener('click', adoptPet);
 // Pet Category
 document.addEventListener('DOMContentLoaded', function () {
     let tabs = document.querySelectorAll('.tab');

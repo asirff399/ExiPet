@@ -17,19 +17,16 @@ const loadUserDetails = () => {
     .then((res) => res.json())
     .then((data) => {
       // console.log(data)
-        // document.getElementById("p-phone").value = data.phone
-        if (data.phone && data.phone.length > 4) {  // Ensure it's not just the country code
+        if (data.phone && data.phone.length > 4) {  
           document.getElementById("p-phone").value = data.phone;
       } else {
-          document.getElementById("p-phone").value = '';  // Or set to a default value if no valid number
+          document.getElementById("p-phone").value = ''; 
       }
         document.getElementById("p-address").value = data.address
 
         document.getElementById("img").src = `${data.image}`;
         document.getElementById("p-btn-img").src = `${data.image}`;
         document.getElementById("curr-p-img").value = data.image;
-        
-        document.getElementById("p-balance").innerText = `$${data.balance}`;
 
         localStorage.setItem('user_type',data.user_type)
         console.log(data.user_type)
@@ -37,64 +34,13 @@ const loadUserDetails = () => {
 };
 const loadCustomerId = () => {
   const user_id = localStorage.getItem("user_id");
+  console.log(user_id)
   fetch(`https://exi-pet-drf.vercel.app/customer/list/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
-      localStorage.setItem("customer_id", data[0].id)
+      localStorage.setItem("customer_id", data.id)
     });
 };
-// const changePass = (event) => {
-//   event.preventDefault();
-
-//   const errorContainer = document.getElementById("error-container");
-//     const errorElement = document.getElementById("error");
-//     const hideToast = () => {
-//       setTimeout(() => {
-//           errorContainer.classList.add("hidden");
-//       }, 3000);  
-//     };
-//     const showError = (message) => {
-//       errorElement.innerText = message;
-//       errorContainer.classList.remove("hidden");  
-//       hideToast(); 
-//     };
-
-//   const oldPassword = document.getElementById("old-password").value;
-//   const newPassword = document.getElementById("new-password").value;
-//   const token = localStorage.getItem("token");
-//   // console.log(token);
-//   const data = {
-//     old_password: oldPassword,
-//     new_password: newPassword,
-//   };
-//   // console.log(data);
-
-//   fetch("https://exi-pet-drf-git-main-asirff399s-projects.vercel.app/customer/pass_change/", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Token ${token}`,
-//     },
-//     body: JSON.stringify(data),
-//   })
-//   .then((res) => res.json())
-//   .then((data) => {
-//       if (data.success) {
-//         // alert("Password changed successfully!");
-//         showError("Password changed successfully!")
-//         window.location.href = "./profile.html";
-//       } else {
-//         // alert("Password change failed: " + (data.error || "Unknown error"));
-//         showError("Password change failed: " + (data.error || "Unknown error"))
-//       }
-//   })
-//   .catch((err) => {
-//       console.error(err);
-//       // alert("An error occurred while changing the password.");
-//       showError("An error occurred while changing the password.")
-//   });
-// };
 const changePass = (event) => {
   event.preventDefault();
 
@@ -147,109 +93,6 @@ const changePass = (event) => {
     });
 };
 
-const deposit = (event) => {
-  event.preventDefault();
-
-    const errorContainer = document.getElementById("error-container");
-    const errorElement = document.getElementById("error");
-    const hideToast = () => {
-      setTimeout(() => {
-          errorContainer.classList.add("hidden");
-      }, 3000);  
-    };
-    const showError = (message) => {
-      errorElement.innerText = message;
-      errorContainer.classList.remove("hidden");  
-      hideToast(); 
-    };
-
-  const form = document.getElementById("deposit-form");
-  const formData = new FormData(form);
-  const data = {
-    amount: formData.get("deposit"),
-  };
-
-  // console.log(data);
-  const token = localStorage.getItem("token");
-  fetch("https://exi-pet-drf.vercel.app/transaction/deposit/", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
-        showError("Deposit successful!");
-        setTimeout(() => {
-          window.location.href = "./profile.html";
-        }, 3000);  
-      } else {
-        showError("Deposit failed: " + (data.error || "Unknown error"));
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      showError("An error occurred while processing the deposit.");
-    });
-    
-};
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("deposit-form").addEventListener("submit", deposit);
-});
-
-const withdraw = (event) => {
-  event.preventDefault();
-
-    const errorContainer = document.getElementById("error-container");
-    const errorElement = document.getElementById("error");
-    const hideToast = () => {
-      setTimeout(() => {
-          errorContainer.classList.add("hidden");
-      }, 3000);  
-    };
-    const showError = (message) => {
-      errorElement.innerText = message;
-      errorContainer.classList.remove("hidden");  
-      hideToast(); 
-    };
-
-  const form = document.getElementById("withdraw-form");
-  const formData = new FormData(form);
-  const data = {
-    amount: formData.get("withdraw"),
-  };
-
-  console.log(data);
-  const token = localStorage.getItem("token");
- 
-  fetch("https://exi-pet-drf.vercel.app/transaction/withdraw/", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success) {
-        showError("Withdraw successful!");
-        setTimeout(() => {
-          window.location.href = "./profile.html";
-        }, 3000);  
-      } else {
-        showError("Withdraw failed: " + (data.error || "Unknown error"));
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      showError("An error occurred while processing the withdraw.");
-    });
-    
-};
 const availablePet = () =>{
   const userId = localStorage.getItem("user_id")
   document.getElementById("available").style.display = "none";
@@ -306,10 +149,6 @@ const adoptedPet = () =>{
         } 
     })
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("withdraw-form").addEventListener("submit", withdraw);
-});
 
 loadUserDetails();
 loadCustomerId();

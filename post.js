@@ -212,6 +212,4 @@ const deletePet = () =>{
     });
 }
 
-// document.getElementById("delete-pet").addEventListener("click", deletePet);
-
 getPostDetail()
