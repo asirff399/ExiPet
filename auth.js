@@ -143,8 +143,7 @@ const handleLogout = () =>{
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data)
-        localStorage.removeItem("token")
-        localStorage.removeItem("user_id")
+        localStorage.clear();
         showError('Logged out successfully')
         window.location.href = "./index.html"
     })
@@ -226,18 +225,18 @@ const updateProfile = async (event) => {
           body: JSON.stringify(userData),
       });
 
-      const responseText = await updateResponse.text(); // Get response as text first
+      const responseText = await updateResponse.text(); 
 
       if (updateResponse.ok) {
-          const updateData = JSON.parse(responseText); // Parse JSON
+          const updateData = JSON.parse(responseText); 
           console.log('Profile Updated:', updateData);
           showSuccess('Profile updated successfully!');
       } else {
           try {
-              const errorData = JSON.parse(responseText); // Attempt to parse error as JSON
+              const errorData = JSON.parse(responseText); 
               throw new Error(errorData.detail || 'Failed to update profile');
           } catch (jsonError) {
-              throw new Error('Error parsing response: ' + responseText); // Provide the original response
+              throw new Error('Error parsing response: ' + responseText); 
           }
       }
   } catch (error) {

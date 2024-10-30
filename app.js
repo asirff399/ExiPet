@@ -203,14 +203,12 @@ const loadPetTypePost = () =>{
         }
     })
 }
-const loadPetTypeEdit = () =>{
+const loadPetTypeEdit = () =>{-
     fetch("https://exi-pet-drf.vercel.app/pet/types/")
     .then((res)=>res.json())
     .then((data)=>{
-        // console.log(data)
         if(data){
             data.forEach((item)=>{
-                // console.log(item) 
                 const ed_parent = document.getElementById("ed-pet-type")
                 const ed_option = document.createElement("option")
     
@@ -287,8 +285,7 @@ const loadUserProNav = () => {
         document.getElementById("p-btn-name").innerText = `${data.first_name } ${data.last_name}`
         document.getElementById("p-btn-email").innerText = data.email
       });
-    const customer_id = localStorage.getItem("customer_id");
-    fetch(`https://exi-pet-drf.vercel.app/customer/list/${customer_id}`)
+    fetch(`https://exi-pet-drf.vercel.app/customer/list/?user=${user_id}`)
       .then((res) => res.json())
       .then((data) => {
           document.getElementById("p-btn-img").src = `${data.image}`;

@@ -68,10 +68,17 @@ const ServiceDetails = ()=>{
 }
 const loadDashboard = () =>{
     const user_id = localStorage.getItem("user_id")
-    document.getElementById("dashboard").style.display = "none";
+    // document.getElementById("dashboard").style.display = "none";
+    const dashboardElement = document.getElementById("dashboard");
+    if (dashboardElement) {
+      dashboardElement.style.display = "none";
+    } else {
+      return;
+    }
     fetch(`https://exi-pet-drf.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
+        console.log(data)
         document.getElementById("loader").style.display = "block";
         if(data && data.length > 0){
             
@@ -85,14 +92,29 @@ const loadDashboard = () =>{
         }
     })
 }
+function adoptionformatDate(dateStr) {
+    const date = new Date(dateStr);
+    const options = { 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric',
+        hour12: true 
+    };
+    return date.toLocaleString('en-US', options).replace(" at", "");
+}
 const displayDashboard = (data) =>{
     data.forEach((item)=>{           
         const parent = document.getElementById("tb")
         const tr = document.createElement("tr")
+        const time = adoptionformatDate(item.adopted_on)
         tr.innerHTML=`
-                
+                    <td  class="p-4 text-sm text-black whitespace-nowrap">
+                        ${item.transaction_id}
+                    </td>
                     <td  class="p-4 text-sm text-black">
-                        ${item.id}
+                        <img class="h-12 w-12 rounded" src=${item.pet_image} alt="Pet Image">
                     </td>
                     <td  class="p-4 text-sm text-black">
                         ${item.pet_name}
@@ -101,16 +123,11 @@ const displayDashboard = (data) =>{
                         ${item.pet}
                     </td>
                     <td  class="p-4 text-sm text-black">
-                        ${item.adopted_on}
+                        ${time}
                     </td>
                     <td  class="p-4 text-sm text-black">
                         ${item.pet_price}
-                    </td>
-                    <td  class="p-4 text-sm text-black">
-                        ${item.balance_after_adoption}
-                    </td>
-        
-        
+                    </td>  
         `
         parent.appendChild(tr)
         
@@ -169,4 +186,3 @@ const contactUs = (event) => {
 
 loadAllService()
 loadDashboard()
-// ServiceDetails()

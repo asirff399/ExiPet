@@ -22,7 +22,7 @@
           <div class="w-[360px] lg:w-5/6 md:w-[90%] flex-1 bg-white md:p-8 lg:p-8">
           
             <!-- Toast -->
-              <div class="w-full mx-auto">
+              <div class="w-full mx-auto z-50">
                 <div id="error-container" class="fixed top-24 left-1/2 transform -translate-x-1/2 bg-gray-200 shadow-2xl text-gray-800 mx-auto p-4 rounded-md hidden"
                     role="alert">
                     <span id="error" class="text-center font-bold font-mono tracking-wide"></span>
@@ -31,9 +31,7 @@
 
               <div class="flex justify-between m-3">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 uppercase">Profile Details</h2>
-                <div class="flex gap-2 mb-4 p-3 rounded-2xl bg-orange-100">
-                  <p id="p-balance" class="text-black font-bold font-mono text-2xl"></p>
-                </div>
+                
               </div>
 
               <form id="up-profile" onsubmit="updateProfile(event)" enctype="multipart/form-data" class="flex flex-wrap justify-evenly gap-16 bg-gray-100 p-6 rounded-lg shadow-lg">
@@ -144,7 +142,10 @@
       <thead class="bg-gray-800 whitespace-nowrap">
         <tr>
           <th class="p-4 text-left text-sm font-medium text-white">
-            ID
+            Transaction ID
+          </th>
+          <th class="p-4 text-left text-sm font-medium text-white">
+            Image
           </th>
           <th class="p-4 text-left text-sm font-medium text-white">
             Pet 
@@ -153,13 +154,10 @@
             Pet ID
           </th>
           <th class="p-4 text-left text-sm font-medium text-white">
-            Time
-          </th>
-          <th class="p-4 text-left text-sm font-medium text-white">
             Pet Fee
           </th>
           <th class="p-4 text-left text-sm font-medium text-white">
-            Update Balance 
+            Time
           </th>
         </tr>
       </thead>

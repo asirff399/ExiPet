@@ -19,9 +19,14 @@ fetch("navbar.html")
 		}
 		
 		if (userType === "User" || !token) {
-			admin.classList.add("hidden"); // Keep hidden for users
+			admin.classList.add("hidden"); 
+			if (!token && !sessionStorage.getItem("redirected")) {
+				sessionStorage.setItem("redirected", "true");
+				window.location.href = "./index.html"; 
+			} 
 		} else {
-			admin.classList.remove("hidden"); // Show for admins
+			admin.classList.remove("hidden"); 
+			sessionStorage.removeItem("redirected");
 		}
 
 		
@@ -54,32 +59,3 @@ fetch("footer.html")
 .then((data) => {
     document.getElementById("footer").innerHTML= data;
 })
-
-
-
-document.addEventListener('DOMContentLoaded',() => {
-	const drawerToggle = document.getElementById('drawer-toggle');
-	const drawer = document.getElementById('drawer');
-	const closeDrawer = document.getElementById('close-drawer');
-
-	drawerToggle.addEventListener('click', () => {
-	  drawer.classList.toggle('hidden');
-	});
-  
-	closeDrawer.addEventListener('click', () => {
-	  drawer.classList.add('hidden');
-	});
-  
-	const dropdownToggle = document.querySelector('[data-dropdown-toggle]');
-	const dropdown = document.getElementById('dropdownNavbar');
-  
-	dropdownToggle.addEventListener('click', () => {
-	  dropdown.classList.toggle('hidden');
-	});
-  });
-  
- 
-
-
-
-

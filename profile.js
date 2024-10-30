@@ -12,8 +12,7 @@ const loadUserDetails = () => {
       document.getElementById("p-email").value = data.email
       
     });
-  const customer_id = localStorage.getItem("customer_id");
-  fetch(`https://exi-pet-drf.vercel.app/customer/list/${customer_id}`)
+  fetch(`https://exi-pet-drf.vercel.app/customer/list/?user=${user_id}`)
     .then((res) => res.json())
     .then((data) => {
       // console.log(data)
@@ -32,15 +31,7 @@ const loadUserDetails = () => {
         console.log(data.user_type)
     });
 };
-const loadCustomerId = () => {
-  const user_id = localStorage.getItem("user_id");
-  console.log(user_id)
-  fetch(`https://exi-pet-drf.vercel.app/customer/list/${user_id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      localStorage.setItem("customer_id", data.id)
-    });
-};
+
 const changePass = (event) => {
   event.preventDefault();
 
@@ -90,12 +81,18 @@ const changePass = (event) => {
     .catch((err) => {
       console.error(err);
       showError("An error occurred while changing the password.");
-    });
-};
+    })
+}
 
 const availablePet = () =>{
   const userId = localStorage.getItem("user_id")
-  document.getElementById("available").style.display = "none";
+  // document.getElementById("available").style.display = "none";
+  const availableElement = document.getElementById("available");
+  if (availableElement) {
+    availableElement.style.display = "none";
+  } else {
+    return;
+  }
   fetch(`https://exi-pet-drf.vercel.app/pet/list/?adoption_status=Available&author=${userId}`)
   .then((res) => res.json())
   .then((data)=>{
@@ -123,7 +120,13 @@ const availablePet = () =>{
 }
 const adoptedPet = () =>{
   const user_id = localStorage.getItem("user_id")
-  document.getElementById("adopted").style.display = "none";
+  // document.getElementById("adopted").style.display = "none";
+  const adoptedElement = document.getElementById("adopted");
+  if (adoptedElement) {
+    adoptedElement.style.display = "none";
+  } else {
+    return;
+  }
     fetch(`https://exi-pet-drf.vercel.app/pet/adoption/?search=${user_id}`)
     .then((res)=>res.json())
     .then((data)=>{
@@ -154,36 +157,3 @@ loadUserDetails();
 loadCustomerId();
 availablePet()
 adoptedPet()
-document.addEventListener("DOMContentLoaded", function () {
-  const drawerButton = document.querySelector(
-    '[data-drawer-show="drawer-navigation"]'
-  );
-  if (drawerButton) {
-    drawerButton.click();
-  } else {
-    console.error(
-      "Element with data-drawer-show='drawer-navigation' not found."
-    );
-  }
-});
-
-// Dropdown
-document.addEventListener("click", closeOpenDropdowns);
-
-
-let dropdownToggle = document.getElementById('dropdownToggle');
-let dropdownMenu = document.getElementById('dropdownMenu');
-
-function handleClick() {
-    if (dropdownMenu.className.includes('block')) {
-        dropdownMenu.classList.add('hidden')
-        dropdownMenu.classList.remove('block')
-    } else {
-        dropdownMenu.classList.add('block')
-        dropdownMenu.classList.remove('hidden')
-    }
-}
-document.addEventListener("DOMContentLoaded", function() {
-  dropdownToggle.addEventListener('click', handleClick);
-});
-// dropdownToggle.addEventListener('click', handleClick);

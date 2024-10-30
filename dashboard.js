@@ -1,6 +1,6 @@
 const fetchTotalPets = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:8000/pet/list');
+        const response = await fetch('https://exi-pet-drf.vercel.app/pet/list');
         const data = await response.json();
         const totalPets = data.length;
         document.getElementById("pet-count").innerText = `${totalPets}` 
@@ -10,7 +10,7 @@ const fetchTotalPets = async () => {
 };
 const fetchAvailablePets = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:8000/pet/list/?adoption_status=Available');
+        const response = await fetch('https://exi-pet-drf.vercel.app/pet/list/?adoption_status=Available');
         const data = await response.json();
         const totalPets = data.length;
         document.getElementById("available-pet-cnt").innerText = `${totalPets}` 
@@ -20,7 +20,7 @@ const fetchAvailablePets = async () => {
 };
 const fetchAdoptedPets = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:8000/pet/list/?adoption_status=Adopted');
+        const response = await fetch('https://exi-pet-drf.vercel.app/pet/list/?adoption_status=Adopted');
         const data = await response.json();
         const totalPets = data.length;
         document.getElementById("adopted-pet-cnt").innerText = `${totalPets}` 
@@ -30,7 +30,7 @@ const fetchAdoptedPets = async () => {
 };
 const fetchUsers = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:8000/users/');
+        const response = await fetch('https://exi-pet-drf.vercel.app/users/');
         const data = await response.json();
         const totalPets = data.length;
         document.getElementById("total-user-cnt").innerText = `${totalPets}` 
@@ -44,7 +44,7 @@ fetchAdoptedPets();
 fetchUsers();
 
 const loadDbUsers = () => {
-    fetch("http://127.0.0.1:8000/users/")
+    fetch("https://exi-pet-drf.vercel.app/users/")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-user-table");
@@ -73,8 +73,41 @@ const loadDbUsers = () => {
     })
     .catch((error) => console.error("Error loading users:", error));
 };
+const loadDbCustomer = () => {
+    fetch("https://exi-pet-drf.vercel.app/customer/list/")
+    .then((res) => res.json())
+    .then((data) => {
+        const parent = document.getElementById("db-customer-table");
+        data.forEach((item) => {
+            const row = document.createElement("tr");
+            row.classList.add('hover:bg-gray-50')
+            row.innerHTML = `                           
+                <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                    ${item.id}
+                </th>
+                <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                    ${item.user}
+                </th>
+                <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                    ${item.user_type}
+                </th>
+                <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                    <img class="h-12 w-12 rounded" src=${item.image} alt="Pet Image">
+                </th>
+                <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                    ${item.address}
+                </th> 
+                <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                    ${item.phone}
+                </th> 
+            `;
+            parent.appendChild(row);
+        });
+    })
+    .catch((error) => console.error("Error loading users:", error));
+};
 const loadDbPets = () => {
-    fetch("http://127.0.0.1:8000/pet/list")
+    fetch("https://exi-pet-drf.vercel.app/pet/list")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-pet-table");
@@ -114,7 +147,7 @@ const loadDbPets = () => {
     .catch((error) => console.error("Error loading users:", error));
 };
 const loadDbTop5Pets = () => {
-    fetch("http://127.0.0.1:8000/pet/list")
+    fetch("https://exi-pet-drf.vercel.app/pet/list")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-top-pets-table");
@@ -138,7 +171,7 @@ const loadDbTop5Pets = () => {
     .catch((error) => console.error("Error loading users:", error));
 };
 const loadDbPetCategory = () => {
-    fetch("http://127.0.0.1:8000/pet/types")
+    fetch("https://exi-pet-drf.vercel.app/pet/types")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-pet-category-table");
@@ -161,12 +194,25 @@ const loadDbPetCategory = () => {
     })
     .catch((error) => console.error("Error loading users:", error));
 };
+function DbadoptionformatDate(dateStr) {
+    const date = new Date(dateStr);
+    const options = { 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric',
+        hour12: true 
+    };
+    return date.toLocaleString('en-US', options).replace(" at", "");
+}
 const loadDbAdoption = () => {
-    fetch("http://127.0.0.1:8000/pet/adoption")
+    fetch("https://exi-pet-drf.vercel.app/pet/adoption")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-adoption-table");
         data.forEach((item) => {
+            const time = DbadoptionformatDate(item.adopted_on)
             const row = document.createElement("tr");
             row.classList.add('hover:bg-gray-50')
             row.innerHTML = `                           
@@ -177,19 +223,19 @@ const loadDbAdoption = () => {
                     ${item.pet_name}
                 </th>
                 <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                    ${item.pet_image}
+                    <img class="h-12 w-12 rounded" src=${item.pet_image} alt="Pet Image">
                 </th>   
                 <th class="p-4 text-left text-xs font-semibold text-gray-800">
                     ${item.customer}
                 </th>   
                 <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                    ${item.adopted_on}
+                    ${time}
                 </th>   
                 <th class="p-4 text-left text-xs font-semibold text-gray-800">
                     ${item.pet_price}
                 </th>   
                 <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                    ${item.balance_after_adoption}
+                    ${item.transaction_id}
                 </th>   
 
             `;
@@ -199,7 +245,7 @@ const loadDbAdoption = () => {
     .catch((error) => console.error("Error loading users:", error));
 };
 const loadDbContactUs = () => {
-    fetch("http://127.0.0.1:8000/contact_us")
+    fetch("https://exi-pet-drf.vercel.app/contact_us")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-contact-table");
@@ -226,7 +272,7 @@ const loadDbContactUs = () => {
     .catch((error) => console.error("Error loading users:", error));
 };
 const loadDbTeamMember = () => {
-    fetch("http://127.0.0.1:8000/member")
+    fetch("https://exi-pet-drf.vercel.app/member")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-team-member-table");
@@ -253,7 +299,7 @@ const loadDbTeamMember = () => {
     .catch((error) => console.error("Error loading users:", error));
 };
 const loadDbService = () => {
-    fetch("http://127.0.0.1:8000/service")
+    fetch("https://exi-pet-drf.vercel.app/service")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-service-table");
@@ -280,12 +326,10 @@ const loadDbService = () => {
     .catch((error) => console.error("Error loading users:", error));
 };
 const loadDbReview = () => {
-    fetch("http://127.0.0.1:8000/customer/review")
+    fetch("https://exi-pet-drf.vercel.app/customer/review")
     .then((res) => res.json())
     .then((data) => {
         const parent = document.getElementById("db-review-table");
-        console.log(data);
-
         data.forEach((item) => {
             const row = document.createElement("tr");
             row.classList.add('hover:bg-gray-50')
@@ -316,6 +360,7 @@ const loadDbReview = () => {
 };
 
 loadDbUsers()
+loadDbCustomer()
 loadDbPets()
 loadDbTop5Pets()
 loadDbPetCategory()

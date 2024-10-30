@@ -14,6 +14,7 @@
 </head>
 <body>
 
+    
       <section >
         <div x-data="{ selectedTab: 'dashboard' }" class="flex">
             <!-- Sidebar -->
@@ -31,6 +32,11 @@
                     class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
                     <span class="material-icons">person</span>
                     <span class="ml-2">Users</span>
+                </a>
+                <a href="#" @click.prevent="selectedTab = 'customer'" :class="{'bg-blue-100': selectedTab === 'customer'}"
+                    class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
+                    <span class="material-icons">account_box</span>
+                    <span class="ml-2">Customer</span>
                 </a>
                 <a href="#" @click.prevent="selectedTab = 'pets'" :class="{'bg-blue-100': selectedTab === 'pets'}"
                     class="flex items-center p-4 m-2 text-gray-800 font-sans font-semibold hover:bg-slate-100 rounded-lg hover:shadow">
@@ -112,8 +118,6 @@
                         
                           <div class="flex flex-col">
                             <a href="./profile.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-user mx-2"></i> Profile</a>
-                            <a href="#" data-modal-target="deposit-modal" data-modal-toggle="deposit-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-coins mx-2"></i> Deposit</a>
-                            <a href="#" data-modal-target="withdraw-modal" data-modal-toggle="withdraw-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-money-check-dollar mx-2"></i> Withdraw</a>
                             <a href="#" data-modal-target="pass-change-modal" data-modal-toggle="pass-change-modal" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-key mx-2"></i> Change Password</a>
                             <a href="./addpost.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-square-plus mx-2"></i> Add Pet</a>
                             <a href="./history.html" class=" block py-2.5 px-4 transition duration-200 hover:bg-slate-800"><i class="fas fa-table-list mx-2"></i> Adoption History</a>
@@ -126,6 +130,11 @@
                   </div>
                 </div>
               </Nav>
+              <!-- Toast -->
+              <div id="error-container" class="fixed top-24 left-1/2 bg-gray-200 shadow-2xl text-gray-800 flex-grow items-center mx-auto p-4 rounded-md hidden"
+              role="alert">
+                  <span id="error" class="text font-bold font-mono tracking-wide"></span>
+              </div>
               <div class="p-6 flex-1">
                 <!-- Dashboard Content -->
                 <div x-show="selectedTab === 'dashboard'" class="p-4 rounded-lg shadow bg-white">
@@ -423,6 +432,46 @@
 
                 </div>
 
+                <!-- Customer Content -->
+                <div x-show="selectedTab === 'customer'" class="p-4 rounded-lg shadow bg-white">
+                  <div class="flex items-center gap-3 p-5">
+                    <span class="material-icons text-pink-400 text-4xl">account_box</span>
+                    <h1 class="text-2xl font-bold uppercase">All Customer</h1>
+                  </div>
+                  <!-- All user table -->
+                  <div class="font-sans overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                      <thead class="bg-gray-100 whitespace-nowrap">
+                        <tr>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Customer ID
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            User Id
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            User Type
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Image
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Address
+                          </th>
+                          <th class="p-4 text-left text-xs font-semibold text-gray-800">
+                            Phone
+                          </th>
+                        </tr>
+                      </thead>
+              
+                      <tbody id="db-customer-table" class="whitespace-nowrap">
+                      
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+
                 <!-- Pets Content -->
                 <div x-show="selectedTab === 'pets'" class="p-4 rounded-lg shadow bg-white">
                   <div class="flex items-center gap-3 p-5">
@@ -528,7 +577,7 @@
                                 Price
                               </th>
                               <th class="p-4 text-left text-xs font-semibold text-gray-800">
-                                Balance Available
+                                Transaction ID
                               </th>
                             </tr>
                           </thead>
