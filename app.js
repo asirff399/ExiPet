@@ -288,8 +288,8 @@ const loadUserProNav = () => {
     fetch(`https://exi-pet-drf.vercel.app/customer/list/?user=${user_id}`)
       .then((res) => res.json())
       .then((data) => {
-          document.getElementById("p-btn-img").src = `${data.image}`;
-          document.getElementById("p-btn-img2").src = `${data.image}`;
+          document.getElementById("p-btn-img").src = `${data[0].image}`;
+          document.getElementById("p-btn-img2").src = `${data[0].image}`;
       });
   };
 loadUserProNav()

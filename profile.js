@@ -15,20 +15,20 @@ const loadUserDetails = () => {
   fetch(`https://exi-pet-drf.vercel.app/customer/list/?user=${user_id}`)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data)
-        if (data.phone && data.phone.length > 4) {  
-          document.getElementById("p-phone").value = data.phone;
+      // console.log(data[0])
+        if (data[0].phone && data[0].phone.length > 4) {  
+          document.getElementById("p-phone").value = data[0].phone;
       } else {
           document.getElementById("p-phone").value = ''; 
       }
-        document.getElementById("p-address").value = data.address
+        document.getElementById("p-address").value = data[0].address
 
-        document.getElementById("img").src = `${data.image}`;
-        document.getElementById("p-btn-img").src = `${data.image}`;
-        document.getElementById("curr-p-img").value = data.image;
+        document.getElementById("img").src = `${data[0].image}`;
+        document.getElementById("p-btn-img").src = `${data[0].image}`;
+        document.getElementById("curr-p-img").value = data[0].image;
 
-        localStorage.setItem('user_type',data.user_type)
-        console.log(data.user_type)
+        localStorage.setItem('user_type',data[0].user_type)
+        console.log(data[0].user_type)
     });
 };
 
