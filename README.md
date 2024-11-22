@@ -50,13 +50,17 @@
       
      ⚡ View their adoption history.
 
-### Adoption History Dashboard
+### Adoption History 
 
 - A dedicated section that displays the user's adoption history, providing a clear overview of their activity on the platform.
 
 ### Admin Controls
 
 - Administrators have full access to manage the platform. They can add, edit, and delete posts, ensuring the site's smooth operation and integrity.
+
+### Admin Dashboard
+
+- A dedicated section that displays the clear overview of the recent and total platform activities, Add post, See All Models as table view.
 
 ## Pages
 
@@ -82,15 +86,15 @@
 ---
 
 ## 🌐 Deployment: Deployed using Netlify.
-Live link: 
+Front-end Live link: 
 
     https://exipet.netlify.app/
 
 ## GitHub!
-Backend: 
+Back-end Repo: 
 
     https://github.com/asirff399/ExiPet-DRF
 
-Backend live link:
+API live link:
 
     https://exi-pet-drf.vercel.app/
