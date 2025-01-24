@@ -26,16 +26,34 @@
       <span id="error" class="text font-bold font-mono tracking-wide"></span>
   </div>
 
-  <!-- Banner Text -->
-  <div class="flex flex-wrap md:flex-nowrap lg:flex-nowrap items-center gap-6 w-4/6 sm:w-5/6 justify-center" style="margin-inline: auto;margin-block: 80px;">
-    <div data-aos="fade-up" style="width: 550px;">
-      <img class="w-5/6 rounded" src="./images/banner2.jpg" alt="">
+  <!-- Banner -->
+  <div class="container mx-auto px-4 py-16 flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-12">
+    <div data-aos="fade-up" class="w-full lg:w-1/2 flex justify-center">
+      <img 
+        src="./images/banner2.jpg" 
+        alt="Dog Adoption" 
+        class="rounded-2xl shadow-2xl max-w-full h-auto object-cover transform transition hover:scale-105 duration-300"
+      >
     </div>
-    <div data-aos="fade-down" class="banner-text" style="width: 630px;">
-      <h1 class="m-5 text-5xl font-mono font-semibold">Bring Home Happiness!</h1>
-      <h5 class="m-5 text-green-500"><i class="fas fa-paw"></i> Adopting abandoned and rescued dogs from animal rescue shelters creates a culture of sympathy for street animals. It also fosters acceptance amd appreciation towards our indigenous Indian breed dogs.</h5>
-      <h5 class="m-5 text-teal-600"><i class="fas fa-heart"></i> Do you want to change a life by giving them some space in your life? Here's a list of our cherished companions at the shelter who are looking for a home. Just choose one and say hello to happiness!</h5>
-      <div class=" my-11 mx-5">
+    
+    <div data-aos="fade-down" class="w-full lg:w-1/2 text-center lg:text-left space-y-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 tracking-tight">
+        Bring Home Happiness!
+      </h1>
+      
+      <div class="space-y-4 text-gray-600">
+        <p class="flex text-green-500 items-center justify-center lg:justify-start gap-2">
+          <i class="fas fa-paw text-green-500 mr-2"></i>
+          Adopting abandoned and rescued dogs from animal rescue shelters creates a culture of sympathy for street animals. 
+        </p>
+        
+        <p class="flex items-center text-teal-600 justify-center lg:justify-start gap-2">
+          <i class="fas fa-heart text-teal-500 mr-2"></i>
+          Want to transform a life? Our cherished companions await a loving home. Choose your new best friend today!
+        </p>
+      </div>
+      
+      <div class="flex justify-center lg:justify-start">
         <a href="./allPet.html" class="px-8 py-3 bg-lime-200 text-black font-bold rounded-lg shadow-lg hover:bg-teal-500 transition duration-300 text-nowrap">
           <i class="fas fa-dog mr-2"></i> Explore Available Pets <i class="fas fa-long-arrow-alt-right ml-2"></i>
         </a>
@@ -95,6 +113,7 @@
     </div>
   </div>
 
+   
   <!--Services  -->
   <div class="bg-slate-50 md:px-10 px-4 py-12 mb-16 font-[sans-serif]">
     <div class="container mx-auto">

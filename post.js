@@ -21,27 +21,44 @@ const addPost = async (event) =>{
 
     const imageFile = document.getElementById('image').files[0]
 
-    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
-    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+    // const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
+    // const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
+    // const imageData = new FormData()
+    // imageData.append('image',imageFile)
+
+    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/djjx7ln02/image/upload`;
+    const uploadPreset = "exipet"; 
+    
+    if (!imageFile) {
+        showError("Please select an image to upload.");
+        return;
+    }
 
     const imageData = new FormData()
-    imageData.append('image',imageFile)
+    imageData.append('file',imageFile)
+    imageData.append('upload_preset',uploadPreset)
 
 
     try{
-        const imgbbResponse = await fetch(imgbbUrl,{
+        const cloudinaryResponse = await fetch(cloudinaryUrl,{
             method:'POST',
             body: imageData,
         })
 
-        const imgbbData = await imgbbResponse.json()
-        const imageUrl = imgbbData.data.url;
+        const cloudinaryData = await cloudinaryResponse.json();
+
+        if(!cloudinaryResponse.ok){
+            console.error("Cloudinary error response:", cloudinaryData);
+            showError("Failed to upload image to Cloudinary: " + cloudinaryData.error.message);
+            return;
+        }
+        const imageUrl = cloudinaryData.secure_url;
 
         const postData = {
             pet_type: formData.get("p-pet-type"),
             name:formData.get("name") ,
             description:formData.get("description"),
-            // image: formData.get("image"),
             image: imageUrl,
             adoption_status: formData.get("adoption_status"),
             gender: formData.get("gender"),
@@ -84,7 +101,7 @@ const getPostDetail = () => {
         document.getElementById("ed-pet-type").value = post.pet_type;
         document.getElementById("ed-name").value = post.name;
         document.getElementById("ed-description").value = post.description;
-        // document.getElementById("ed-image").value = post.image;
+        document.getElementById("ed-image").value = post.image;
         document.getElementById("ed-adoption_status").value = post.adoption_status;
         document.getElementById("ed-gender").value = post.gender;
         document.getElementById("ed-age").value = post.age;
@@ -117,20 +134,32 @@ const editPost = async (event)=>{
 
     const imageFile = document.getElementById('ed-image').files[0]
 
-    const imgbbApiKey = 'd66ac61ddd293e9365044261d374f2d1';
-    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/djjx7ln02/image/upload`;
+    const uploadPreset = "exipet"; 
+    
+    if (!imageFile) {
+        showError("Please select an image to upload.");
+        return;
+    }
 
     const imageData = new FormData()
-    imageData.append('image',imageFile)
+    imageData.append('file',imageFile)
+    imageData.append('upload_preset',uploadPreset)
 
     try{
-        const imgbbResponse = await fetch(imgbbUrl,{
+        const cloudinaryResponse = await fetch(cloudinaryUrl,{
             method:'POST',
             body: imageData,
         })
 
-        const imgbbData = await imgbbResponse.json()
-        const imageUrl = imgbbData.data.url;
+        const cloudinaryData = await cloudinaryResponse.json();
+
+        if(!cloudinaryResponse.ok){
+            console.error("Cloudinary error response:", cloudinaryData);
+            showError("Failed to upload image to Cloudinary: " + cloudinaryData.error.message);
+            return;
+        }
+        const imageUrl = cloudinaryData.secure_url;
 
         const editPostData = {
             // pet_type: parseInt(formData.get("ed-pet-type")),

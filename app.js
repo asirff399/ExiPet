@@ -49,7 +49,7 @@ const displayAllPet = (pets) =>{
             div.classList.add("pet-card")
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`                
-                    <div class="border border-gray-400 mx-auto md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                    <div class="border border-gray-400 mx-auto my-5 md:w-96 lg:w-96 max-w-[100%] rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 overflow-hidden transform transition hover:scale-105 hover:shadow-2xl duration-300">
                             <div>
                                 <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                                 </div>
@@ -87,7 +87,7 @@ const displayInitialPet = (pets) =>{
             div.setAttribute("data-aos", "flip-left");
             const formattedDate = formatDate(pet.created_on);
             div.innerHTML=`
-                    <div class="border border-gray-400 mx-auto my-5 md:w-96 lg:w-96 max-w-[100%] transform overflow-hidden rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 shadow-lg duration-300 hover:scale-105 hover:shadow-lg">
+                    <div class="border border-gray-400 mx-auto my-5 md:w-96 lg:w-96 max-w-[100%] rounded-xl bg-gradient-to-r from-slate-50 to-pink-200 overflow-hidden transform transition hover:scale-105 hover:shadow-2xl duration-300">
                         <div>
                             <img class="h-48 w-full object-cover object-center" src=${pet.image} alt="Product Image" />
                             </div>
